@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,24 +20,27 @@
         <span class="text">Login</span>
         <div class="col-md-3 col-md-offset-4">
             <div class="login-form">
-                <div class="form-group">
-                    <input class="form-control" value="" placeholder="Account" id="login-name" type="text">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" value="" placeholder="Password" id="login-pass" type="password">
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox"> Giữ tôi luôn đăng nhập </label>
-                </div>
-                <br> <a class="btn btn-info" href="#">Đăng nhập</a>
-                <br>
-                <br> <a href="#"><small>Quên mật khẩu</small></a>
-                <br>
-                <br>
-                <br>
-                <div>
-                    <small style="color: white;">Không có tài khoản?</small> <a href="#"><small>Tạo tài khoản</small></a>
-                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                    <input name="Id" class="form-control" value="" placeholder="Account" id="Id" type="text">
+                     </div>
+                    <div class="form-group">
+                        <input name="Password" class="form-control" value="" placeholder="Password" id="Password" type="password">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Giữ tôi luôn đăng nhập </label>
+                    </div>
+                    <br> <input type="submit" class="btn btn-info" value="Đăng nhập" />
+                    <br>
+                    <br> <a href="#"><small>Quên mật khẩu</small></a>
+                    <br>
+                    <br>
+                    <br>
+                    <div>
+                        <small style="color: white;">Không có tài khoản?</small> <a href="#"><small>Tạo tài khoản</small></a>
+                    </div>
+                }
             </div>
         </div>
     </div>
