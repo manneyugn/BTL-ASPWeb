@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Content/styles/style.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-4.4.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header-wrapper">
+        <div class="header">
+            <ul class="items-wrapper">
+                <li><img src="~/Content/images/logo.png" alt="logo" class="logo"></li>
+                <li class="header-item"><a href="#">Home</a></li>
+                <li class="header-item"><a href="#">Keyboards</a></li>
+                <li class="header-item"><a href="#">Keycaps</a></li>
+                <li class="header-item"><a href="#">Switches</a></li>
+                <li class="header-item"><a href="#">Deskmats</a></li>
+                <li class="header-item dropdown">
+                    <a href="#">Other</a>
+                    <div class="dropdown-content">
+                        <a href="#">Case</a>
+                        <a href="#">Plate</a>
+                        <a href="#">Stabilizer</a>
+                        <a href="#">Cable</a>
+                        <a href="#">Accessories</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="items-wrapper" style="position: absolute; right: 0;">
+                <li><a href="#"> <img src="~/Content/images/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
+                <li class="header-item"><a href="3">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footertop">
+            <div class="prefixtext">
+                <span class="text">Get Discount Info</span>
+            </div>
+            <div class="prefixbutton">
+                <a href="#"><button class="buttonsub">Subscribe</button></a>
+            </div>
+        </div>
+        <div class="footermid">
+            <div class="box">
+                <div class="name">Trần Đức Dũng</div>
+                <div class="name">Nguyễn Sơn Nam</div>
+            </div>
+        </div>
+        <div class="footerbot">
+            <div>Copyright © 2020 Web. All Rights Reserved</div>
+        </div>
+    </footer>
+</body>
+<script src='~/Content/scripts/flickity.pkgd.js'></script>
+<script src='~/Content/bootstrap-4.4.1-dist/js/bootstrap.js'></script>
+
+</html>
