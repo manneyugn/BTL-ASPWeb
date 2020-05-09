@@ -18,26 +18,26 @@
     <div class="header-wrapper">
         <div class="header">
             <ul class="items-wrapper">
-                <li><img src="~/Content/images/logo.png" alt="logo" class="logo"></li>
-                <li class="header-item">@Html.ActionLink("Home", "Index", "Index")</li>
-                <li class="header-item">@Html.ActionLink("Keyboards", "Keyboard", "Keyboard")</li>
-                <li class="header-item">@Html.ActionLink("Keycaps", "Keyboard", "Keyboard")</li>
-                <li class="header-item">@Html.ActionLink("Switches", "Keyboard", "Keyboard")</li>
-                <li class="header-item">@Html.ActionLink("Deskmats", "Keyboard", "Keyboard")</li>
+                <li><img src="~/Content/images/items/logo.png" alt="logo" class="logo"></li>
+                <li class="header-item">@Html.ActionLink("Home", "Home", "Home")</li>
+                <li class="header-item">@Html.ActionLink("Keyboards", "Lists", "Home")</li>
+                <li class="header-item">@Html.ActionLink("Keycaps", "Lists", "Home")</li>
+                <li class="header-item">@Html.ActionLink("Switches", "Lists", "Home")</li>
+                <li class="header-item">@Html.ActionLink("Deskmats", "Lists", "Home")</li>
                 <li class="header-item dropdown">
-                    @Html.ActionLink("Other", "Keyboard", "Keyboard")
+                    @Html.ActionLink("Other", "Lists", "Home")
                     <div class="dropdown-content">
-                        @Html.ActionLink("Case", "Keyboard", "Keyboard")
-                        @Html.ActionLink("Plate", "Keyboard", "Keyboard")
-                        @Html.ActionLink("Stabilizer", "Keyboard", "Keyboard")
-                        @Html.ActionLink("Cable", "Keyboard", "Keyboard")
-                        @Html.ActionLink("Accessories", "Keyboard", "Keyboard")
+                        @Html.ActionLink("Case", "Lists", "Home")
+                        @Html.ActionLink("Plate", "Lists", "Home")
+                        @Html.ActionLink("Stabilizer", "Lists", "Home")
+                        @Html.ActionLink("Cable", "Lists", "Home")
+                        @Html.ActionLink("Accessories", "Lists", "Home")
                     </div>
                 </li>
         </ul>
         <ul class="items-wrapper" style="position: absolute; right: 0;">
-            <li><a href = @Url.Action("Shopcart","Shopcart")> <img src="~/Content/images/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
-            <li class="header-item">@Html.ActionLink("Login", "Login", "Login")</li>
+            <li><a href = @Url.Action("Shopcart","Home")> <img src="~/Content/images/items/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
+            <li class="header-item">@Html.ActionLink("Login", "Login", "Home")</li>
         </ul>
     </div>
 </div>
