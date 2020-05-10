@@ -20,18 +20,18 @@
             <ul class="items-wrapper">
                 <li><img src="~/Content/images/items/logo.png" alt="logo" class="logo"></li>
                 <li class="header-item">@Html.ActionLink("Home", "Home", "Home")</li>
-                <li class="header-item">@Html.ActionLink("Keyboards", "Lists", "Home")</li>
-                <li class="header-item">@Html.ActionLink("Keycaps", "Lists", "Home")</li>
-                <li class="header-item">@Html.ActionLink("Switches", "Lists", "Home")</li>
-                <li class="header-item">@Html.ActionLink("Deskmats", "Lists", "Home")</li>
+                <li class="header-item">@Html.ActionLink("Keyboards", "Lists", "Home", new { product = "Keyboards" }, new { })</li>
+                <li class="header-item">@Html.ActionLink("Keycaps", "Lists", "Home", new { product = "Keycaps" }, new { })</li>
+                <li class="header-item">@Html.ActionLink("Switches", "Lists", "Home", new { product = "Switches" }, new { })</li>
+                <li class="header-item">@Html.ActionLink("Deskmats", "Lists", "Home", new { product = "Deskmats" }, new { })</li>
                 <li class="header-item dropdown">
-                    @Html.ActionLink("Other", "Lists", "Home")
+                    <a href="#" style="pointer-events: none;  cursor: default;">Other</a>
                     <div class="dropdown-content">
-                        @Html.ActionLink("Case", "Lists", "Home")
-                        @Html.ActionLink("Plate", "Lists", "Home")
-                        @Html.ActionLink("Stabilizer", "Lists", "Home")
-                        @Html.ActionLink("Cable", "Lists", "Home")
-                        @Html.ActionLink("Accessories", "Lists", "Home")
+                        @Html.ActionLink("Case", "Lists", "Home", new { product = "Case" }, new { })
+                        @Html.ActionLink("Plate", "Lists", "Home", new { product = "Plate" }, new { })
+                        @Html.ActionLink("Stabilizer", "Lists", "Home", new { product = "Stabilizer" }, new { })
+                        @Html.ActionLink("Cable", "Lists", "Home", new { product = "Cable" }, new { })
+                        @Html.ActionLink("Accessories", "Lists", "Home", new { product = "Accessories" }, new { })
                     </div>
                 </li>
         </ul>

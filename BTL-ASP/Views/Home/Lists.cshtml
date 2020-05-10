@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using BTL_ASP.Models;
+
 <link rel="stylesheet" href="~/Content/styles/liststyle.css">
 
 <div class="filter-wrapper">
@@ -40,47 +42,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="product">
-                <a href="#"><img src="~/Content/images/F60 pink.jpg" class="product-img"></a>
-                <div class="product-price">2.000.000đ</div>
-                <div class="product-name">Bàn phím F60 pink</div>
-                <div class="product-info">Bàn phím 60 %</div>
+        @foreach (SanPham sp in (ViewBag.SanPham as List<SanPham>))
+        {
+            <div class="col-md-4">
+                <div class="product">
+                    <a href="#"><img src= "@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img"></a>
+                    <div class="product-price">@sp.Gia</div>
+                    <div class="product-name">@sp.TenSP</div>
+                    <div class="product-info">@sp.MoTa</div>
+                </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="product">
-                <a href="#"><img src="~/Content/images/F60 pink.jpg" class="product-img"></a>
-                <div class="product-price">2.000.000đ</div>
-                <div class="product-name">Bàn phím F60 pink</div>
-                <div class="product-info">Bàn phím 60 %</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product">
-                <a href="#"><img src="~/Content/images/F60 pink.jpg" class="product-img"></a>
-                <div class="product-price">2.000.000đ</div>
-                <div class="product-name">Bàn phím F60 pink</div>
-                <div class="product-info">Bàn phím 60 %</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product">
-                <a href="#"><img src="~/Content/images/F60 pink.jpg" class="product-img"></a>
-                <div class="product-price">2.000.000đ</div>
-                <div class="product-name">Bàn phím F60 pink</div>
-                <div class="product-info">Bàn phím 60 %</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product">
-                <a href="#"><img src="~/Content/images/F60 pink.jpg" class="product-img"></a>
-                <div class="product-price">2.000.000đ</div>
-                <div class="product-name">Bàn phím F60 pink</div>
-                <div class="product-info">Bàn phím 60 %</div>
-            </div>
-        </div
+        }
     </div>
 </div>
 

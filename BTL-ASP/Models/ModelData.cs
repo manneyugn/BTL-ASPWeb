@@ -4,6 +4,8 @@ namespace BTL_ASP.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
 
     public partial class ModelData : DbContext
     {
@@ -85,6 +87,37 @@ namespace BTL_ASP.Models
             modelBuilder.Entity<SanPhamGioHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
+        }
+    }
+
+    public class FSanPham
+    {
+        private ModelData context = new ModelData();
+        public IQueryable<SanPham> SanPhams
+        {
+            get { return context.SanPhams; }
+        }
+        public List<SanPham> GetDanhSachSP(int MaLoai)
+        {
+            SqlParameter[] idParam = {
+                new SqlParameter {ParameterName = "MaLoai",Value = MaLoai}};
+            List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
+            return sanPhams;
+        }
+    }
+
+    public class FLoaiSanPham
+    {
+        private ModelData context = new ModelData();
+        public IQueryable<Loai> SanPhams
+        {
+            get { return context.Loais; }
+        }
+
+        public Loai FindLoai(string TenLoai)
+        {
+            Loai myLoai = context.Loais.SingleOrDefault(loai => loai.TenLoai == TenLoai);
+            return myLoai;
         }
     }
 }

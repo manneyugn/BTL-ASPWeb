@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTL_ASP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,10 +34,26 @@ namespace BTL_ASP.Controllers
         }
 
         // GET: Lists
-        public ActionResult Lists()
+        //public ActionResult Lists()
+        //{
+        //    FSanPham fSanPham = new FSanPham();
+        //    ViewBag.SanPham = fSanPham.GetDanhSachSP(1);
+        //    return View();
+        //}
+
+        public ActionResult Lists(string product)
         {
+            FSanPham fSanPham = new FSanPham();
+            FLoaiSanPham fLoai = new FLoaiSanPham();
+            Loai loai = fLoai.FindLoai(product);
+            ViewBag.SanPham = fSanPham.GetDanhSachSP(loai.ID);
             return View();
         }
+
+        //public string Lists(string product)
+        //{
+        //    return product;
+        //}
 
         // GET: Signup
         public ActionResult Signup()
