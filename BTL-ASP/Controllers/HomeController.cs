@@ -30,17 +30,12 @@ namespace BTL_ASP.Controllers
         // GET: Product
         public ActionResult Product()
         {
+            FSanPham fSanPham = new FSanPham();
+            ViewBag.SanPham = fSanPham.FindSanPham(10);
             return View();
         }
 
         // GET: Lists
-        //public ActionResult Lists()
-        //{
-        //    FSanPham fSanPham = new FSanPham();
-        //    ViewBag.SanPham = fSanPham.GetDanhSachSP(1);
-        //    return View();
-        //}
-
         public ActionResult Lists(string product)
         {
             FSanPham fSanPham = new FSanPham();
@@ -49,11 +44,6 @@ namespace BTL_ASP.Controllers
             ViewBag.SanPham = fSanPham.GetDanhSachSP(loai.ID);
             return View();
         }
-
-        //public string Lists(string product)
-        //{
-        //    return product;
-        //}
 
         // GET: Signup
         public ActionResult Signup()

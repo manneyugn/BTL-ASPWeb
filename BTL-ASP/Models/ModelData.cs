@@ -97,6 +97,12 @@ namespace BTL_ASP.Models
         {
             get { return context.SanPhams; }
         }
+
+        public SanPham FindSanPham(int id)
+        {
+            return context.SanPhams.Find(id);
+        }
+
         public List<SanPham> GetDanhSachSP(int MaLoai)
         {
             SqlParameter[] idParam = {

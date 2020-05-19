@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Keyboard";
+    ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -46,7 +46,7 @@
         {
             <div class="col-md-4">
                 <div class="product">
-                    <a href="#"><img src= "@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img"></a>
+                    <a href=" @Url.Action("Product","Home",new { id = sp.ID })"><img src= "@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img"></a>
                     <div class="product-price">@sp.Gia</div>
                     <div class="product-name">@sp.TenSP</div>
                     <div class="product-info">@sp.MoTa</div>
