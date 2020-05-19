@@ -85,7 +85,7 @@
 .grid-item a img {
     display: block;
     width: 90%;
-    height: 90%;
+    max-height: 180px;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
