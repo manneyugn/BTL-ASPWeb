@@ -28,10 +28,10 @@ namespace BTL_ASP.Controllers
         }
 
         // GET: Product
-        public ActionResult Product()
+        public ActionResult Product(int id)
         {
             FSanPham fSanPham = new FSanPham();
-            ViewBag.SanPham = fSanPham.FindSanPham(10);
+            ViewBag.SanPham = fSanPham.FindSanPham(id);
             return View();
         }
 

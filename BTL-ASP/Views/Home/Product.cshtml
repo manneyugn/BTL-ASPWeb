@@ -7,7 +7,8 @@
 @using BTL_ASP.Models;
 
 
-<link rel="stylesheet" href="~/Content/styles/product.css">
+@*<link rel="stylesheet" href="~/Content/styles/product.css">*@
+@Styles.Render("~/Content/styles/product.css")
 
 <div class="container">
     <div class="row">
@@ -16,7 +17,7 @@
             <div class="row">
                 @foreach (AnhSanPham anh in (ViewBag.SanPham.AnhSanPhams as HashSet<AnhSanPham>))
                 {
-                <div class="moreimageproduct col-md-2"><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh"  style="width: 100%;"></div>
+                    <div class="moreimageproduct col-md-2 "><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh" style="width: 100%;"></div>
                 }
             </div>
         </div>
@@ -44,13 +45,13 @@
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script>
     $('.moreimageproduct').click(function () {
-        $('.moreimageproduct').removeClass('borderClass');
+        $('.moreimageproduct').removeClass('productborder');
         $('.imageproduct').children('img').attr('src', $(this).children('img').attr('src'));
-        $(this).addClass('borderClass');
+        $(this).addClass('productborder');
     });
     $(document).ready(function () {
         // your code
         document.querySelector('.imageproduct img').src = (document.querySelector('.moreimageproduct img').src);
-        document.querySelector('.moreimageproduct').classList.add('borderClass');
+        document.querySelector('.moreimageproduct').classList.add('productborder');
     });
 </script>
