@@ -44,10 +44,13 @@
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script>
     $('.moreimageproduct').click(function () {
+        $('.moreimageproduct').removeClass('borderClass');
         $('.imageproduct').children('img').attr('src', $(this).children('img').attr('src'));
+        $(this).addClass('borderClass');
     });
     $(document).ready(function () {
         // your code
         document.querySelector('.imageproduct img').src = (document.querySelector('.moreimageproduct img').src);
+        document.querySelector('.moreimageproduct').classList.add('borderClass');
     });
 </script>
