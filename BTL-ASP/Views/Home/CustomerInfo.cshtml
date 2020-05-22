@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "CustomerInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles/customerInfo.css">
+<div class="info">
+    <div class="TTTK">
+        <h1>Thông tin tài khoản</h1>
+    </div>
+    <div> <span class="T">Email</span> <span><input class="in" type="text"> </span> </div>
+    <div> <span class="T">SĐT</span> <span><input class="in" type="text"> </span> </div>
+    <div> <span class="T">Họ và tên đệm</span> <span><input class="in" type="text"> </span> </div>
+    <div> <span class="T">Tên</span> <span><input class="in" type="text"> </span> </div>
+    <div>
+        <span class="T">Giới tính</span> <span>
+            Nam <input class="radiobt" type="radio" name="gender"> Nữ
+            <input class="radiobt" type="radio" name="gender">
+        </span>
+    </div>
+    <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text"> </span> </div>
+    <div class="change-password-div" onClick="theFuntion()">
+        <h5>Thay đổi mật khẩu</h5>
+    </div>
+    <div class="password-changer">
+        <div>
+            <label class="T" for="old-password"> Mật khẩu cũ</label>
+            <input class="in" type="password" id="old-password">
+        </div>
+        <div>
+            <label class="T" for="password"> Nhập mật khẩu</label>
+            <input class="in" type="password" id="password">
+        </div>
+        <div>
+            <label class="T" for="re-password"> Nhập lại mật khẩu</label>
+            <input class="in" type="password" id="re-password">
+        </div>
+        <div style="text-align: center;">
+            <input class="buttonluu" type="button"
+                   value="Lưu lại thay đổi mật khẩu">
+        </div>
+    </div>
+    <div style="text-align: center;"> <input class="button" type="button" value="Thay đổi thông tin"> </div>
+</div>
+<div class="shopping-history">
+    <div class="TTTK">
+        <h1>Lịch sử mua hàng</h1>
+    </div>
+    <div class="styles__StyledAccountListOrder-sc-6t66uv-0 glOjBk">
+        <div class="heading">Đơn hàng của tôi</div>
+        <div class="inner">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày mua</th>
+                        <th>Sản phẩm</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái đơn hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="/sales/order/view/253005224">253005224</a></td>
+                        <td>25/12/2019</td>
+                        <td>Hộp 10 Đôi Tất Cổ Cao Chống Hôi Chân Xuất Nhật Cho Nam</td>
+                        <td>72.292 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/590484942">590484942</a></td>
+                        <td>10/07/2019</td>
+                        <td>Dép Kẹp Tong Suede 2184 - Tím Huế (Size 37)...và 01 sản phẩm khác</td>
+                        <td>50.000 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/957577567">957577567</a></td>
+                        <td>17/06/2019</td>
+                        <td>Tai Nghe Nhét Tai Hoco M1 - Hàng Nhập Khẩu</td>
+                        <td>73.776 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/899865258">899865258</a></td>
+                        <td>17/06/2019</td>
+                        <td>
+                            Tai Nghe Nhét Tai Xiaomi Mi Dual Driver Hi-res (Đen) - Hàng Chính Hãng...và 01 sản
+                            phẩm khác
+                        </td>
+                        <td>496.000 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/923214338">923214338</a></td>
+                        <td>24/03/2019</td>
+                        <td>Fidget Cube - Dụng Cụ Kì Diệu Giúp Tập Trung Công Việc màu ngẫu nhiên</td>
+                        <td>74.000 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/231797703">231797703</a></td>
+                        <td>20/03/2019</td>
+                        <td>Tai nghe Samsung Galaxy AKG Note ̣9 chính hãng - Đen</td>
+                        <td>147.000 ₫</td>
+                        <td>Đã hủy</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/556377037">556377037</a></td>
+                        <td>11/12/2018</td>
+                        <td>Dép bông đi trong nhà đế chống trơn trượt Unisex (Nâu)...và 01 sản phẩm khác</td>
+                        <td>147.000 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/968230337">968230337</a></td>
+                        <td>14/09/2018</td>
+                        <td>Tuổi Trẻ Đáng Giá Bao Nhiêu...và 01 sản phẩm khác</td>
+                        <td>82.000 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/487125249">487125249</a></td>
+                        <td>14/09/2018</td>
+                        <td>Tuổi Trẻ Đáng Giá Bao Nhiêu...và 01 sản phẩm khác</td>
+                        <td>82.000 ₫</td>
+                        <td>Đã hủy</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/sales/order/view/912338660">912338660</a></td>
+                        <td>07/06/2018</td>
+                        <td>Đọc Vị Bất Kỳ Ai (Tái Bản)...và 01 sản phẩm khác</td>
+                        <td>107.700 ₫</td>
+                        <td>Giao hàng thành công</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="Pagination__StyledPagination-sc-1k08bf0-0 gZYGWg">
+            <li class="is-active">1</li>
+            <li class="">2</li>
+            <li class="next">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                </svg>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="bootstrap-4.4.1-dist/jquery-3.5.1.js"></script>
+<script src="bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+<script>
+    function theFuntion() {
+        var changer = document.querySelector("div.password-changer");
+        if (changer.style.display === "none") {
+            changer.style.display = "block";
+        }
+        else {
+            changer.style.display = "none";
+        }
+    }
+</script>
