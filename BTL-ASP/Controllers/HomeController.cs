@@ -2,16 +2,32 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace BTL_ASP.Controllers
 {
     public class HomeController : Controller
     {
+        public string GetKhachHang()
+        {
+            if (Session["KhachHang"] != null)
+            {
+               
+                return @"<a href = ""/Home/CustomerInfo"">Xin chào, "+ ((KhachHang)Session["KhachHang"]).TenKH + "</a>";
+               
+            }
+            else
+            {
+                return @"<a href = ""/Home/Login"">Login</a>";                
+            }
+        }
         // GET: Home
         public ActionResult Home()
         {
+
             return View();
         }
 
@@ -19,6 +35,22 @@ namespace BTL_ASP.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string id, string password)
+        {
+            FKhachHang fKhachHang = new FKhachHang();
+            KhachHang x = fKhachHang.TimKhachHang(id, password);
+            if (x != null)
+            {
+                Session["KhachHang"] = x;
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // GET: Shopcart

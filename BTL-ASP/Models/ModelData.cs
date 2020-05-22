@@ -126,4 +126,13 @@ namespace BTL_ASP.Models
             return myLoai;
         }
     }
+
+    public class FKhachHang
+    {
+        private ModelData context = new ModelData();
+        public KhachHang TimKhachHang(string id, string pass)
+        {
+            return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
+        }
+    }
 }
