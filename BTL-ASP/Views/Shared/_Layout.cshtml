@@ -37,7 +37,7 @@
         </ul>
         <ul class="items-wrapper" style="position: absolute; right: 0;">
             <li><a href = @Url.Action("Shopcart","Home")> <img src="~/Content/images/items/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
-            <li class="header-item">@Html.Action("GetKhachHang","Home")</li>
+            @Html.Action("GetKhachHang","Home")
         </ul>
     </div>
 </div>
@@ -66,5 +66,8 @@
 </body>
 <script src='~/Content/scripts/flickity.pkgd.js'></script>
 <script src='~/Content/bootstrap-4.4.1-dist/js/bootstrap.js'></script>
+<script>
+    
+</script>
 
 </html>

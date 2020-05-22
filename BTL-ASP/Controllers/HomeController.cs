@@ -15,14 +15,28 @@ namespace BTL_ASP.Controllers
         {
             if (Session["KhachHang"] != null)
             {
-               
-                return @"<a href = ""/Home/CustomerInfo"">Xin chào, "+ ((KhachHang)Session["KhachHang"]).TenKH + "</a>";
+                StringBuilder htmlStr = new StringBuilder("");
+                htmlStr.Append(@"<li class=""header-item dropdown"">");
+                htmlStr.Append(@"<a href = ""/Home/CustomerInfo"">Hello, ");
+                htmlStr.Append(((KhachHang)Session["KhachHang"]).TenKH);
+                htmlStr.Append("</a>");
+                htmlStr.Append(@"<div class=""dropdown-content"">");
+                htmlStr.Append(@"<a href = ""/Home/Logout"">Log out</a>");
+                htmlStr.Append(@"</div>");
+                htmlStr.Append(@"</li>");
+                return htmlStr.ToString();
                
             }
             else
-            {
-                return @"<a href = ""/Home/Login"">Login</a>";                
+            {                
+                return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";                
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["KhachHang"] = null;
+            return RedirectToAction("Home");
         }
         // GET: Home
         public ActionResult Home()
