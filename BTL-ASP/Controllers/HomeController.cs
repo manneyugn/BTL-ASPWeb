@@ -50,5 +50,11 @@ namespace BTL_ASP.Controllers
         {
             return View();
         }
+
+        // GET: CustomerInfo
+        public ActionResult CustomerInfo()
+        {
+            return View();
+        }
     }
 }

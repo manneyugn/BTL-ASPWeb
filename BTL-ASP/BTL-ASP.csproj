@@ -367,6 +367,7 @@
     <Content Include="Content\images\items\logo.png" />
     <Content Include="Content\images\items\shop cart.png" />
     <Content Include="Content\scripts\flickity.pkgd.js" />
+    <Content Include="Content\styles\customerInfo.css" />
     <Content Include="Content\styles\flickity.css" />
     <Content Include="Content\styles\homestyle.css" />
     <Content Include="Content\styles\liststyle.css" />
@@ -417,6 +418,7 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Home\CustomerInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
