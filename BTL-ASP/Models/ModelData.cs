@@ -126,8 +126,6 @@ namespace BTL_ASP.Models
             return myLoai;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     public class FKhachHang
     {
@@ -160,5 +158,4 @@ namespace BTL_ASP.Models
             return lasp;
         }
     }
->>>>>>> Stashed changes
 }
