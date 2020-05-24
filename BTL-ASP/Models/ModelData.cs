@@ -126,4 +126,39 @@ namespace BTL_ASP.Models
             return myLoai;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    public class FKhachHang
+    {
+        private ModelData context = new ModelData();
+        public KhachHang TimKhachHang(string id, string pass)
+        {
+            return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
+        }
+    }
+
+    public class FAnhSanPham
+    {
+        private ModelData context = new ModelData();
+        public List<AnhSanPham> GetSilde()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetSilde").ToList<AnhSanPham>();
+            return lasp; 
+        }
+        public List<AnhSanPham> GetRanKeyBoard()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetRanKeyBoard").ToList<AnhSanPham>();
+            return lasp;
+        }
+        public List<AnhSanPham> GetRanOther()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
+            return lasp;
+        }
+    }
+>>>>>>> Stashed changes
 }

@@ -12,6 +12,13 @@ namespace BTL_ASP.Controllers
         // GET: Home
         public ActionResult Home()
         {
+<<<<<<< Updated upstream
+=======
+            FAnhSanPham fAnhSanPham = new FAnhSanPham();
+            ViewBag.Silde = fAnhSanPham.GetSilde();
+            ViewBag.RandKb = fAnhSanPham.GetRanKeyBoard();
+            ViewBag.RandO = fAnhSanPham.GetRanOther();
+>>>>>>> Stashed changes
             return View();
         }
 
