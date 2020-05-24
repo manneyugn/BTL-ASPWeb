@@ -135,4 +135,27 @@ namespace BTL_ASP.Models
             return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
         }
     }
+
+    public class FAnhSanPham
+    {
+        private ModelData context = new ModelData();
+        public List<AnhSanPham> GetSilde()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetSilde").ToList<AnhSanPham>();
+            return lasp; 
+        }
+        public List<AnhSanPham> GetRanKeyBoard()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetRanKeyBoard").ToList<AnhSanPham>();
+            return lasp;
+        }
+        public List<AnhSanPham> GetRanOther()
+        {
+            List<AnhSanPham> lasp = new List<AnhSanPham>();
+            lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
+            return lasp;
+        }
+    }
 }
