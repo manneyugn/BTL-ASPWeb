@@ -369,6 +369,7 @@
     <Content Include="Content\scripts\flickity.pkgd.js" />
     <Content Include="Content\styles\customerInfo.css" />
     <Content Include="Content\styles\flickity.css" />
+    <Content Include="Content\styles\forgotpass.css" />
     <Content Include="Content\styles\homestyle.css" />
     <Content Include="Content\styles\liststyle.css" />
     <Content Include="Content\styles\login.css" />
@@ -419,6 +420,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\CustomerInfo.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

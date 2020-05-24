@@ -23,7 +23,7 @@
                 @using (Html.BeginForm())
                 {
                     <div class="form-group">
-                        <input name="Id" class="form-control" value="" placeholder="Account" id="Id" type="text">
+                        <input name="Id" class="form-control" value="" placeholder="Email" id="Id" type="text">
                     </div>
                     <div class="form-group">
                         <input name="Password" class="form-control" value="" placeholder="Password" id="Password" type="password">
@@ -33,7 +33,7 @@
                     </div>
                     <br> <input type="submit" class="btn btn-info" value="Đăng nhập" />
                     <br>
-                    <br> <a href="#"><small>Quên mật khẩu</small></a>
+                    <br> <a href="@Url.Action("ForgotPassword","Home")"><small>Quên mật khẩu</small></a>
                     <br>
                     <br>
                     <br>
