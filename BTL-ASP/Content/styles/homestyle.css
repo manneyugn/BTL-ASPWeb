@@ -67,7 +67,7 @@
     margin-top: 40px;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-column-gap : 20px;
+    grid-gap : 20px;
     padding: 10px;
     height: auto;
     width: auto;
@@ -87,6 +87,8 @@
     display: block;
     width: 90%;
     margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .grid-item a {
