@@ -105,5 +105,11 @@ namespace BTL_ASP.Controllers
         {
             return View();
         }
+
+        // GET: ForgotPassword
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
     }
 }
