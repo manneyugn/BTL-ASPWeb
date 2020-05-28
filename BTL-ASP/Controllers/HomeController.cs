@@ -41,7 +41,10 @@ namespace BTL_ASP.Controllers
         // GET: Home
         public ActionResult Home()
         {
-
+            FAnhSanPham fAnhSanPham = new FAnhSanPham();
+            ViewBag.Silde = fAnhSanPham.GetSilde();
+            ViewBag.RandKb = fAnhSanPham.GetRanKeyBoard();
+            ViewBag.RandO = fAnhSanPham.GetRanOther();
             return View();
         }
 
@@ -99,6 +102,12 @@ namespace BTL_ASP.Controllers
 
         // GET: CustomerInfo
         public ActionResult CustomerInfo()
+        {
+            return View();
+        }
+
+        // GET: ForgotPassword
+        public ActionResult ForgotPassword()
         {
             return View();
         }
