@@ -233,4 +233,3 @@ D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.csproj.CopyComplete
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.pdb
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache

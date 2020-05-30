@@ -1,6 +1,5 @@
 ﻿
 @{
-
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,10 +19,9 @@
         <span class="title">Top Seller</span>
     </div>
     <div class="grid-container">
-        @foreach (AnhSanPham anh in ViewBag.Seller)
-        {
-            <div class="grid-item"> <a href="@Url.Action("Product","Home",new { id = anh.IDSP })"><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh"></a></div>
-        }
+        <div class="grid-item"> <a href="#"><img src="~/Content/images/F1.jpg"></a></div>
+        <div class="grid-item"> <a href="#"><img src="~/Content/images/F2.jpg"></a></div>
+        <div class="grid-item"> <a href="#"><img src="~/Content/images/F3.jpg"></a></div>
     </div>
     <div class="prefixtitle">
         <span class="title">Key Boards</span>

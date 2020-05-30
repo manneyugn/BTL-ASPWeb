@@ -6,7 +6,6 @@ namespace BTL_ASP.Models
     using System.Linq;
     using System.Collections.Generic;
     using System.Data.SqlClient;
-    using System.Text.RegularExpressions;
 
     public partial class ModelData : DbContext
     {
@@ -134,15 +133,6 @@ namespace BTL_ASP.Models
         public KhachHang TimKhachHang(string id, string pass)
         {
             return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
-        }
-        public bool KiemTraEmail(string email)
-        {
-             return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-        }
-        public void LayLaiMatKhau(string email)
-        {
-            SqlParameter parameter = new SqlParameter("Email", email);
-            context.Database.ExecuteSqlCommand("LayLaiMatKhau @Email", email);
         }
     }
 

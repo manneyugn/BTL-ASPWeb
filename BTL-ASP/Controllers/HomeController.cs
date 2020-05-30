@@ -43,7 +43,6 @@ namespace BTL_ASP.Controllers
         {
             FAnhSanPham fAnhSanPham = new FAnhSanPham();
             ViewBag.Silde = fAnhSanPham.GetSilde();
-            ViewBag.Seller = fAnhSanPham.GetRanKeyBoard();
             ViewBag.RandKb = fAnhSanPham.GetRanKeyBoard();
             ViewBag.RandO = fAnhSanPham.GetRanOther();
             return View();
@@ -107,17 +106,9 @@ namespace BTL_ASP.Controllers
             return View();
         }
 
+        // GET: ForgotPassword
         public ActionResult ForgotPassword()
         {
-            return View();
-        }
-
-        [HttpPost]
-        // GET: ForgotPassword
-        public ActionResult ForgotPassword(string email)
-        {
-            FKhachHang fKhachHang = new FKhachHang();
-            fKhachHang.LayLaiMatKhau(email);
             return View();
         }
     }
