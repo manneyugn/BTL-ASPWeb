@@ -46,10 +46,13 @@
         {
             <div class="col-md-4">
                 <div class="product">
-                    <a href=" @Url.Action("Product","Home",new { id = sp.ID })"><img src= "@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img"></a>
+                    <div class="product-img-wrapper">
+                        <a href=" @Url.Action("Product","Home",new { id = sp.ID })">
+                            <img src="@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img">
+                        </a>
+                    </div>                    
                     <div class="product-price">@sp.Gia</div>
                     <div class="product-name">@sp.TenSP</div>
-                    <div class="product-info">@sp.MoTa</div>
                 </div>
             </div>
         }
