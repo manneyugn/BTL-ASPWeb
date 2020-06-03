@@ -45,6 +45,7 @@ namespace BTL_ASP.Controllers
             ViewBag.Silde = fAnhSanPham.GetSilde();
             ViewBag.RandKb = fAnhSanPham.GetRanKeyBoard();
             ViewBag.RandO = fAnhSanPham.GetRanOther();
+            ViewBag.RandSell = fAnhSanPham.GetRanKeyBoard();
             return View();
         }
 

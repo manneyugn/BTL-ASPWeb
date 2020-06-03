@@ -50,9 +50,9 @@
                         <a href=" @Url.Action("Product","Home",new { id = sp.ID })">
                             <img src="@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img">
                         </a>
-                    </div>                    
-                    <div class="product-price">@sp.Gia</div>
-                    <div class="product-name">@sp.TenSP</div>
+                    </div>
+                    <div class="product-price">$@sp.Gia USD</div>
+                    <div class="product-name"><a href=" @Url.Action("Product","Home",new { id = sp.ID })">@sp.TenSP</a></div>
                 </div>
             </div>
         }

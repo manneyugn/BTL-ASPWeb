@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +8,7 @@
 <link rel="stylesheet" href="~/Content/styles/flickity.css" media="screen">
 
 <div class="carousel" data-flickity='{ "autoPlay": 2000, "imagesLoaded": true,"wrapAround": true }'>
-    @foreach (AnhSanPham anh in ViewBag.Silde )
+    @foreach (AnhSanPham anh in ViewBag.Silde)
     {
         <a href="@Url.Action("Product","Home",new { id = anh.IDSP })"><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh"></a>
     }
@@ -19,9 +18,10 @@
         <span class="title">Top Seller</span>
     </div>
     <div class="grid-container">
-        <div class="grid-item"> <a href="#"><img src="~/Content/images/F1.jpg"></a></div>
-        <div class="grid-item"> <a href="#"><img src="~/Content/images/F2.jpg"></a></div>
-        <div class="grid-item"> <a href="#"><img src="~/Content/images/F3.jpg"></a></div>
+        @foreach (AnhSanPham anh in ViewBag.RandSell)
+        {
+            <div class="grid-item"> <a href="@Url.Action("Product","Home",new { id = anh.IDSP })"><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh"></a></div>
+        }
     </div>
     <div class="prefixtitle">
         <span class="title">Key Boards</span>
@@ -50,5 +50,4 @@
     <div class="prefixtitle"> </div>
 </div>
 
-
-
+<script src='~/Content/scripts/flickity.pkgd.js'></script>

@@ -152,10 +152,34 @@ div.product-img-wrapper {
 
 img.product-img {
     max-width: 100%;
-    max-height: 200px;
     margin: 0px auto;
     display: block;
 }
 
+.product-price {
+    font-size: 1.375rem;
+    color: #197bbd;
+}
+.product-name {
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0.625rem 0 0;
+    line-height: 1.3125;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: normal;
+}
+
+.product-name a:hover {
+    color: #197bbd;
+    text-decoration:none;
+}
+
+.product-name a {
+    display:block;
+    color:#000;
+}
 
 /* product-wrapper end*/
