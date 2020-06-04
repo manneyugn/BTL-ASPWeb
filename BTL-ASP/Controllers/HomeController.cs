@@ -55,6 +55,7 @@ namespace BTL_ASP.Controllers
             return View();
         }
 
+        // POST: Login
         [HttpPost]
         public ActionResult Login(string id, string password)
         {
@@ -74,7 +75,12 @@ namespace BTL_ASP.Controllers
         // GET: Shopcart
         public ActionResult Shopcart()
         {
-            return View();
+            var gioHang = (GioHang)Session["SanPhamGioHang"];
+            if(gioHang == null)
+            {
+                gioHang = new GioHang();
+            }
+            return View(gioHang);
         }
 
         // GET: Product
@@ -111,6 +117,15 @@ namespace BTL_ASP.Controllers
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        // GET: ForgotPassword
+        public ActionResult ForgotPassword(string email)
+        {
+            FKhachHang fKhachHang = new FKhachHang();
+            fKhachHang.LayLaiMatKhau(email);
+            return RedirectToAction("Login");
         }
     }
 }
