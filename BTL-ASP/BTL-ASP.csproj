@@ -374,6 +374,7 @@
     <Content Include="Content\styles\homestyle.css" />
     <Content Include="Content\styles\liststyle.css" />
     <Content Include="Content\styles\login.css" />
+    <Content Include="Content\styles\payment.css" />
     <Content Include="Content\styles\product.css" />
     <Content Include="Content\styles\shopcart.css" />
     <Content Include="Content\styles\style.css" />
@@ -422,6 +423,7 @@
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\CustomerInfo.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

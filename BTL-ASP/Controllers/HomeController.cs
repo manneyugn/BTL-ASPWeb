@@ -128,5 +128,10 @@ namespace BTL_ASP.Controllers
             fKhachHang.LayLaiMatKhau(email);
             return RedirectToAction("Login");
         }
+
+        public ActionResult Payment()
+        {
+            return View();
+        }
     }
 }
