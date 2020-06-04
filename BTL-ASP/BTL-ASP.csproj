@@ -364,6 +364,7 @@
     <Content Include="Content\images\images\Switches\Kailh Speed Switches\Silver_Switches_-_OS_1503x1002.jpg" />
     <Content Include="Content\images\images\Switches\Kailh Speed Switches\Silver_Switches_1503x1002.jpg" />
     <Content Include="Content\images\items\back1.png" />
+    <Content Include="Content\images\items\listitem.jpg" />
     <Content Include="Content\images\items\logo.png" />
     <Content Include="Content\images\items\shop cart.png" />
     <Content Include="Content\scripts\flickity.pkgd.js" />

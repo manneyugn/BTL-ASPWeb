@@ -98,6 +98,7 @@ namespace BTL_ASP.Controllers
             FLoaiSanPham fLoai = new FLoaiSanPham();
             Loai loai = fLoai.FindLoai(product);
             ViewBag.SanPham = fSanPham.GetDanhSachSP(loai.ID);
+            ViewBag.Name = loai.TenLoai;
             return View();
         }
 

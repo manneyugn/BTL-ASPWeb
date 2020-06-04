@@ -8,54 +8,24 @@
 
 <link rel="stylesheet" href="~/Content/styles/liststyle.css">
 
-<div class="filter-wrapper">
-    <div class="filter-title">Layout</div>
-    <div class="checkbox keyboard-layout">
-        <label class="checkbox-container">
-            Fullsize
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <label class="checkbox-container">
-            TKL
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <label class="checkbox-container">
-            60%
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-    </div>
+<div><img src="~/Content/images/items/listitem.jpg"></div>
+<div class="prefixtitle">
+    <span class="title">All Products From @ViewBag.Name</span>
 </div>
-<div class="content">
-    <div class="content-header">
-        <div class="sort-wrapper">
-            <label for="sort">Sort:</label>
-            <select id="sort">
-                <option value="Best">Best buy</option>
-                <option value="AtoZ">From A to Z</option>
-                <option value="ZtoA">From Z to A</option>
-                <option value="PriceLowToHigh">Price,from low to high</option>
-                <option value="PriceHighToLow">Price,from high to low</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        @foreach (SanPham sp in (ViewBag.SanPham as List<SanPham>))
-        {
-            <div class="col-md-4">
-                <div class="product">
-                    <div class="product-img-wrapper">
-                        <a href=" @Url.Action("Product","Home",new { id = sp.ID })">
-                            <img src="@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img">
-                        </a>
-                    </div>
-                    <div class="product-price">$@sp.Gia USD</div>
-                    <div class="product-name"><a href=" @Url.Action("Product","Home",new { id = sp.ID })">@sp.TenSP</a></div>
+<div class="row">
+    @foreach (SanPham sp in (ViewBag.SanPham as List<SanPham>))
+    {
+        <div class="col-md-4">
+            <div class="product">
+                <div class="product-img-wrapper">
+                    <a href=" @Url.Action("Product","Home",new { id = sp.ID })">
+                        <img src="@Url.Content("~/Content/images/images/" + ((sp.AnhSanPhams as HashSet<AnhSanPham>).ElementAt(0).LinkAnh) )" class="product-img">
+                    </a>
                 </div>
+                <div class="product-price">$@sp.Gia USD</div>
+                <div class="product-name"><a href=" @Url.Action("Product","Home",new { id = sp.ID })">@sp.TenSP</a></div>
             </div>
-        }
-    </div>
+        </div>
+    }
 </div>
 

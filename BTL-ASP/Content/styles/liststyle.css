@@ -1,9 +1,9 @@
-
+﻿
 div.content-wrapper
 {
   max-width: 1920px;
   min-width: 950px;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 /* filter menu start */
@@ -134,8 +134,11 @@ div.sort-wrapper{
 
 div.product{
   margin: 20px;
-  border: 1px solid #A9A9A9 ;
   padding: 10px;
+}
+
+div.product:hover{
+    border: 1px solid #A9A9A9;
 }
 
 div.product a{
@@ -183,3 +186,36 @@ img.product-img {
 }
 
 /* product-wrapper end*/
+/*prefixtitle - khung chứa title start*/
+.prefixtitle {
+    margin: 40px auto 20px;
+    padding: 10px 0px;
+    display: block;
+    font-family: Poppins;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    font-weight: 400;
+    width: 1170px;
+}
+/*title start*/
+.title {
+    background-color: white;
+    display: inline-block;
+    padding: 10px 30px;
+    position: relative;
+    margin: 0 auto;
+    font-family: Poppins;
+    font-size: 36px;
+}
+
+.prefixtitle:before {
+    border-bottom: 1px solid #ebebeb;
+    content: "";
+    height: 10px;
+    left: 0;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+}
+/*title end*/
