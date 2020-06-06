@@ -29,6 +29,9 @@ namespace BTL_ASP.Models
         [StringLength(12)]
         public string SDT { get; set; }
 
+        [StringLength(100)]
+        public string DiaChi { get; set; }
+
         public decimal? TongTien { get; set; }
 
         [StringLength(100)]

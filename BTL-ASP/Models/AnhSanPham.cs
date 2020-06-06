@@ -12,7 +12,6 @@ namespace BTL_ASP.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [StringLength(100)]
         public string LinkAnh { get; set; }
 
         public int? IDSP { get; set; }

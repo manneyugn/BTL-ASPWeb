@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-
+using static BTL_ASP.Models.ModelData;
 
 namespace BTL_ASP.Controllers
 {
@@ -103,7 +103,7 @@ namespace BTL_ASP.Controllers
         {
             FSanPham fSanPham = new FSanPham();
             ViewBag.SanPham = fSanPham.FindSanPham(id);
-            return Redirect("Home/Login");
+            return View();
         }
 
         // GET: Signup
@@ -123,6 +123,9 @@ namespace BTL_ASP.Controllers
         // GET: CustomerInfo
         public ActionResult CustomerInfo()
         {
+            KhachHang khachHang = (KhachHang) Session["KhachHang"];
+            khachHang.NgaySinh = khachHang.NgaySinh;
+            ViewBag.KhachHang = khachHang;
             return View();
         }
 

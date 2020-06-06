@@ -28,8 +28,6 @@ namespace BTL_ASP.Models
 
         public int? MaLoai { get; set; }
 
-        public bool? KiemTra { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnhSanPham> AnhSanPhams { get; set; }
 

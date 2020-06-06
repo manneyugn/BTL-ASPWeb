@@ -9,14 +9,19 @@ namespace BTL_ASP.Models
     [Table("SanPhamGioHang")]
     public partial class SanPhamGioHang
     {
+        [Key]
+        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public int IDSP { get; set; }
 
-        public int? IDSP { get; set; }
-
-        public int? IDGH { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IDGH { get; set; }
 
         public int? SoLuong { get; set; }
+
+        public decimal? DonGia { get; set; }
 
         public decimal? ThanhTien { get; set; }
 
