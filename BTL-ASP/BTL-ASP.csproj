@@ -135,6 +135,7 @@
     <Compile Include="Models\AnhSanPham.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LichSuMuaHang.cs" />
     <Compile Include="Models\Loai.cs" />
     <Compile Include="Models\ModelData.cs" />
     <Compile Include="Models\SanPham.cs" />

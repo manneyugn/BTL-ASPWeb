@@ -118,6 +118,8 @@ namespace BTL_ASP.Controllers
         // GET: CustomerInfo
         public ActionResult CustomerInfo()
         {
+            FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();            
+            ViewBag.LichSu = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID);
             return View();
         }
 
