@@ -1,25 +1,39 @@
-﻿
-@{
-    ViewBag.Title = "CustomerInfo";
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using BTL_ASP.Models
 
 <link rel="stylesheet" href="~/Content/styles/customerInfo.css">
 <div class="info">
     <div class="TTTK">
         <h1>Thông tin tài khoản</h1>
     </div>
-    <div> <span class="T">Email</span> <span><input class="in" type="text"> </span> </div>
-    <div> <span class="T">SĐT</span> <span><input class="in" type="text"> </span> </div>
-    <div> <span class="T">Họ và tên đệm</span> <span><input class="in" type="text"> </span> </div>
-    <div> <span class="T">Tên</span> <span><input class="in" type="text"> </span> </div>
+    @{ 
+        KhachHang khachHang = ViewBag.KhachHang;
+
+    <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
+    <div> <span class="T">SĐT</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
+    <div> <span class="T">Họ và tên </span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
     <div>
-        <span class="T">Giới tính</span> <span>
-            Nam <input class="radiobt" type="radio" name="gender"> Nữ
-            <input class="radiobt" type="radio" name="gender">
-        </span>
+        @if (khachHang.GioiTinh == "Nam")
+        {
+            <span class="T">Giới tính</span>
+            <span>
+                Nam <input class="radiobt " type="radio" name="gender" checked>
+                Nữ  <input class="radiobt" type="radio" name="gender">
+            </span>
+        }
+        else
+        {
+            <span class="T">Giới tính</span> <span>
+                Nam <input class="radiobt " type="radio" name="gender">
+                Nữ  <input class="radiobt" type="radio" name="gender" checked>
+            </span>
+        }
     </div>
-    <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text"> </span> </div>
+    <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
+    <div> <span class="T">Ngày đăng ký</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        }
     <div class="change-password-div" onClick="theFuntion()">
         <h5>Thay đổi mật khẩu</h5>
     </div>
@@ -163,12 +177,12 @@
 <script src="bootstrap-4.4.1-dist/js/bootstrap.js"></script>
 <script>
     function theFuntion() {
-        var changer = document.querySelector("div.password-changer");
-        if (changer.style.display === "none") {
-            changer.style.display = "block";
+            var changer = document.querySelector("div.password-changer");
+            if (changer.style.display === "none") {
+                changer.style.display = "block";
+            }
+            else {
+                changer.style.display = "none";
+            }
         }
-        else {
-            changer.style.display = "none";
-        }
-    }
 </script>

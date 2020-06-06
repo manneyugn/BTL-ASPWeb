@@ -139,6 +139,7 @@
     <Compile Include="Models\ModelData.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SanPhamGioHang.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

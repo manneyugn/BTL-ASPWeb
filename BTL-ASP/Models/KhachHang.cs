@@ -33,8 +33,8 @@ namespace BTL_ASP.Models
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        [StringLength(100)]
-        public string Anh { get; set; }
+        [StringLength(4)]
+        public string GioiTinh { get; set; }
 
         [StringLength(12)]
         public string SDT { get; set; }
@@ -44,10 +44,5 @@ namespace BTL_ASP.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
-
-        public override string ToString()
-        {
-            return ID + TenKH;
-        }
     }
 }

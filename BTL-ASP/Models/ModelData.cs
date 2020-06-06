@@ -21,6 +21,7 @@ namespace BTL_ASP.Models
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SanPhamGioHang> SanPhamGioHangs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,8 +43,9 @@ namespace BTL_ASP.Models
 
             modelBuilder.Entity<GioHang>()
                 .HasMany(e => e.SanPhamGioHangs)
-                .WithOptional(e => e.GioHang)
-                .HasForeignKey(e => e.IDGH);
+                .WithRequired(e => e.GioHang)
+                .HasForeignKey(e => e.IDGH)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
@@ -51,10 +53,6 @@ namespace BTL_ASP.Models
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KhachHang>()
-                .Property(e => e.Anh)
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
@@ -82,100 +80,104 @@ namespace BTL_ASP.Models
 
             modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.SanPhamGioHangs)
-                .WithOptional(e => e.SanPham)
-                .HasForeignKey(e => e.IDSP);
+                .WithRequired(e => e.SanPham)
+                .HasForeignKey(e => e.IDSP)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPhamGioHang>()
+                .Property(e => e.DonGia)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<SanPhamGioHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
         }
-    }
-
-    public class FSanPham
-    {
-        private ModelData context = new ModelData();
-        public IQueryable<SanPham> SanPhams
+        public class FSanPham
         {
-            get { return context.SanPhams; }
-        }
+            private ModelData context = new ModelData();
+            public IQueryable<SanPham> SanPhams
+            {
+                get { return context.SanPhams; }
+            }
 
-        public SanPham FindSanPham(int id)
-        {
-            return context.SanPhams.Find(id);
-        }
+            public SanPham FindSanPham(int id)
+            {
+                return context.SanPhams.Find(id);
+            }
 
-        public List<SanPham> GetDanhSachSP(int MaLoai)
-        {
-            SqlParameter[] idParam = {
+            public List<SanPham> GetDanhSachSP(int MaLoai)
+            {
+                SqlParameter[] idParam = {
                 new SqlParameter {ParameterName = "MaLoai",Value = MaLoai}};
-            List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
-            return sanPhams;
-        }
-    }
-
-    public class FLoaiSanPham
-    {
-        private ModelData context = new ModelData();
-        public IQueryable<Loai> SanPhams
-        {
-            get { return context.Loais; }
+                List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
+                return sanPhams;
+            }
         }
 
-        public Loai FindLoai(string TenLoai)
+        public class FLoaiSanPham
         {
-            Loai myLoai = context.Loais.SingleOrDefault(loai => loai.TenLoai == TenLoai);
-            return myLoai;
-        }
-    }
+            private ModelData context = new ModelData();
+            public IQueryable<Loai> SanPhams
+            {
+                get { return context.Loais; }
+            }
 
-    public class FKhachHang
-    {
-        private ModelData context = new ModelData();
-        public KhachHang TimKhachHang(string id, string pass)
-        {
-            return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
+            public Loai FindLoai(string TenLoai)
+            {
+                Loai myLoai = context.Loais.SingleOrDefault(loai => loai.TenLoai == TenLoai);
+                return myLoai;
+            }
         }
-        public bool KiemTraEmail(string email)
+
+        public class FKhachHang
         {
-            return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-        }
-        public void LayLaiMatKhau(string email)
-        {
-            SqlParameter[] idParam = {
+            private ModelData context = new ModelData();
+            public KhachHang TimKhachHang(string id, string pass)
+            {
+                return context.KhachHangs.Where(a => a.Email.Equals(id) && a.Password.Equals(pass)).FirstOrDefault();
+            }
+            public bool KiemTraEmail(string email)
+            {
+                return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            }
+            public void LayLaiMatKhau(string email)
+            {
+                SqlParameter[] idParam = {
                 new SqlParameter {ParameterName = "Email",Value = email}};
-            context.Database.ExecuteSqlCommand("LayLaiMatKhau @Email", idParam);
+                context.Database.ExecuteSqlCommand("LayLaiMatKhau @Email", idParam);
+            }
+
+            public void ThemKhachHang(KhachHang khach)
+            {
+                khach.ID = context.KhachHangs.Count() + 1;
+                khach.DangKyNgay = DateTime.Now;
+                context.KhachHangs.Add(khach);
+                context.SaveChanges();
+            }
+
         }
 
-        public void ThemKhachHang(KhachHang khach)
+        public class FAnhSanPham
         {
-            khach.ID = context.KhachHangs.Count()+1;
-            khach.DangKyNgay = DateTime.Now;
-            context.KhachHangs.Add(khach);
-            context.SaveChanges();
-        }
-
-    }
-
-    public class FAnhSanPham
-    {
-        private ModelData context = new ModelData();
-        public List<AnhSanPham> GetSilde()
-        {
-            List<AnhSanPham> lasp = new List<AnhSanPham>();
-            lasp = context.AnhSanPhams.SqlQuery("GetSilde").ToList<AnhSanPham>();
-            return lasp; 
-        }
-        public List<AnhSanPham> GetRanKeyBoard()
-        {
-            List<AnhSanPham> lasp = new List<AnhSanPham>();
-            lasp = context.AnhSanPhams.SqlQuery("GetRanKeyBoard").ToList<AnhSanPham>();
-            return lasp;
-        }
-        public List<AnhSanPham> GetRanOther()
-        {
-            List<AnhSanPham> lasp = new List<AnhSanPham>();
-            lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
-            return lasp;
+            private ModelData context = new ModelData();
+            public List<AnhSanPham> GetSilde()
+            {
+                List<AnhSanPham> lasp = new List<AnhSanPham>();
+                lasp = context.AnhSanPhams.SqlQuery("GetSilde").ToList<AnhSanPham>();
+                return lasp;
+            }
+            public List<AnhSanPham> GetRanKeyBoard()
+            {
+                List<AnhSanPham> lasp = new List<AnhSanPham>();
+                lasp = context.AnhSanPhams.SqlQuery("GetRanKeyBoard").ToList<AnhSanPham>();
+                return lasp;
+            }
+            public List<AnhSanPham> GetRanOther()
+            {
+                List<AnhSanPham> lasp = new List<AnhSanPham>();
+                lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
+                return lasp;
+            }
         }
     }
 }
