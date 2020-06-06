@@ -18,14 +18,14 @@
     <div class="header-wrapper">
         <div class="header">
             <ul class="items-wrapper">
-                <li><img src="~/Content/images/items/logo.png" alt="logo" class="logo"></li>
+                <li><a href = @Url.Action("Home","Home")><img src="~/Content/images/items/logo.png" alt="logo" class="logo"></a></li>
                 <li class="header-item">@Html.ActionLink("Home", "Home", "Home")</li>
                 <li class="header-item">@Html.ActionLink("Keyboards", "Lists", "Home", new { product = "Keyboards" }, new { })</li>
                 <li class="header-item">@Html.ActionLink("Keycaps", "Lists", "Home", new { product = "Keycaps" }, new { })</li>
                 <li class="header-item">@Html.ActionLink("Switches", "Lists", "Home", new { product = "Switches" }, new { })</li>
                 <li class="header-item">@Html.ActionLink("Deskmats", "Lists", "Home", new { product = "Deskmats" }, new { })</li>
                 <li class="header-item dropdown">
-                    <a href="#" style="pointer-events: none;  cursor: default;">Other</a>
+                    <a href="@Url.Action("ListsAll","Home")">Other</a>
                     <div class="dropdown-content">
                         @Html.ActionLink("Case", "Lists", "Home", new { product = "Case" }, new { })
                         @Html.ActionLink("Plate", "Lists", "Home", new { product = "Plate" }, new { })

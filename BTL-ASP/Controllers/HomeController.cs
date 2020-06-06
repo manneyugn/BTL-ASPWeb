@@ -71,7 +71,22 @@ namespace BTL_ASP.Controllers
                 return RedirectToAction("Login");
             }
         }
-
+        public ActionResult ListsAll(int page = 1, int pageSize = 9)
+        {
+            var sp = new FSanPham();
+            var model = sp.GetSanPhams(page, pageSize);
+            ViewBag.Action = "ListsAll";
+            return View("Lists",model);
+        }
+        public ActionResult Lists(string product, int page = 1, int pageSize = 6)
+        {
+            FLoaiSanPham fLoai = new FLoaiSanPham();
+            Loai loai = fLoai.FindLoai(product);
+            var sp = new FSanPham();
+            var model = sp.GetDanhSachSP(loai.ID, page, pageSize);
+            ViewBag.Action = "Lists";
+            return View(model);
+        }
         // GET: Shopcart
         public ActionResult Shopcart()
         {
@@ -89,17 +104,6 @@ namespace BTL_ASP.Controllers
             FSanPham fSanPham = new FSanPham();
             ViewBag.SanPham = fSanPham.FindSanPham(id);
             return Redirect("Home/Login");
-        }
-
-        // GET: Lists
-        public ActionResult Lists(string product)
-        {
-            FSanPham fSanPham = new FSanPham();
-            FLoaiSanPham fLoai = new FLoaiSanPham();
-            Loai loai = fLoai.FindLoai(product);
-            ViewBag.SanPham = fSanPham.GetDanhSachSP(loai.ID);
-            ViewBag.Name = loai.TenLoai;
-            return View();
         }
 
         // GET: Signup
