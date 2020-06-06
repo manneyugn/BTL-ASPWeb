@@ -111,6 +111,11 @@ namespace BTL_ASP.Models
             List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
             return sanPhams;
         }
+        public List<SanPham> GetSanPhams()
+        {
+            List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetAllSanPham").ToList<SanPham>();
+            return sanPhams;
+        }
     }
 
     public class FLoaiSanPham

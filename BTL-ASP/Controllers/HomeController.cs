@@ -92,6 +92,13 @@ namespace BTL_ASP.Controllers
         }
 
         // GET: Lists
+        public ActionResult ListsAll()
+        {
+            FSanPham fSanPham = new FSanPham();
+            ViewBag.SanPham = fSanPham.GetSanPhams();
+            ViewBag.Name = "";
+            return View("Lists");
+        }
         public ActionResult Lists(string product)
         {
             FSanPham fSanPham = new FSanPham();
