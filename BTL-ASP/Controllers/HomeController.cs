@@ -91,24 +91,6 @@ namespace BTL_ASP.Controllers
             return View();
         }
 
-        // GET: Lists
-        public ActionResult ListsAll()
-        {
-            FSanPham fSanPham = new FSanPham();
-            ViewBag.SanPham = fSanPham.GetSanPhams();
-            ViewBag.Name = "";
-            return View("Lists");
-        }
-        public ActionResult Lists(string product)
-        {
-            FSanPham fSanPham = new FSanPham();
-            FLoaiSanPham fLoai = new FLoaiSanPham();
-            Loai loai = fLoai.FindLoai(product);
-            ViewBag.SanPham = fSanPham.GetDanhSachSP(loai.ID);
-            ViewBag.Name = loai.TenLoai;
-            return View();
-        }
-
         // GET: Signup
         public ActionResult Signup()
         {

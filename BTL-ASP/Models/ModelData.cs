@@ -7,6 +7,7 @@ namespace BTL_ASP.Models
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Text.RegularExpressions;
+    using PagedList;
 
     public partial class ModelData : DbContext
     {
@@ -104,17 +105,20 @@ namespace BTL_ASP.Models
             return context.SanPhams.Find(id);
         }
 
-        public List<SanPham> GetDanhSachSP(int MaLoai)
+        //public List<SanPham> GetDanhSachSP(int MaLoai)
+        //{
+        //    SqlParameter[] idParam = {
+        //        new SqlParameter {ParameterName = "MaLoai",Value = MaLoai}};
+        //    List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
+        //    return sanPhams;
+        //}
+        public IEnumerable<SanPham> GetDanhSachSP(int MaLoai, int page, int pageSize)
         {
-            SqlParameter[] idParam = {
-                new SqlParameter {ParameterName = "MaLoai",Value = MaLoai}};
-            List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
-            return sanPhams;
+            return context.SanPhams.OrderByDescending(x => x.ID).Where(x => x.MaLoai == MaLoai).ToPagedList(page, pageSize);
         }
-        public List<SanPham> GetSanPhams()
+        public IEnumerable<SanPham> GetSanPhams(int page, int pageSize)
         {
-            List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetAllSanPham").ToList<SanPham>();
-            return sanPhams;
+            return context.SanPhams.OrderByDescending(x=>x.ID).ToPagedList(page,pageSize);
         }
     }
 
