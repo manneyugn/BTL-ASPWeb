@@ -3,67 +3,97 @@
 }
 
 @using BTL_ASP.Models;
-@model SanPhamGioHang
 
 <link rel="stylesheet" href="~/Content/styles/shopcart.css">
 
-<div class="shopcart">
-    <div class="text-wrapper">
-        <div class="text cart">GIỎ HÀNG</div>
-        <div class="text buy"><a href="#">Tiếp tục mua hàng</a></div>
+<div class="h4 text-header">ĐƠN HÀNG CỦA TÔI</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <div class="shopping-history">
+                <div class="glOjBk">
+                    <div class="inner">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Số thứ tự</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Huỷ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Hộp 10 Đôi Tất Cổ Cao Chống Hôi Chân Xuất Nhật Cho Nam</td>
+                                    <td>
+                                        <button class="control-button" onclick="change(this)">-</button><input class="number-input" type="number" value="1" min="1"
+                                                                                                               onkeydown="return false"><button class="control-button"
+                                                                                                                                                onclick="change(this)">
+                                            +
+                                        </button>
+                                    </td>
+                                    <td>72.292 ₫</td>
+                                    <td><a onclick="removeRow(this)" class="close">&times;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Dép Kẹp Tong Suede 2184 - Tím Huế (Size 37)...và 01 sản phẩm khác</td>
+                                    <td>
+                                        <button class="control-button" onclick="change(this)">-</button><input class="number-input" type="number" value="1" min="1"
+                                                                                                               onkeydown="return false"><button class="control-button"
+                                                                                                                                                onclick="change(this)">
+                                            +
+                                        </button>
+                                    </td>
+                                    <td>50.000 ₫</td>
+                                    <td><a onclick="removeRow(this)" class="close">&times;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Tai Nghe Nhét Tai Hoco M1 - Hàng Nhập Khẩu</td>
+                                    <td>
+                                        <button class="control-button" onclick="change(this)">-</button><input class="number-input" type="number" value="1" min="1"
+                                                                                                               onkeydown="return false"><button class="control-button"
+                                                                                                                                                onclick="change(this)">
+                                            +
+                                        </button>
+                                    </td>
+                                    <td>73.776 ₫</td>
+                                    <td><a onclick="removeRow(this)" class="close">&times;</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="result-wrapper">
+                <div class="result">
+                    <div class="total">Tổng tiền: 10.000.000đ</div>
+                    <button type="button" class="btn btn-primary">Mua hàng</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <ul class="shopcart-items-wrapper">
-        <li class="shopcart-item">
-            <img src="~/Content/images/F60 pink.jpg" class="item img">
-            <div class="item info">
-                <div class="name">Bàn phím F60 pink</div>
-                <div class="info">Bàn phím 60 %</div>
-            </div>
-            <div class="item price">2.000.000đ</div>
-            <div class="item number">Số lượng: 1</div>
-        </li>
-        <li class="shopcart-item">
-            <img src="~/Content/images/F60 pink.jpg" class="item img">
-            <div class="item info">
-                <div class="name">Bàn phím F60 pink</div>
-                <div class="info">Bàn phím 60 %</div>
-            </div>
-            <div class="item price">2.000.000đ</div>
-            <div class="item number">Số lượng: 1</div>
-        </li>
-        <li class="shopcart-item">
-            <img src="~/Content/images/F60 pink.jpg" class="item img">
-            <div class="item info">
-                <div class="name">Bàn phím F60 pink</div>
-                <div class="info">Bàn phím 60 %</div>
-            </div>
-            <div class="item price">2.000.000đ</div>
-            <div class="item number">Số lượng: 1</div>
-        </li>
-        <li class="shopcart-item">
-            <img src="~/Content/images/F60 pink.jpg" class="item img">
-            <div class="item info">
-                <div class="name">Bàn phím F60 pink</div>
-                <div class="info">Bàn phím 60 %</div>
-            </div>
-            <div class="item price">2.000.000đ</div>
-            <div class="item number">Số lượng: 1</div>
-        </li>
-        <li class="shopcart-item">
-            <img src="~/Content/images/F60 pink.jpg" class="item img">
-            <div class="item info">
-                <div class="name">Bàn phím F60 pink</div>
-                <div class="info">Bàn phím 60 %</div>
-            </div>
-            <div class="item price">2.000.000đ</div>
-            <div class="item number">Số lượng: 1</div>
-        </li>
-    </ul>
 </div>
-<div class="result-wrapper">
-    <div class="result">
-        <div class="total">Tổng tiền: 10.000.000đ</div>
-        <button type="button" class="btn btn-primary">Mua hàng</button>
-    </div>
-</div>
+<script>
+    function change(e) {
+        var parent = e.parentElement;
+        console.log(parent.childNodes[1]);
+        if (e.innerText == '+') {
+            parent.childNodes[1].value++;
+        }
+        else if (e.innerText == '-') {
+            if (parent.childNodes[1].value > 1) {
+                parent.childNodes[1].value--;
+            }
+        }
+    }
 
+    function removeRow(e) {
+        (e.parentElement).parentElement.style.display = 'none';
+    }
+</script>

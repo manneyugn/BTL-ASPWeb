@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -29,10 +28,10 @@
                 <label for="address">Địa chỉ:</label><textarea class="form-control" name="address"></textarea>
                 <span>Loại địa chỉ:</span>
                 <div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" onclick="select(this)">
                         <input type="radio" class="form-check-input" value="house" name="addressType"><label class="form-check-label" for="house">Nhà riêng</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" onclick="select(this)">
                         <input type="radio" class="form-check-input" value="company" name="addressType"><label class="form-check-label" for="company">Công ty</label>
                     </div>
                 </div>
@@ -53,5 +52,8 @@
         document.getElementsByName('phone')[0].value = document.getElementById("phone").innerText.substring(4);
         document.getElementsByName('mail')[0].value = document.getElementById("mail").innerText.substring(6);
         document.getElementsByName('address')[0].value = document.getElementById("address").innerText.substring(8);
+    }
+    function select(e) {
+        e.childNodes[1].checked = true;
     }
 </script>
