@@ -88,7 +88,7 @@ namespace BTL_ASP.Controllers
         {
             FSanPham fSanPham = new FSanPham();
             ViewBag.SanPham = fSanPham.FindSanPham(id);
-            return View();
+            return Redirect("Home/Login");
         }
 
         // GET: Lists
@@ -103,6 +103,14 @@ namespace BTL_ASP.Controllers
         }
 
         // GET: Signup
+        [HttpPost]
+        public ActionResult Signup(string email, string name, string contact, string address, string password)
+        {
+            FKhachHang fKhachHang = new FKhachHang();
+            KhachHang khach = new KhachHang() {Email = email, TenKH = name, SDT = contact, DiaChi = address, Password = password };
+            fKhachHang.ThemKhachHang(khach);
+            return View("Login");
+        }
         public ActionResult Signup()
         {
             return View();

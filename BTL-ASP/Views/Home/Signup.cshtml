@@ -10,26 +10,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/Content/styles/login.css">
+    <link rel="stylesheet" href="~/Content/styles/SignUp.css">
     <link rel="stylesheet" href="~/Content/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <title>SignUp</title>
 </head>
+
 
 <body>
     <div class="container">
         <span class="text">Sign Up</span>
         <div class="col-md-3 col-md-offset-4">
             <div class="login-form">
-                <div class="form-group">
-                    <input class="form-control" value="" placeholder="Email" id="login-name" type="text">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" value="" placeholder="Password" id="login-pass" type="password">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" value="" placeholder="Re-enter Password" id="login-pass" type="password">
-                </div>
-                <br> <a class="btn btn-info" href="@Url.Action("Login","Home")">Đăng Ký</a>
-                <br>
+                <form action="/Home/Signup" method="post">
+                    <div class="form-group">
+                        <input class="form-control input-form" value="" placeholder="Email" name="email" type="text">
+                        <input class="form-control input-form" value="" placeholder="UserName" name="name" type="text">
+                        <input class="form-control input-form" value="" placeholder="Phone number" name="contact" type="number">
+                        <input class="form-control input-form" value="" placeholder="Address" name="address" type="text">
+                        <input class="form-control input-form" value="" placeholder="Enter password" name="password" type="password">
+                        <input class="form-control input-form" value="" placeholder="Re-enter password" type="password">
+                    </div>
+                    <br> <input type="submit" class="btn btn-info" value="Đăng ký" />
+                    <br>
+                </form>
                 <br> <a class="btn btn-info" href="@Url.Action("Login","Home")">Quay Lại</a>
                 <br>
                 <br>

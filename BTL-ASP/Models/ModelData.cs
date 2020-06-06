@@ -145,6 +145,15 @@ namespace BTL_ASP.Models
                 new SqlParameter {ParameterName = "Email",Value = email}};
             context.Database.ExecuteSqlCommand("LayLaiMatKhau @Email", idParam);
         }
+
+        public void ThemKhachHang(KhachHang khach)
+        {
+            khach.ID = context.KhachHangs.Count()+1;
+            khach.DangKyNgay = DateTime.Now;
+            context.KhachHangs.Add(khach);
+            context.SaveChanges();
+        }
+
     }
 
     public class FAnhSanPham

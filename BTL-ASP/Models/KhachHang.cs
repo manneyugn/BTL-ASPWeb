@@ -44,5 +44,10 @@ namespace BTL_ASP.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
+
+        public override string ToString()
+        {
+            return ID + TenKH;
+        }
     }
 }

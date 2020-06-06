@@ -377,6 +377,7 @@
     <Content Include="Content\styles\payment.css" />
     <Content Include="Content\styles\product.css" />
     <Content Include="Content\styles\shopcart.css" />
+    <Content Include="Content\styles\SignUp.css" />
     <Content Include="Content\styles\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

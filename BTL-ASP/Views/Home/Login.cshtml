@@ -20,8 +20,7 @@
         <span class="text">Login</span>
         <div class="col-md-3 col-md-offset-4">
             <div class="login-form">
-                @using (Html.BeginForm())
-                {
+                <form action="/Home/Login" method="post">
                     <div class="form-group">
                         <input name="Id" class="form-control" value="" placeholder="Email" id="Id" type="text">
                     </div>
@@ -37,8 +36,8 @@
                     <div>
                         <small style="color: white;">Không có tài khoản?</small> <a href="@Url.Action("SignUp","Home")"><small>Tạo tài khoản</small></a>
                     </div>
-                }
-            </div>
+                    </form>
+</div>
         </div>
     </div>
 </body>

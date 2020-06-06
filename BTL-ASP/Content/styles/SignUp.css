@@ -1,0 +1,10 @@
+﻿.input-form{
+    margin-bottom: 10px
+}
+
+/*ẩn nút spinner is work, don't ask*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
