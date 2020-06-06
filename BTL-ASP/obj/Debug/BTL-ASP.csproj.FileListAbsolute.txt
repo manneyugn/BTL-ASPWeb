@@ -238,3 +238,7 @@ C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.xml
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.xml
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.dll
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.dll
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.xml
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.xml

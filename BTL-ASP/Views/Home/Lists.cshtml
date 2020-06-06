@@ -31,6 +31,6 @@
 </div>
 <nav aria-label="Page navigation example ">
     <ul class="pagination justify-content-center" style="margin-top: 40px;">
-        <li class="page-item">@Html.PagedListPager(Model, page => Url.Action("Lists", new { page }), new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link" }, MaximumPageNumbersToDisplay = 3 } )</li>
+        <li class="page-item">@Html.PagedListPager(Model, page => Url.Action(ViewBag.Action,"Home", new {product = Request.QueryString["product"], page}), new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link" }, MaximumPageNumbersToDisplay = 3 } )</li>
     </ul>
 </nav>
