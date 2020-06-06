@@ -104,14 +104,6 @@ namespace BTL_ASP.Models
         {
             return context.SanPhams.Find(id);
         }
-
-        //public List<SanPham> GetDanhSachSP(int MaLoai)
-        //{
-        //    SqlParameter[] idParam = {
-        //        new SqlParameter {ParameterName = "MaLoai",Value = MaLoai}};
-        //    List<SanPham> sanPhams = context.SanPhams.SqlQuery("GetSanPham @MaLoai", idParam).ToList<SanPham>();
-        //    return sanPhams;
-        //}
         public IEnumerable<SanPham> GetDanhSachSP(int MaLoai, int page, int pageSize)
         {
             return context.SanPhams.OrderByDescending(x => x.ID).Where(x => x.MaLoai == MaLoai).ToPagedList(page, pageSize);
