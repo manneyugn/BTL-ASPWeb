@@ -82,13 +82,13 @@
 <script>
     function change(e) {
         var parent = e.parentElement;
-        console.log(parent.childNodes[1]);
+        console.log(parent.childNodes);
         if (e.innerText == '+') {
-            parent.childNodes[1].value++;
+            parent.childNodes[2].value++;
         }
         else if (e.innerText == '-') {
-            if (parent.childNodes[1].value > 1) {
-                parent.childNodes[1].value--;
+            if (parent.childNodes[2].value > 1) {
+                parent.childNodes[2].value--;
             }
         }
     }
