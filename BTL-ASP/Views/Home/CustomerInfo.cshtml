@@ -8,32 +8,32 @@
     <div class="TTTK">
         <h1>Thông tin tài khoản</h1>
     </div>
-    @{ 
+    @{
         KhachHang khachHang = ViewBag.KhachHang;
 
-    <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
-    <div> <span class="T">SĐT</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
-    <div> <span class="T">Họ và tên </span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
-    <div>
-        @if (khachHang.GioiTinh == "Nam")
-        {
-            <span class="T">Giới tính</span>
-            <span>
-                Nam <input class="radiobt " type="radio" name="gender" checked>
-                Nữ  <input class="radiobt" type="radio" name="gender">
-            </span>
-        }
-        else
-        {
-            <span class="T">Giới tính</span> <span>
-                Nam <input class="radiobt " type="radio" name="gender">
-                Nữ  <input class="radiobt" type="radio" name="gender" checked>
-            </span>
-        }
-    </div>
-    <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
-    <div> <span class="T">Ngày đăng ký</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
-        }
+        <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
+        <div> <span class="T">SĐT</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
+        <div> <span class="T">Họ và tên </span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
+        <div>
+            @if (khachHang.GioiTinh == "Nam")
+            {
+                <span class="T">Giới tính</span>
+                <span>
+                    Nam <input class="radiobt " type="radio" name="gender" checked>
+                    Nữ  <input class="radiobt" type="radio" name="gender">
+                </span>
+            }
+            else
+            {
+                <span class="T">Giới tính</span> <span>
+                    Nam <input class="radiobt " type="radio" name="gender">
+                    Nữ  <input class="radiobt" type="radio" name="gender" checked>
+                </span>
+            }
+        </div>
+        <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        <div> <span class="T">Ngày đăng ký</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
+    }
     <div class="change-password-div" onClick="theFuntion()">
         <h5>Thay đổi mật khẩu</h5>
     </div>
@@ -50,9 +50,15 @@
             <label class="T" for="re-password"> Nhập lại mật khẩu</label>
             <input class="in" type="password" id="re-password">
         </div>
+        <div class="alert alert-success" id="alert-success" style="display:none">
+            <strong>Thành công!</strong> Mật khẩu của bạn đã được đổi.
+        </div>
+        <div class="alert alert-danger" id="alert-fail" style="display:none">
+            <strong>Thất bại!</strong> Đổi mật khẩu thất bại.
+        </div>
         <div style="text-align: center;">
             <input class="buttonluu" type="button"
-                   value="Lưu lại thay đổi mật khẩu">
+                   value="Lưu lại đổi mật khẩu" onclick="changePassword()">
         </div>
     </div>
     <div style="text-align: center;"> <input class="button" type="button" value="Thay đổi thông tin"> </div>
@@ -173,16 +179,36 @@
         </ul>
     </div>
 </div>
-<script src="bootstrap-4.4.1-dist/jquery-3.5.1.js"></script>
-<script src="bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script>
     function theFuntion() {
-            var changer = document.querySelector("div.password-changer");
-            if (changer.style.display === "none") {
-                changer.style.display = "block";
-            }
-            else {
-                changer.style.display = "none";
-            }
-        }
+        console.log(1);
+        var changer = document.querySelector("div.password-changer");
+        changer.style.display = "block";         
+    }
+    function changePassword() {
+        document.getElementById('alert-success').style.display = 'none';
+        document.getElementById('alert-fail').style.display = 'none';
+        fetch('http://localhost:57295/Home/ChangePassword', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+            body: 'oldpassword=' + document.getElementById('old-password').value + '&password=' + document.getElementById('password').value
+        })
+            .then((resp) => { return resp.text() })
+            .then((text) => {
+                if (text == 'ok') {
+                    document.getElementById('alert-success').style.display = 'block';
+                    document.getElementById('old-password').value = "";
+                    document.getElementById('password').value = "";
+                    document.getElementById('re-password').value = "";
+                } else {
+                    document.getElementById('alert-fail').style.display = 'block';
+                    document.getElementById('old-password').value = "";
+                    document.getElementById('password').value = "";
+                    document.getElementById('re-password').value = "";
+                }
+            })
+    }
 </script>

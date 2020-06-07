@@ -158,6 +158,20 @@ namespace BTL_ASP.Models
             context.SaveChanges();
         }
 
+        public bool ThayDoiMatKhau(int id,string password)
+        {
+            KhachHang khach = context.KhachHangs.Where(x => x.ID == id).FirstOrDefault();
+            if(khach != null)
+            {
+                khach.Password = password;
+                context.SaveChanges();
+                return true;
+            }   
+            else
+            {
+                return false;
+            }    
+        }
     }
 
     public class FAnhSanPham
