@@ -1,4 +1,4 @@
-namespace BTL_ASP.Models
+﻿namespace BTL_ASP.Models
 {
     using System;
     using System.Data.Entity;
@@ -180,6 +180,76 @@ namespace BTL_ASP.Models
             List<AnhSanPham> lasp = new List<AnhSanPham>();
             lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
             return lasp;
+        }
+    }
+    public class FSanPhamGioHang
+    {
+        private ModelData context = new ModelData();
+        public SanPhamGioHang Check(int id, int idgh)
+        {
+            SanPhamGioHang spgh = context.SanPhamGioHangs.Where(x => x.IDSP == id && x.IDGH == idgh).FirstOrDefault();
+            if (spgh != null)
+            {
+                return spgh;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public SanPhamGioHang AddItem(int id, int idgh,int soluong)
+        {
+            SanPhamGioHang spgh = Check(id, idgh);
+            if (spgh != null)
+            {
+                spgh.SoLuong += soluong;
+                context.SaveChanges();
+            }
+            else
+            {
+                SanPham sp = context.SanPhams.Find(id);
+                spgh = new SanPhamGioHang();
+                spgh.IDGH = idgh;
+                spgh.IDSP = id;
+                spgh.SoLuong = soluong;
+                spgh.DonGia = sp.Gia;
+                spgh.ThanhTien = soluong * sp.Gia;
+                spgh.GhiChu = "";
+                context.SanPhamGioHangs.Add(spgh);
+                context.SaveChanges();
+            }
+            return spgh;
+        }
+    }
+    public class FGioHang
+    {
+        private ModelData context = new ModelData();
+        public GioHang GetGH(int id)
+        {
+            return context.GioHangs.Where(x => x.IDKH == id && x.TinhTrang != "Hoàn Thành").FirstOrDefault();
+        }
+        public int GetMa()
+        {
+            return context.Database.SqlQuery<int>("GetMa").FirstOrDefault() + 1;
+        }
+        public GioHang NewGH(KhachHang khachHang = null)
+        {
+            GioHang gioHang = new GioHang();
+            gioHang.ID = GetMa();
+            gioHang.TinhTrang = "Chưa Hoàn Thành";
+            gioHang.NgayTao = DateTime.Today;
+            gioHang.TongTien = 0;
+            if (khachHang != null)
+            {
+                gioHang.IDKH = khachHang.ID;
+                gioHang.TenKH = khachHang.TenKH;
+                gioHang.Email = khachHang.Email;
+                gioHang.SDT = khachHang.SDT;
+                gioHang.DiaChi = khachHang.DiaChi;
+            }
+            context.GioHangs.Add(gioHang);
+            context.SaveChanges();
+            return gioHang;
         }
     }
 }

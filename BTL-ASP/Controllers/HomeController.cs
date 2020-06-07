@@ -11,6 +11,7 @@ namespace BTL_ASP.Controllers
 {
     public class HomeController : Controller
     {
+        ModelData db = new ModelData();
         public string GetKhachHang()
         {
             if (Session["KhachHang"] != null)
@@ -64,6 +65,9 @@ namespace BTL_ASP.Controllers
             if (x != null)
             {
                 Session["KhachHang"] = x;
+                FGioHang fGioHang = new FGioHang();
+                GioHang gioHang = fGioHang.GetGH(x.ID);
+                Session["GioHang"] = gioHang;
                 return RedirectToAction("Home");
             }
             else
@@ -90,15 +94,67 @@ namespace BTL_ASP.Controllers
         // GET: Shopcart
         public ActionResult Shopcart()
         {
-            var gioHang = (GioHang)Session["SanPhamGioHang"];
-            if(gioHang == null)
+            FGioHang fGioHang = new FGioHang();
+            var gioHang = (GioHang)Session["GioHang"];
+            if (gioHang == null)
             {
-                gioHang = new GioHang();
+                if(Session["KhachHang"] == null)
+                {
+                    gioHang = fGioHang.NewGH();
+                }
+                else
+                {
+                    KhachHang x = (KhachHang) Session["KhachHang"];
+                    gioHang = fGioHang.NewGH(x);
+                }
+                List<GioHangHienThi> lgh = new List<GioHangHienThi>();
+                return View(lgh);
             }
-            return View(gioHang);
+            else
+            {
+                ClassConvert classConvert = new ClassConvert();
+                List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
+                return View(lgh);
+            }
+        }
+        // Thêm sản phẩm ở form product
+        [HttpPost]
+        public ActionResult Product(int masp, int soLuong)
+        {
+            FSanPham fSanPham = new FSanPham();
+            FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
+            FGioHang fGioHang = new FGioHang();
+            var sp = fSanPham.FindSanPham(masp);
+            if(sp.TenSP.Length > 40)
+            {
+                sp.TenSP = sp.TenSP.Substring(0, 35) + "...";
+            }
+            var gioHang = (GioHang)Session["GioHang"];
+            SanPhamGioHang sanPhamGioHang = new SanPhamGioHang();
+            if (gioHang != null )
+            {
+                sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+            }
+            else
+            {
+                if (Session["KhachHang"] == null)
+                {
+                    gioHang = fGioHang.NewGH();
+                }
+                else
+                {
+                    KhachHang x = (KhachHang)Session["KhachHang"];
+                    gioHang = fGioHang.NewGH(x);
+                }
+                sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+            }
+            gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
+            Session["GioHang"] = gioHang;
+            return RedirectToAction("Shopcart");
         }
 
         // GET: Product
+        [HttpGet]
         public ActionResult Product(int id)
         {
             FSanPham fSanPham = new FSanPham();
