@@ -127,6 +127,8 @@ namespace BTL_ASP.Controllers
             KhachHang khachHang = (KhachHang)Session["KhachHang"];
             khachHang.NgaySinh = khachHang.NgaySinh;
             ViewBag.KhachHang = khachHang;
+            FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();            
+            ViewBag.LichSu = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID);
             return View();
         }
 

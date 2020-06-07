@@ -23,6 +23,7 @@ namespace BTL_ASP.Models
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SanPhamGioHang> SanPhamGioHangs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<LichSuMuaHang> LichSuMuaHangs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -90,6 +91,9 @@ namespace BTL_ASP.Models
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<SanPhamGioHang>()
+                .Property(e => e.ThanhTien)
+                .HasPrecision(18, 0);
+            modelBuilder.Entity<LichSuMuaHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
         }
@@ -194,6 +198,17 @@ namespace BTL_ASP.Models
             List<AnhSanPham> lasp = new List<AnhSanPham>();
             lasp = context.AnhSanPhams.SqlQuery("GetRanOther").ToList<AnhSanPham>();
             return lasp;
+        }
+    }
+
+    public class FLichSuMuaHang
+    {
+        private ModelData context = new ModelData();
+        public List<LichSuMuaHang> LichSuKhachHang(int id)
+        {
+            List<LichSuMuaHang> lichSuMuaHangs = new List<LichSuMuaHang>();
+            lichSuMuaHangs = context.LichSuMuaHangs.Where(a => a.IDKH == id).ToList();
+            return lichSuMuaHangs;
         }
     }
 }
