@@ -45,6 +45,10 @@
 <script>
     function show() {
         document.querySelector('.info').style.display = 'block';
+        document.getElementsByName('name')[0].value = "";
+        document.getElementsByName('phone')[0].value = "";
+        document.getElementsByName('mail')[0].value = "";
+        document.getElementsByName('address')[0].value = "";
     }
     function changeAddress() {
         document.querySelector('.info').style.display = 'block';
