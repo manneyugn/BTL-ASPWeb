@@ -159,3 +159,12 @@ tr {
     border-image: initial;
     margin-right: 0px;
 }
+
+.inactiveLink a{
+    pointer-events: none;
+    cursor:default;
+}
+
+.page-link{
+    cursor:pointer;
+}

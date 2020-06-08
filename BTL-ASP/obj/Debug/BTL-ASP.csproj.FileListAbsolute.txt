@@ -153,6 +153,11 @@ C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csproj.Co
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csproj.CopyComplete
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.pdb
+C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache
+C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.dll
+C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.dll
+C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.xml
+C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.xml
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\BTL-ASP.dll.config
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\BTL-ASP.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\BTL-ASP.pdb
@@ -208,6 +213,8 @@ D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\EntityFramework.SqlServer.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\Microsoft.Web.Infrastructure.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\Newtonsoft.Json.dll
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.dll
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Helpers.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Mvc.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Optimization.dll
@@ -218,6 +225,8 @@ D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.WebPages.Razor.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\WebGrease.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\EntityFramework.xml
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\EntityFramework.SqlServer.xml
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.xml
+D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.xml
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Helpers.xml
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Mvc.xml
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\System.Web.Optimization.xml
@@ -233,12 +242,3 @@ D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.csproj.CopyComplete
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.dll
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.pdb
 D:\GitHub\Web\HTML\ASP web\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.dll
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.dll
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.xml
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.xml
-D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.dll
-D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.dll
-D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.xml
-D:\GitHub\Web\HTML\ASP web\BTL-ASP\bin\PagedList.Mvc.xml

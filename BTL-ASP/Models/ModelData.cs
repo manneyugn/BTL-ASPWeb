@@ -204,10 +204,10 @@ namespace BTL_ASP.Models
     public class FLichSuMuaHang
     {
         private ModelData context = new ModelData();
-        public List<LichSuMuaHang> LichSuKhachHang(int id)
+        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
         {
-            List<LichSuMuaHang> lichSuMuaHangs = new List<LichSuMuaHang>();
-            lichSuMuaHangs = context.LichSuMuaHangs.Where(a => a.IDKH == id).ToList();
+            IEnumerable<LichSuMuaHang> lichSuMuaHangs;
+            lichSuMuaHangs = context.LichSuMuaHangs.Where(a => a.IDKH == id).OrderBy(a => a.NgayTao).ThenBy(a => a.TenSP).ToPagedList(page, pageSize);
             return lichSuMuaHangs;
         }
     }

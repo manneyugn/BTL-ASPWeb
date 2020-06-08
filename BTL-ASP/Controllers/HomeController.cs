@@ -127,9 +127,14 @@ namespace BTL_ASP.Controllers
             KhachHang khachHang = (KhachHang)Session["KhachHang"];
             khachHang.NgaySinh = khachHang.NgaySinh;
             ViewBag.KhachHang = khachHang;
-            FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();            
-            ViewBag.LichSu = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID);
             return View();
+        }
+
+        public ActionResult History(int page = 1, int pageSize = 10)
+        {
+            FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();
+            var model = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID,page,pageSize);
+            return PartialView(model);
         }
 
         [HttpPost]

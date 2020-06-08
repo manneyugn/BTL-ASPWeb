@@ -4,6 +4,7 @@
 @using BTL_ASP.Models
 
 <link rel="stylesheet" href="~/Content/styles/customerInfo.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <div class="info">
     <div class="TTTK">
         <h1>Thông tin tài khoản</h1>
@@ -69,56 +70,20 @@
     </div>
     <div class="styles__StyledAccountListOrder-sc-6t66uv-0 glOjBk">
         <div class="heading">Đơn hàng của tôi</div>
-        <div class="inner">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mã đơn hàng</th>
-                        <th>Ngày mua</th>
-                        <th>Sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Tổng tiền</th>
-                        <th>Trạng thái đơn hàng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (BTL_ASP.Models.LichSuMuaHang a in ViewBag.LichSu)
-                    {
-                        <tr>
-                    <td>@a.ID</td>
-                    <td>@a.NgayTao</td>
-                    <td>@a.TenSP</td>
-                    <td>@a.SoLuong</td>
-                    <td>@a.ThanhTien</td>
-                    <td>@a.TinhTrang</td>
-                        </tr>
-                    }                
-                    </tbody>
-                </table>
+        <div class="history" id="history">
+            @Html.Action("History")
         </div>
-        <ul class="Pagination__StyledPagination-sc-1k08bf0-0 gZYGWg">
-            <li class="is-active">1</li>
-            <li class="">2</li>
-            <li class="next">
-                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-                </svg>
-            </li>
-        </ul>
     </div>
 </div>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script>
     function theFuntion() {
-        console.log(1);
         var changer = document.querySelector("div.password-changer");
-        changer.style.display = "block";         
+        changer.style.display = "block";
     }
     function changePassword() {
         document.getElementById('alert-success').style.display = 'none';
         document.getElementById('alert-fail').style.display = 'none';
-        fetch('http://localhost:57295/Home/ChangePassword', {
+        fetch('@Url.Action("ChangePassword","Home")', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -139,5 +104,5 @@
                     document.getElementById('re-password').value = "";
                 }
             })
-    }
+    }    
 </script>
