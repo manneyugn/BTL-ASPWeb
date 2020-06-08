@@ -33,6 +33,23 @@ namespace BTL_ASP.Controllers
                 htmlStr.Append(@"</li>");
                 return htmlStr.ToString();
             }
+            else if(Session["KhachHang"] != null)
+            {
+                KhachHang kh = (KhachHang)Session["KhachHang"];
+                FGioHang fGioHang = new FGioHang();
+                GioHang gioHang = fGioHang.GetGH_MaND(kh.ID);
+                Session["GioHang"] = gioHang;
+                StringBuilder htmlStr = new StringBuilder("");
+                htmlStr.Append(@"<li class=""header-item dropdown"">");
+                htmlStr.Append(@"<a href = ""/Home/CustomerInfo"">Hello, ");
+                htmlStr.Append(kh.TenKH);
+                htmlStr.Append("</a>");
+                htmlStr.Append(@"<div class=""dropdown-content"">");
+                htmlStr.Append(@"<a href = ""/Home/Logout"">Log out</a>");
+                htmlStr.Append(@"</div>");
+                htmlStr.Append(@"</li>");
+                return htmlStr.ToString();
+            }    
             else
             {
                 return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";
@@ -65,15 +82,23 @@ namespace BTL_ASP.Controllers
 
         // POST: Login
         [HttpPost]
-        public ActionResult Login(string id, string password)
+        public ActionResult Login(string id, string password, bool hold = false)
         {
             FKhachHang fKhachHang = new FKhachHang();
             KhachHang x = fKhachHang.TimKhachHang(id, password);
             if (x != null)
-            {
-                Response.Cookies["ID"].Value = x.ID.ToString();
-                Response.Cookies["ID"].Expires = DateTime.Now.AddDays(1);
-                return RedirectToAction("Home");
+            {               
+                if(hold == true)
+                {
+                    Response.Cookies["ID"].Value = x.ID.ToString();
+                    Response.Cookies["ID"].Expires = DateTime.Now.AddDays(1);
+                    return RedirectToAction("Home");
+                }
+                else
+                {
+                    Session["KhachHang"] = x;
+                    return RedirectToAction("Home");
+                }
             }
             else
             {
