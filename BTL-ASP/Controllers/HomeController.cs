@@ -14,8 +14,7 @@ namespace BTL_ASP.Controllers
         ModelData db = new ModelData();
         public string GetKhachHang()
         {
-            try
-            {
+            if (Request.Cookies["ID"] != null) {
                 string x = Request.Cookies["ID"].Value;
                 FKhachHang fKhachHang = new FKhachHang();
                 KhachHang kh = fKhachHang.GetKH(Convert.ToInt32(x));
@@ -34,7 +33,7 @@ namespace BTL_ASP.Controllers
                 htmlStr.Append(@"</li>");
                 return htmlStr.ToString();
             }
-            catch
+            else
             {
                 return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";
             }
@@ -121,7 +120,7 @@ namespace BTL_ASP.Controllers
             }
             else
             {
-                try
+                if(Request.Cookies["IDCart"]!=null)
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     FGioHang fGioHang = new FGioHang();
@@ -132,7 +131,7 @@ namespace BTL_ASP.Controllers
                     List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
                     return View(lgh);
                 }
-                catch
+                else
                 {
                     List<GioHangHienThi> lgh = new List<GioHangHienThi>();
                     return View(lgh);
@@ -166,7 +165,7 @@ namespace BTL_ASP.Controllers
             }
             else
             {
-                try
+                if (Request.Cookies["IDCart"] != null)
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     var giohangtam = fGioHang.GetGH_MaGH(Convert.ToInt32(x));
@@ -174,7 +173,7 @@ namespace BTL_ASP.Controllers
                     Session["GioHang"] = giohangtam;
                     return RedirectToAction("Shopcart");
                 }
-                catch
+                else
                 {
                     gioHang = fGioHang.NewGH();
                     Response.Cookies["IDCart"].Value = gioHang.ID.ToString();
