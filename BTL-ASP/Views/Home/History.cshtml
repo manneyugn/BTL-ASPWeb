@@ -31,8 +31,8 @@
         </tbody>
     </table>
 </div>
-<div class="justify-content-center" style="margin-top: 40px;">
-    @Html.PagedListPager(Model,page => Url.Action("History", "Home", new { page }) , new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link", "inactiveLink" }})
+<div class="pagination justify-content-center" style="margin-top: 40px;">
+    @Html.PagedListPager(Model,page => Url.Action("History", "Home", new { page }) , new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link", "inactiveLink" } })
 </div>
 <script>
     $('.pagination').on('click', '.page-link', function () {

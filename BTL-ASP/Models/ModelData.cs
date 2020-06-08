@@ -8,6 +8,7 @@ namespace BTL_ASP.Models
     using System.Data.SqlClient;
     using System.Text.RegularExpressions;
     using PagedList;
+    using System.Diagnostics;
 
     public partial class ModelData : DbContext
     {
@@ -93,6 +94,7 @@ namespace BTL_ASP.Models
             modelBuilder.Entity<SanPhamGioHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
+
             modelBuilder.Entity<LichSuMuaHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
@@ -206,9 +208,7 @@ namespace BTL_ASP.Models
         private ModelData context = new ModelData();
         public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
         {
-            IEnumerable<LichSuMuaHang> lichSuMuaHangs;
-            lichSuMuaHangs = context.LichSuMuaHangs.Where(a => a.IDKH == id).OrderBy(a => a.NgayTao).ThenBy(a => a.TenSP).ToPagedList(page, pageSize);
-            return lichSuMuaHangs;
+            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderBy(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
         }
     }
 }

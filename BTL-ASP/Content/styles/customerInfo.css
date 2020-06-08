@@ -168,3 +168,10 @@ tr {
 .page-link{
     cursor:pointer;
 }
+
+.active a{
+    font-weight: bold;
+}
+.active{
+    cursor:default;
+}

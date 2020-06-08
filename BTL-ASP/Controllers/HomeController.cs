@@ -155,7 +155,7 @@ namespace BTL_ASP.Controllers
             }
             else
             {
-                return "sai";
+                return "not";
             }
         }
 
