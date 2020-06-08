@@ -14,29 +14,35 @@ namespace BTL_ASP.Controllers
         ModelData db = new ModelData();
         public string GetKhachHang()
         {
-            if (Session["KhachHang"] != null)
+            try
             {
+                string x = Request.Cookies["ID"].Value;
+                FKhachHang fKhachHang = new FKhachHang();
+                KhachHang kh = fKhachHang.GetKH(Convert.ToInt32(x));
+                Session["KhachHang"] = kh;
+                FGioHang fGioHang = new FGioHang();
+                GioHang gioHang = fGioHang.GetGH(kh.ID);
+                Session["GioHang"] = gioHang;
                 StringBuilder htmlStr = new StringBuilder("");
                 htmlStr.Append(@"<li class=""header-item dropdown"">");
                 htmlStr.Append(@"<a href = ""/Home/CustomerInfo"">Hello, ");
-                htmlStr.Append(((KhachHang)Session["KhachHang"]).TenKH);
+                htmlStr.Append(kh.TenKH);
                 htmlStr.Append("</a>");
                 htmlStr.Append(@"<div class=""dropdown-content"">");
                 htmlStr.Append(@"<a href = ""/Home/Logout"">Log out</a>");
                 htmlStr.Append(@"</div>");
                 htmlStr.Append(@"</li>");
                 return htmlStr.ToString();
-               
             }
-            else
-            {                
-                return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";                
+            catch
+            {
+                return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";
             }
         }
 
         public ActionResult Logout()
         {
-            Session["KhachHang"] = null;
+            Response.Cookies["ID"].Expires = DateTime.Now.AddDays(-1);
             return RedirectToAction("Home");
         }
         // GET: Home
@@ -64,10 +70,8 @@ namespace BTL_ASP.Controllers
             KhachHang x = fKhachHang.TimKhachHang(id, password);
             if (x != null)
             {
-                Session["KhachHang"] = x;
-                FGioHang fGioHang = new FGioHang();
-                GioHang gioHang = fGioHang.GetGH(x.ID);
-                Session["GioHang"] = gioHang;
+                Response.Cookies["ID"].Value = x.ID.ToString();
+                Response.Cookies["ID"].Expires = DateTime.Now.AddDays(1);
                 return RedirectToAction("Home");
             }
             else
@@ -94,27 +98,43 @@ namespace BTL_ASP.Controllers
         // GET: Shopcart
         public ActionResult Shopcart()
         {
-            FGioHang fGioHang = new FGioHang();
+            var temp = Session["KhachHang"];
             var gioHang = (GioHang)Session["GioHang"];
-            if (gioHang == null)
+            if (temp != null)
             {
-                if(Session["KhachHang"] == null)
+                if (gioHang == null)
                 {
-                    gioHang = fGioHang.NewGH();
-                }
-                else
+                    List<GioHangHienThi> lgh = new List<GioHangHienThi>();
+                    return View(lgh);
+                } else
                 {
-                    KhachHang x = (KhachHang) Session["KhachHang"];
-                    gioHang = fGioHang.NewGH(x);
+                    ClassConvert classConvert = new ClassConvert();
+                    List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
+                    return View(lgh);
                 }
-                List<GioHangHienThi> lgh = new List<GioHangHienThi>();
+            } else if (gioHang != null) {
+                ClassConvert classConvert = new ClassConvert();
+                List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
                 return View(lgh);
             }
             else
             {
-                ClassConvert classConvert = new ClassConvert();
-                List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
-                return View(lgh);
+                try
+                {
+                    string x = Request.Cookies["IDCart"].Value;
+                    FGioHang fGioHang = new FGioHang();
+                    gioHang = new GioHang();
+                    gioHang = fGioHang.GetGH(Convert.ToInt32(x));
+                    Session["GioHang"] = gioHang;
+                    ClassConvert classConvert = new ClassConvert();
+                    List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
+                    return View(lgh);
+                }
+                catch
+                {
+                    List<GioHangHienThi> lgh = new List<GioHangHienThi>();
+                    return View(lgh);
+                }
             }
         }
         // Thêm sản phẩm ở form product
@@ -131,26 +151,40 @@ namespace BTL_ASP.Controllers
             }
             var gioHang = (GioHang)Session["GioHang"];
             SanPhamGioHang sanPhamGioHang = new SanPhamGioHang();
-            if (gioHang != null )
+            if (Session["KhachHang"] != null)
             {
-                sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
-            }
-            else
-            {
-                if (Session["KhachHang"] == null)
-                {
-                    gioHang = fGioHang.NewGH();
-                }
-                else
-                {
+                if (gioHang == null)
+                { 
                     KhachHang x = (KhachHang)Session["KhachHang"];
                     gioHang = fGioHang.NewGH(x);
                 }
                 sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+                gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
+                Session["GioHang"] = gioHang;
+                return RedirectToAction("Shopcart");
             }
-            gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
-            Session["GioHang"] = gioHang;
-            return RedirectToAction("Shopcart");
+            else
+            {
+                try
+                {
+                    string x = Request.Cookies["IDCart"].Value;
+                    var giohangtam = fGioHang.GetGH(Convert.ToInt32(x));
+                    sanPhamGioHang = fSanPhamGioHang.AddItem(masp, giohangtam.ID, soLuong);
+                    giohangtam.SanPhamGioHangs.Add(sanPhamGioHang);
+                    Session["GioHang"] = giohangtam;
+                    return RedirectToAction("Shopcart");
+                }
+                catch
+                {
+                    gioHang = fGioHang.NewGH();
+                    Response.Cookies["IDCart"].Value = gioHang.ID.ToString();
+                    Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(1);
+                    sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+                    gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
+                    Session["GioHang"] = gioHang;
+                    return RedirectToAction("Shopcart");
+                }
+            }
         }
 
         // GET: Product

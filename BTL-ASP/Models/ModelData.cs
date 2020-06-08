@@ -157,6 +157,10 @@
             context.KhachHangs.Add(khach);
             context.SaveChanges();
         }
+        public KhachHang GetKH(int id)
+        {
+            return context.KhachHangs.Find(id);
+        }
 
     }
 
@@ -226,7 +230,7 @@
         private ModelData context = new ModelData();
         public GioHang GetGH(int id)
         {
-            return context.GioHangs.Where(x => x.IDKH == id && x.TinhTrang != "Hoàn Thành").FirstOrDefault();
+            return context.GioHangs.Find(id); 
         }
         public int GetMa()
         {

@@ -31,11 +31,9 @@
                                             <td>@sp.STT</td>
                                             <td>@sp.TenSp</td>
                                             <td>
-                                                <button class="control-button" onclick="change(this)">-</button><input class="number-input" type="number" value="@sp.SoLuong" min="1"
-                                                                                                                       onkeydown="return false"><button class="control-button"
-                                                                                                                                                        onclick="change(this)">
-                                                    +
-                                                </button>
+                                                <button class="control-button" onclick="change(this)">-</button>
+                                                <input class="number-input" type="number" value="@sp.SoLuong" min="1" onkeydown="return false">
+                                                <button class="control-button" onclick="change(this)">+</button>
                                             </td>
                                             <td>@sp.ThanhTien</td>
                                             <td><a onclick="removeRow(this)" class="close">&times;</a></td>
@@ -50,7 +48,13 @@
             <div class="col-3">
                 <div class="result-wrapper">
                     <div class="result">
-                        <div class="total">Tổng tiền: 10.000.000đ</div>
+                        @{ decimal sum = 0;
+                            foreach (GioHangHienThi sp in Model)
+                            {
+                                sum = sum + sp.ThanhTien ?? 0;
+                            }
+                        }
+                        <div class="total">Tổng tiền: $@sum</div>
                         <button type="button" class="btn btn-primary">Mua hàng</button>
                     </div>
                 </div>
