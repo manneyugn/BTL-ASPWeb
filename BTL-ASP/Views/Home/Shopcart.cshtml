@@ -25,10 +25,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (GioHangHienThi sp in Model)
-                                    {
+                                    @{int index = 1;
+                                        foreach (GioHangHienThi sp in Model)
+                                        {
                                         <tr>
-                                            <td>@sp.STT</td>
+                                            <td>@index</td>
                                             <td>@sp.TenSp</td>
                                             <td>
                                                 <button class="control-button" onclick="change(this)">-</button>
@@ -38,7 +39,9 @@
                                             <td>@sp.ThanhTien</td>
                                             <td><a onclick="removeRow(this)" class="close">&times;</a></td>
                                         </tr>
-                                    }
+                                            index += 1;
+                                        }
+                                        }
                                 </tbody>
                             </table>
                         </div>
@@ -66,11 +69,11 @@
             var parent = e.parentElement;
             console.log(parent.childNodes);
             if (e.innerText == '+') {
-                parent.childNodes[2].value++;
+                parent.getElementsByTagName('input')[0].value++;
             }
             else if (e.innerText == '-') {
-                if (parent.childNodes[2].value > 1) {
-                    parent.childNodes[2].value--;
+                if (parent.getElementsByTagName('input')[0].value > 1) {
+                    parent.getElementsByTagName('input')[0].value--;
                 }
             }
         }

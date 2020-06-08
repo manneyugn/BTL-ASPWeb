@@ -124,7 +124,6 @@ namespace BTL_ASP.Controllers
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     FGioHang fGioHang = new FGioHang();
-                    gioHang = new GioHang();
                     gioHang = fGioHang.GetGH_MaGH(Convert.ToInt32(x));
                     Session["GioHang"] = gioHang;
                     ClassConvert classConvert = new ClassConvert();
@@ -138,6 +137,12 @@ namespace BTL_ASP.Controllers
                 }
             }
         }
+
+        //public string CartViewUpdate()
+        //{
+        //    GioHang gioHang = (GioHang)Session["GioHang"];
+
+        //}
         // Thêm sản phẩm ở form product
         [HttpPost]
         public ActionResult Product(int masp, int soLuong)
