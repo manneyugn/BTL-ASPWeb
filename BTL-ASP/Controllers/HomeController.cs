@@ -105,7 +105,9 @@ namespace BTL_ASP.Controllers
             {
                 if (gioHang == null)
                 {
-                    return View();
+                    gioHang = new GioHang();
+                    Session["GioHang"] = gioHang;
+                    return View(gioHang);
                 }
                 else
                 {
@@ -128,7 +130,9 @@ namespace BTL_ASP.Controllers
                 }
                 else
                 {
-                    return View();
+                    gioHang = new GioHang();
+                    Session["GioHang"] = gioHang;
+                    return View(gioHang);
                 }
             }
         }
