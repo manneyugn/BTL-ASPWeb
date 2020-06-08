@@ -120,7 +120,7 @@ namespace BTL_ASP.Controllers
                 {
                     return View(gioHang);
                 }
-                if (Request.Cookies["IDCart"] != null)
+                else if (Request.Cookies["IDCart"] != null)
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     FGioHang fGioHang = new FGioHang();
@@ -152,12 +152,13 @@ namespace BTL_ASP.Controllers
             SanPhamGioHang sanPhamGioHang = new SanPhamGioHang();
             if (Session["KhachHang"] != null)
             {
+                KhachHang x = (KhachHang)Session["KhachHang"];
                 if (gioHang == null)
                 { 
-                    KhachHang x = (KhachHang)Session["KhachHang"];
                     gioHang = fGioHang.NewGH(x);
                 }
                 sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+                gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
                 Session["GioHang"] = gioHang;
                 return RedirectToAction("Shopcart");
             }
@@ -177,6 +178,7 @@ namespace BTL_ASP.Controllers
                     Response.Cookies["IDCart"].Value = gioHang.ID.ToString();
                     Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(1);
                     sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
+                    gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
                     Session["GioHang"] = gioHang;
                     return RedirectToAction("Shopcart");
                 }
