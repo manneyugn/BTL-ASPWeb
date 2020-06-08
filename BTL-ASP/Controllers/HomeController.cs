@@ -105,45 +105,34 @@ namespace BTL_ASP.Controllers
             {
                 if (gioHang == null)
                 {
-                    List<GioHangHienThi> lgh = new List<GioHangHienThi>();
-                    return View(lgh);
-                } else
-                {
-                    ClassConvert classConvert = new ClassConvert();
-                    List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
-                    return View(lgh);
+                    return View();
                 }
-            } else if (gioHang != null) {
-                ClassConvert classConvert = new ClassConvert();
-                List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
-                return View(lgh);
+                else
+                {
+                    return View(gioHang);
+                }
             }
             else
             {
-                if(Request.Cookies["IDCart"]!=null)
+                if (gioHang != null)
+                {
+                    return View(gioHang);
+                }
+                if (Request.Cookies["IDCart"] != null)
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     FGioHang fGioHang = new FGioHang();
                     gioHang = fGioHang.GetGH_MaGH(Convert.ToInt32(x));
                     Session["GioHang"] = gioHang;
-                    ClassConvert classConvert = new ClassConvert();
-                    List<GioHangHienThi> lgh = classConvert.GetList(gioHang);
-                    return View(lgh);
+                    return View(gioHang);
                 }
                 else
                 {
-                    List<GioHangHienThi> lgh = new List<GioHangHienThi>();
-                    return View(lgh);
+                    return View();
                 }
             }
         }
 
-        //public string CartViewUpdate()
-        //{
-        //    GioHang gioHang = (GioHang)Session["GioHang"];
-
-        //}
-        // Thêm sản phẩm ở form product
         [HttpPost]
         public ActionResult Product(int masp, int soLuong)
         {
