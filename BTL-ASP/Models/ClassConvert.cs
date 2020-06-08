@@ -16,6 +16,7 @@ namespace BTL_ASP.Models
             {
                 SanPham sp = fSanPham.FindSanPham(spgh.IDSP);
                 lgh.Add(new GioHangHienThi(count, sp.TenSP, spgh.SoLuong, spgh.ThanhTien, sp.ID, gioHang.ID));
+                count++;
             }
             return lgh;
         }

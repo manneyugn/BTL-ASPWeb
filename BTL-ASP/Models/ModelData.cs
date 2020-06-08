@@ -228,9 +228,15 @@
     public class FGioHang
     {
         private ModelData context = new ModelData();
-        public GioHang GetGH(int id)
+        public GioHang GetGH_MaGH(int id)
         {
-            return context.GioHangs.Find(id); 
+            string s = "Chưa Hoàn Thành";
+            return context.GioHangs.Where(x => x.ID == id && x.TinhTrang == s).FirstOrDefault(); 
+        }
+        public GioHang GetGH_MaND(int id)
+        {
+            string s = "Chưa Hoàn Thành";
+            return context.GioHangs.Where(x => x.IDKH == id && x.TinhTrang == s).FirstOrDefault();
         }
         public int GetMa()
         {
