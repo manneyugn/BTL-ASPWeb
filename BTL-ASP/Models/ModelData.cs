@@ -247,7 +247,7 @@
         }
         public string ChangeItem(int id, int idgh, int soluong)
         {
-            if (soLuong > 0)
+            if (soluong > 0)
             {
                 SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
                 spgh.SoLuong = soluong;
@@ -312,6 +312,16 @@
                 gioHang.DiaChi = khachHang.DiaChi;
             }
             context.GioHangs.Add(gioHang);
+            context.SaveChanges();
+            return gioHang;
+        }
+
+        public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
+        {
+            gioHang.DiaChi = address;
+            gioHang.TenKH = name;
+            gioHang.SDT = phone;
+            gioHang.Email = mail;
             context.SaveChanges();
             return gioHang;
         }
