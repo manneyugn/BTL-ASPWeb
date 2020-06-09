@@ -383,6 +383,7 @@
     <Content Include="Content\styles\liststyle.css" />
     <Content Include="Content\styles\login.css" />
     <Content Include="Content\styles\payment.css" />
+    <Content Include="Content\styles\shipping.css" />
     <Content Include="Content\styles\product.css" />
     <Content Include="Content\styles\shopcart.css" />
     <Content Include="Content\styles\SignUp.css" />
@@ -432,9 +433,10 @@
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\CustomerInfo.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
-    <Content Include="Views\Home\Payment.cshtml" />
+    <Content Include="Views\Home\Shipping.cshtml" />
     <Content Include="Views\Shared\ShopCartNull.cshtml" />
     <Content Include="Views\Shared\ShopCartItem.cshtml" />
+    <Content Include="Views\Home\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

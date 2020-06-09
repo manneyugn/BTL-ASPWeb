@@ -1,45 +1,341 @@
-.text-header{
+.text-header {
     margin-top: 100px;
     margin-left: 30px;
 }
-
-.input {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 15px 0;
+.ggAFge {
+    flex-basis: 72%;
+    padding: 25px 15px 0px;
 }
-
-.info{
-    display: none;
-    width: 60%;
-    margin: 0 auto;
-    margin-top: 30px;
+.fwsEni {
+    opacity: 1;
 }
-
-.user-info{
-    margin: 0;
+.fwsEni .title {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #212529;
+    font-weight: 700;
 }
-
-/*ẩn nút spinner is work, don't ask*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.dnmKst {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+    border-radius: 4px;
+    padding: 10px 15px;
 }
-
-.comfirm-button{
-    margin: 0 auto;
-    width: 100px;
+.jvJKXm {
+    margin-bottom: 15px;
 }
-.default-info{
+.bqACGT {
+    display: block;
+    margin-right: 15px;
+}
+.bqACGT input[type="radio"] {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    visibility: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+    opacity: 0;
+}
+.bqACGT input[type="radio"]:checked + .radio-fake {
+    border-color: black;
+}
+.bqACGT .radio-fake {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    color: rgb(120, 120, 120);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(120, 120, 120);
+    border-image: initial;
+    border-radius: 50%;
+    margin: 10px 12px 10px 0px;
+}
+.bqACGT input[type="radio"]:checked + .radio-fake::before {
+    transform: scale(1);
+}
+.bqACGT .radio-fake::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease 0s;
+}
+.bqACGT .label {
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 80%;
+}
+.jvJKXm .label-no-shippments .no-shipping-fee {
+    margin-right: 8px;
+}
+.jvJKXm .no-shipping-fee {
+    color: black;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+    font-weight: 300;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 4px 14px 3px;
+}  
+.jvJKXm .label-no-shippments .method-name {
+    font-size: 16px;
+    color: rgb(36, 36, 36);
+    font-weight: 400;
+}
+.jvJKXm .method-name {
+    display: inline-flex;
+    -webkit-box-align: baseline;
+    align-items: baseline;
+} 
+.fJEQQi {
+    color: rgb(51, 51, 51);
+    margin-bottom: 20px;
+    background: rgb(255, 255, 255);
+    padding: 15px 25px 10px 15px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+}
+.fJEQQi .list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.infbzD {
+    font-size: 17px;
+    margin-bottom: 8px;
+    pointer-events: none;
+    filter: grayscale(1);
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+.fTvtIP {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.ggAFge .order-button {
+    width: 50%;
+}
+.ggAFge .order-button button {
+    width: 360px;
+    height: 50px;
+    line-height: 2;
+    color: rgb(255, 255, 255);
+    font-size: 21px;
+    outline-color: rgb(204, 204, 204);
+    cursor: pointer;
+    margin: 10px 0px 0px;
+    padding: 4px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(172, 34, 39);
+    border-image: initial;
+    border-radius: 3px;
+    background: linear-gradient(rgb(239, 57, 89), rgb(215, 32, 65));
+}
+.ggAFge .order-button p {
+    text-align: left;
+    color: rgb(80, 80, 80);
+    font-size: 16px;
+    margin: 10px 0px;
+}
+.jFEIKb {
+    flex-basis: 28%;
+    padding: 40px 15px 0px;
+}
+.fxjiAa {
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+    border-radius: 3px;
+}
+.fxjiAa .title {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 31px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.fxjiAa .title a {
+    font-size: 15px;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 31px;
+    outline-color: rgb(204, 204, 204);
+    color: rgb(51, 51, 51);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+    background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
+    border-radius: 2px;
+    text-decoration: none;
+}
+.fxjiAa .address .nameaaa {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.fxjiAa .address span {
+    display: block;
+    font-size: 16px;
+}
+.fxjiAa .address .street, .fxjiAa .address .phone {
+    padding: 2px 0px;
+}
+.fxjiAa .address span {
+    display: block;
+    font-size: 16px;
+}
+.fxjiAa .address .street, .fxjiAa .address .phone {
+    padding: 2px 0px;
+}
+.fxjiAa .address span {
+    display: block;
+    font-size: 16px;
+}
+.UHbjr {
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 221, 221);
+    border-image: initial;
+    border-radius: 3px;
+}
+.UHbjr .title {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    font-size: 16px;
+    line-height: 31px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.UHbjr .title a {
+    font-size: 15px;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 31px;
+    outline-color: rgb(204, 204, 204);
+    color: rgb(51, 51, 51);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+    background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
+    border-radius: 2px;
+    text-decoration: none;
+}
+.UHbjr .cart {
+    font-size: 15px;
+}
+.UHbjr .cart .product {
+    margin-bottom: 15px;
+}
+.iylcMU {
+    font-size: 14px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 12px 0px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.iylcMU .info {
+    flex: 2 1 0%;
+}
+.iylcMU .info .qty {
+    padding-right: 10px;
+}
+.jPiCqD {
+    margin-bottom: 13px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+}
+.UHbjr .cart .price-summary .total {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-top: 12px;
+    margin-bottom: 0px;
+    line-height: 19px;
+    font-weight: 700;
+    border-top: 2px solid rgb(201, 201, 201);
+}
+.UHbjr .cart .price-summary .total .value {
+    color: rgb(238, 35, 71);
+    font-size: 22px;
+    font-weight: 400;
+    text-align: right;
+}
+.nxmyE {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+    color: rgb(51, 51, 51);
     margin: 20px auto 0px;
-    width: 40%;    
-    padding: 5px;
+    padding: 5px 0px;
+    border-radius: 3px;
+    background: rgb(247, 247, 247);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-image: initial;
 }
-.border{
-    border: 1px dashed green;
+.nxmyE .arrow {
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 0px;
+    left: 50%;
+    margin-left: -6px;
+    top: -12px;
+    border-color: transparent transparent rgb(235, 235, 235);
+    border-style: solid;
+    border-width: 6px;
 }
-.user-name{
-    margin: 0;
-    font-weight: bold;
+.nxmyE .content {
+    font-size: 16px;
+    padding: 9px 14px;
+}
+.UHbjr .cart {
+    font-size: 15px;
+}
+.UHbjr .cart .price-summary .total .value i {
+    display: block;
+    font-size: 15px;
+    color: rgb(51, 51, 51);
 }

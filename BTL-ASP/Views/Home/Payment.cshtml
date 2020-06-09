@@ -1,54 +1,139 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="~/Content/styles/payment.css">
-<link rel="stylesheet" href="~/Content/bootstrap-4.4.1-dist/css/bootstrap.css">
 
 <div class="content-wrapper">
-    <p class="h4 text-header">CHỌN ĐỊA CHỈ MUA HÀNG</p>
-    <div class="default-info border">
-        <p class="user-name" id="name">Nguyễn Sơn Nam</p>
-        <p class="user-info" id="address">Địa chỉ:Số 6 Hồ tùng mậu</p>
-        <p class="user-info" id="mail">Email:Nampro@gmail.com</p>
-        <p class="user-info" id="phone">SĐT:0978001234</p>
-        <div class="action">
-            <input type="button" class="btn btn-primary btn-sm" value="Giao hàng đến địa chỉ này" onclick="" />
-            <input type="button" class="btn btn-light btn-sm" value="Sửa" onclick="changeAddress()" />
-        </div>
-    </div>
-    <p class="default-info">Không phải địa chỉ này ? <a href="javascript:show();">Giao hàng đến địa chỉ khác</a></p>
-    <div class="info">
-        <div class="form">
-            <div class="input">
-                <label for="name">Họ tên:</label><input type="text" class="form-control" name="name">
-                <label for="phone">SĐT:</label><input type="number" class="form-control" name="phone">
-                <label for="mail">Email:</label><input type="text" class="form-control" name="mail">
-                <label for="address">Địa chỉ:</label><textarea class="form-control" name="address"></textarea>
-                <span>Loại địa chỉ:</span>
-                <div>
-                    <div class="form-check form-check-inline" onclick="select(this)">
-                        <input type="radio" class="form-check-input" value="house" name="addressType"><label class="form-check-label" for="house">Nhà riêng</label>
-                    </div>
-                    <div class="form-check form-check-inline" onclick="select(this)">
-                        <input type="radio" class="form-check-input" value="company" name="addressType"><label class="form-check-label" for="company">Công ty</label>
+    <p class="h4 text-header">THANH TOÁN VÀ ĐẶT MUA</p>
+    <main style="background: rgb(255, 255, 255);">
+        <div class="Container-itwfbd-0 jFkAwY" style="display: flex;width: 1200px;flex-wrap: wrap;margin: auto;margin-top: 30px;">
+            <div class="styles__Left-hcztvk-1 ggAFge">
+                <div class="styles__Section-hcztvk-0 fwsEni">
+                    <h3 class="title">1. Chọn hình thức giao hàng</h3>
+                    <div class="ShippingMethods__StyledShippingMethods-sc-10myobp-0 dnmKst">
+                        <div class="ShippingMethods__StyledMethod-sc-10myobp-1 jvJKXm">
+                            <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
+                                <input type="radio" readonly=""
+                                       name="shipping-methods" value="1" checked=""><span class="radio-fake"></span><span class="label">
+                                    <div class="label-no-shippments">
+
+                                        <div>
+                                            <span class="no-shipping-fee">Miễn phí</span><span class="method-name">Giao tiêu chuẩn</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="ShippingMethods__StyledMethod-sc-10myobp-1 jvJKXm">
+                            <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
+                                <input type="radio" readonly=""
+                                       name="shipping-methods" value="1"><span class="radio-fake"></span><span class="label">
+                                    <div class="label-no-shippments">
+
+                                        <div>
+                                            <span class="no-shipping-fee">Miễn phí</span><span class="method-name">Giao hàng nhanh</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
+                <div class="styles__Section-hcztvk-0 fwsEni">
+                    <h3 class="title">2. Chọn hình thức thanh toán</h3>
+                    <div class="styles__StyledPaymentMethods-sc-1u5r3pb-0 fJEQQi">
+                        <ul class="list">
+                            <li class="styles__StyledMethod-sc-1u5r3pb-1 fTvtIP">
+                                <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
+                                    <input type="radio"
+                                           readonly="" name="payment-methods" value="cybersource"><span class="radio-fake"></span><span class="label">Thanh toán tiền mặt khi nhận hàng</span>
+                                </label>
+                                <div class="VirtualCredit__StyledCredit-sc-1kid5w3-0 ZLPVe"></div>
+                            </li>
+                            <li class="styles__StyledMethod-sc-1u5r3pb-1 fTvtIP">
+                                <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
+                                    <input type="radio"
+                                           readonly="" name="payment-methods" value="cybersource"><span class="radio-fake"></span><span class="label">
+                                        Thanh toán bằng thẻ quốc tế
+                                        Visa, Master, JCB
+                                    </span>
+                                </label>
+                                <div class="VirtualCredit__StyledCredit-sc-1kid5w3-0 ZLPVe"></div>
+                            </li>
+                            <li class="styles__StyledMethod-sc-1u5r3pb-1 fTvtIP">
+                                <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
+                                    <input type="radio"
+                                           readonly="" name="payment-methods" value="pay123"><span class="radio-fake"></span><span class="label">
+                                        Thẻ ATM nội địa/Internet
+                                        Banking (Miễn phí thanh toán)
+                                    </span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="order-button">
+                    <button class="">ĐẶT MUA</button>
+                    <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                </div>
             </div>
-            <div class="text-center">
-                <input type="button" class="btn btn-primary" value="Xác nhận" style="margin-top:20px;">
+            <div class="styles__Right-hcztvk-2 jFEIKb">
+                <div class="ShippingAddress__StyledShippingAddress-sc-12icqkv-0 fxjiAa">
+                    <div class="title"><span>Địa chỉ giao hàng</span><a href="/checkout/shipping">Sửa</a></div>
+                    <div class="address">
+                        <span class="nameaaa">Trần Đức Dũng</span><span class="street">
+                            Số Nhà 54 Ngõ
+                            200 Hoàng Sâm, Phường Nghĩa Đô, Quận Cầu Giấy, Hà Nội Việt Nam
+                        </span><span class="phone">Điện thoại: 0914203450</span>
+                    </div>
+                </div>
+                <div class="OrderSummary__StyledOrderSummary-ue7sy3-0 UHbjr">
+                    <div class="title">
+                        <span>Đơn hàng (1 sản phẩm)</span><a href="/checkout/cart?src=checkout_payment">Sửa</a>
+                    </div>
+                    <div class="cart">
+                        <div class="product">
+                            <div class="OrderSummary__StyledItem-ue7sy3-1 iylcMU">
+                                <div class="info">
+                                    <strong class="qty">1 x</strong><a href="/can-suc-khoe-dien-tu-xiaomi-millet-weight-scale-2-p23206913.html?spid=23206914"
+                                                                       target="_blank" class="product-name">
+                                        Cân Sức Khỏe Điện Tử Xiaomi Millet
+                                        Weight Scale 2
+                                    </a>
+                                </div>
+                                <div class="price">306.000 ₫</div>
+                            </div>
+                        </div>
+                        <div class="price-summary">
+                            <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
+                                <div class="nameaaa">Tạm tính</div>
+                                <div class="value">306.000đ</div>
+                            </div>
+                            <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
+                                <div class="nameaaa">Phí vận chuyển</div>
+                                <div class="value">0đ</div>
+                            </div>
+                            <div class="total">
+                                <div class="nameaaa">Thành tiền:</div>
+                                <div class="value">306.000 ₫<i>(Đã bao gồm VAT nếu có)</i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="styles__FreeshipTooltip-hcztvk-4 nxmyE">
+                    <div class="arrow"></div>
+                    <div class="content"><span>Đơn hàng bạn sẽ được miễn phí vận chuyển.</span></div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 <script>
     function show() {
         document.querySelector('.info').style.display = 'block';
-        document.getElementsByName('name')[0].value = "";
-        document.getElementsByName('phone')[0].value = "";
-        document.getElementsByName('mail')[0].value = "";
-        document.getElementsByName('address')[0].value = "";
     }
     function changeAddress() {
         document.querySelector('.info').style.display = 'block';
@@ -59,5 +144,9 @@
     }
     function select(e) {
         e.childNodes[1].checked = true;
+        document.getElementsByName('name')[0].value = "";
+        document.getElementsByName('phone')[0].value = "";
+        document.getElementsByName('mail')[0].value = "";
+        document.getElementsByName('address')[0].value = "";
     }
 </script>

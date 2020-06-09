@@ -266,6 +266,11 @@ namespace BTL_ASP.Controllers
             return RedirectToAction("Login");
         }
 
+        public ActionResult Shipping()
+        {
+            return View();
+        }
+
         public ActionResult Payment()
         {
             return View();
