@@ -331,7 +331,7 @@
         private ModelData context = new ModelData();
         public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
         {
-            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderBy(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
+            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderByDescending(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
         }
     }
 }
