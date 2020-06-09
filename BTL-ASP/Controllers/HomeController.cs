@@ -11,8 +11,6 @@ namespace BTL_ASP.Controllers
 {
     public class HomeController : Controller
     {
-        ModelData db = new ModelData();
-
         public string GetKhachHang()
         {
             if (Request.Cookies["ID"] != null) {
@@ -184,8 +182,7 @@ namespace BTL_ASP.Controllers
                 {
                     gioHang = fGioHang.NewGH(x);
                 }
-                sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
-                gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
+                gioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
                 Session["GioHang"] = gioHang;
                 return RedirectToAction("Shopcart");
             }
@@ -195,7 +192,7 @@ namespace BTL_ASP.Controllers
                 {
                     string x = Request.Cookies["IDCart"].Value;
                     var giohangtam = fGioHang.GetGH_MaGH(Convert.ToInt32(x));
-                    sanPhamGioHang = fSanPhamGioHang.AddItem(masp, giohangtam.ID, soLuong);
+                    giohangtam = fSanPhamGioHang.AddItem(masp, Convert.ToInt32(x), soLuong);
                     Session["GioHang"] = giohangtam;
                     return RedirectToAction("Shopcart");
                 }
@@ -204,8 +201,7 @@ namespace BTL_ASP.Controllers
                     gioHang = fGioHang.NewGH();
                     Response.Cookies["IDCart"].Value = gioHang.ID.ToString();
                     Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(1);
-                    sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
-                    gioHang.SanPhamGioHangs.Add(sanPhamGioHang);
+                    gioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
                     Session["GioHang"] = gioHang;
                     return RedirectToAction("Shopcart");
                 }
@@ -219,7 +215,7 @@ namespace BTL_ASP.Controllers
             FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
             string json = fSanPhamGioHang.ChangeItem(idSanPham, gioHang.ID, soLuong);
             FGioHang fGioHang = new FGioHang();
-            Session["GioHang"] = db.GioHangs.Where(a => a.ID == gioHang.ID).FirstOrDefault();
+            Session["GioHang"] = fGioHang.GetGH_MaGH(gioHang.ID);
             return json;
                 
         }
@@ -309,12 +305,10 @@ namespace BTL_ASP.Controllers
                 if (khachHang != null)
                 {
                     GioHang gioHang = (GioHang)Session["GioHang"];
-                    gioHang.DiaChi = khachHang.DiaChi;
-                    gioHang.SDT = khachHang.SDT;
-                    gioHang.TenKH = khachHang.TenKH;
-                    gioHang.Email = khachHang.Email;
-                    db.SaveChanges();
-                    return View(gioHang);
+                    FGioHang fGioHang = new FGioHang();
+                    GioHang ngiohang = fGioHang.Update(gioHang.ID, khachHang.TenKH, khachHang.SDT, khachHang.Email, khachHang.DiaChi);
+                    Session["GioHang"] = ngiohang;
+                    return View(ngiohang);
                 }
                 else
                 {
@@ -366,7 +360,7 @@ namespace BTL_ASP.Controllers
         public ActionResult Payment(string name, string phone, string mail, string address)
         {
             FGioHang fGioHang = new FGioHang();
-            Session["GioHang"] = fGioHang.Update((GioHang)Session["GioHang"], name, phone, mail, address);
+            Session["GioHang"] = fGioHang.Update(((GioHang)Session["GioHang"]).ID, name, phone, mail, address);
             ViewBag.GioHang = (GioHang)Session["GioHang"];
             return View();
         }

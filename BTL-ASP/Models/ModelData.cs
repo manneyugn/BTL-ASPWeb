@@ -222,13 +222,14 @@
                 return null;
             }
         }
-        public SanPhamGioHang AddItem(int id, int idgh, int soluong)
+        public GioHang AddItem(int id, int idgh, int soluong)
         {
+            GioHang gioHang = context.GioHangs.Find(idgh);
             SanPhamGioHang spgh = Check(id, idgh);
             if (spgh != null)
             {
                 spgh.SoLuong += soluong;
-                context.SaveChanges();
+                gioHang.SanPhamGioHangs.Add(spgh);
             }
             else
             {
@@ -241,9 +242,15 @@
                 spgh.ThanhTien = soluong * sp.Gia;
                 spgh.GhiChu = "";
                 context.SanPhamGioHangs.Add(spgh);
-                context.SaveChanges();
             }
-            return spgh;
+            decimal thanhTien = 0;
+            foreach (SanPhamGioHang sp in gioHang.SanPhamGioHangs)
+            {
+                thanhTien += sp.ThanhTien ?? 0;
+            }
+            gioHang.TongTien = thanhTien;
+            context.SaveChanges();
+            return gioHang;
         }
         public string ChangeItem(int id, int idgh, int soluong)
         {
@@ -327,8 +334,9 @@
             context.SaveChanges();
         }
 
-        public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
+        public GioHang Update(int idgh, string name, string phone, string mail, string address)
         {
+            GioHang gioHang = context.GioHangs.Find(idgh);
             gioHang.DiaChi = address;
             gioHang.TenKH = name;
             gioHang.SDT = phone;

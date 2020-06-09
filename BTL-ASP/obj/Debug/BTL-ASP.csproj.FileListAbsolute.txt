@@ -153,7 +153,6 @@ C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csproj.Co
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csproj.CopyComplete
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.pdb
-C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\obj\Debug\BTL-ASP.csprojAssemblyReference.cache
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.Mvc.dll
 C:\Users\Welcome\Documents\GitHub\BTL-ASPWeb\BTL-ASP\bin\PagedList.xml
