@@ -76,10 +76,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="order-button">
-                    <button class="">ĐẶT MUA</button>
-                    <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
-                </div>
+                <form action="/Home/Checkout" method="post">
+                    <div class="order-button">
+                        <button class="">ĐẶT MUA</button>
+                        <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                    </div>
+                </form>
             </div>
             <div class="styles__Right-hcztvk-2 jFEIKb">
                 <div class="ShippingAddress__StyledShippingAddress-sc-12icqkv-0 fxjiAa">
@@ -98,16 +100,16 @@
                         <div class="product">
                             @foreach (SanPhamGioHang sp in ViewBag.GioHang.SanPhamGioHangs)
                             {
-                            <div class="OrderSummary__StyledItem-ue7sy3-1 iylcMU">
-                                <div class="info">
-                                    <strong class="qty">@sp.SoLuong x</strong>
-                                    <a href="/Home/Product/@sp.IDSP"
-                                       target="_blank" class="product-name">@sp.SanPham.TenSP</a>
+                                <div class="OrderSummary__StyledItem-ue7sy3-1 iylcMU">
+                                    <div class="info">
+                                        <strong class="qty">@sp.SoLuong x</strong>
+                                        <a href="/Home/Product/@sp.IDSP"
+                                           target="_blank" class="product-name">@sp.SanPham.TenSP</a>
+                                    </div>
+                                    <div class="price">$@sp.SanPham.Gia</div>
                                 </div>
-                                <div class="price">$@sp.SanPham.Gia</div>
-                            </div>
                             }
-                            </div>
+                        </div>
                         <div class="price-summary">
                             <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
                                 <div class="nameaaa">Tạm tính</div>

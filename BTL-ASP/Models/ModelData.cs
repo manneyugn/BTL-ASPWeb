@@ -325,6 +325,7 @@
             GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
             gioHang.TinhTrang = "Hoàn Thành";
             context.SaveChanges();
+        }
 
         public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
         {
