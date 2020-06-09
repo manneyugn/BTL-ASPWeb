@@ -5,7 +5,7 @@
 @using BTL_ASP.Models;
 
 <link rel="stylesheet" href="~/Content/styles/shopcart.css">
-@if (Model.Count != 0)
+@if (((GioHang)Model).SanPhamGioHangs.Count != 0)
 {
     <div class="h4 text-header">My shopping cart</div>
     <div class="container">
@@ -26,11 +26,11 @@
                                 </thead>
                                 <tbody>
                                     @{int index = 1;
-                                        foreach (GioHangHienThi sp in Model)
+                                        foreach (SanPhamGioHang sp in ((GioHang)Model).SanPhamGioHangs)
                                         {
                                         <tr>
                                             <td>@index</td>
-                                            <td>@sp.TenSp</td>
+                                            <td>@sp.SanPham.TenSP</td>
                                             <td>
                                                 <button class="control-button" onclick="change(this)">-</button>
                                                 <input class="number-input" type="number" value="@sp.SoLuong" min="1" onkeydown="return false">
@@ -52,7 +52,7 @@
                 <div class="result-wrapper">
                     <div class="result">
                         @{ decimal sum = 0;
-                            foreach (GioHangHienThi sp in Model)
+                            foreach (SanPhamGioHang sp in ((GioHang)Model).SanPhamGioHangs)
                             {
                                 sum = sum + sp.ThanhTien ?? 0;
                             }

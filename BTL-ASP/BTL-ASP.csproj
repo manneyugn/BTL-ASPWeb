@@ -139,9 +139,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AnhSanPham.cs" />
-    <Compile Include="Models\ClassConvert.cs" />
     <Compile Include="Models\GioHang.cs" />
-    <Compile Include="Models\GioHangHienThi.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\Loai.cs" />
     <Compile Include="Models\ModelData.cs" />
