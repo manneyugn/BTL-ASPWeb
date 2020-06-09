@@ -8,6 +8,7 @@
     using System.Data.SqlClient;
     using System.Text.RegularExpressions;
     using PagedList;
+    using Microsoft.SqlServer.Server;
 
     public partial class ModelData : DbContext
     {
@@ -201,7 +202,7 @@
                 return null;
             }
         }
-        public SanPhamGioHang AddItem(int id, int idgh,int soluong)
+        public SanPhamGioHang AddItem(int id, int idgh, int soluong)
         {
             SanPhamGioHang spgh = Check(id, idgh);
             if (spgh != null)
@@ -224,6 +225,22 @@
             }
             return spgh;
         }
+        public string ChangeItem(int id, int idgh, int soluong)
+        {
+            SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
+            spgh.SoLuong = soluong;
+            spgh.ThanhTien = soluong * spgh.DonGia;
+            context.SaveChanges();
+            GioHang gioHang = context.GioHangs.Where(a => a.ID == idgh).FirstOrDefault();
+            decimal thanhTien = 0;
+            foreach (SanPhamGioHang sp in gioHang.SanPhamGioHangs)
+            {
+                thanhTien += sp.ThanhTien ?? 0;
+            }
+            gioHang.TongTien = thanhTien;
+            context.SaveChanges();
+            return String.Format(@"{{""TongTien"":{0}, ""ThanhTien"":{1}}}",gioHang.TongTien, spgh.ThanhTien);
+        }
     }
     public class FGioHang
     {
@@ -231,7 +248,7 @@
         public GioHang GetGH_MaGH(int id)
         {
             string s = "Chưa Hoàn Thành";
-            return context.GioHangs.Where(x => x.ID == id && x.TinhTrang == s).FirstOrDefault(); 
+            return context.GioHangs.Where(x => x.ID == id && x.TinhTrang == s).FirstOrDefault();
         }
         public GioHang GetGH_MaND(int id)
         {
@@ -262,4 +279,5 @@
             return gioHang;
         }
     }
+
 }

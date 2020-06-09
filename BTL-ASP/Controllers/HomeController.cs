@@ -12,6 +12,7 @@ namespace BTL_ASP.Controllers
     public class HomeController : Controller
     {
         ModelData db = new ModelData();
+       
         public string GetKhachHang()
         {
             if (Request.Cookies["ID"] != null) {
@@ -208,6 +209,14 @@ namespace BTL_ASP.Controllers
                     return RedirectToAction("Shopcart");
                 }
             }
+        }
+
+        [HttpPost]
+        public string UpdateGioHang(int idSanPham,int soLuong)
+        {
+            GioHang gioHang = (GioHang)Session["GioHang"];
+            FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
+            return fSanPhamGioHang.ChangeItem(idSanPham, gioHang.ID, soLuong);
         }
 
         // GET: Product

@@ -18,6 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>Số thứ tự</th>
+                                        <th>Mã sản phẩm</th>
                                         <th>Sản phẩm</th>
                                         <th>Số lượng</th>
                                         <th>Thành tiền</th>
@@ -28,20 +29,21 @@
                                     @{int index = 1;
                                         foreach (SanPhamGioHang sp in ((GioHang)Model).SanPhamGioHangs)
                                         {
-                                        <tr>
-                                            <td>@index</td>
-                                            <td>@sp.SanPham.TenSP</td>
-                                            <td>
-                                                <button class="control-button" onclick="change(this)">-</button>
-                                                <input class="number-input" type="number" value="@sp.SoLuong" min="1" onkeydown="return false">
-                                                <button class="control-button" onclick="change(this)">+</button>
-                                            </td>
-                                            <td>@sp.ThanhTien</td>
-                                            <td><a onclick="removeRow(this)" class="close">&times;</a></td>
-                                        </tr>
+                                            <tr>
+                                                <td>@index</td>
+                                                <td>@sp.IDSP</td>
+                                                <td>@sp.SanPham.TenSP</td>
+                                                <td>
+                                                    <button class="control-button" onclick="change(this)">-</button>
+                                                    <input class="number-input" type="number" value="@sp.SoLuong" min="1" onkeydown="return false">
+                                                    <button class="control-button" onclick="change(this)">+</button>
+                                                </td>
+                                                <td>@sp.ThanhTien</td>
+                                                <td><a onclick="removeRow(this)" class="close">&times;</a></td>
+                                            </tr>
                                             index += 1;
                                         }
-                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -67,14 +69,29 @@
     <script>
         function change(e) {
             var parent = e.parentElement;
-            console.log(parent.childNodes);
             if (e.innerText == '+') {
                 parent.getElementsByTagName('input')[0].value++;
+                $.post('@Url.Action("UpdateGioHang", "Home")', {
+                    idSanPham: parent.parentElement.getElementsByTagName('td')[1].innerText, soLuong: parent.getElementsByTagName('input')[0].value
+                }, function (data) {
+                        console.log(data);
+                        var x = JSON.parse(data);
+                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
+                        parent.parentElement.getElementsByTagName('td')[4].innerText = x.ThanhTien;
+                });
             }
             else if (e.innerText == '-') {
                 if (parent.getElementsByTagName('input')[0].value > 1) {
                     parent.getElementsByTagName('input')[0].value--;
                 }
+                $.post('@Url.Action("UpdateGioHang", "Home")', {
+                    idSanPham: parent.parentElement.getElementsByTagName('td')[1].innerText, soLuong: parent.getElementsByTagName('input')[0].value
+                }, function (data) {
+                        console.log(data);
+                        var x = JSON.parse(data);
+                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
+                        parent.parentElement.getElementsByTagName('td')[4].innerText = x.ThanhTien;
+                });
             }
         }
 
