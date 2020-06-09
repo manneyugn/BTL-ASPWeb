@@ -106,12 +106,13 @@ namespace BTL_ASP.Controllers
                 return RedirectToAction("Login");
             }
         }
+
         public ActionResult ListsAll(int page = 1, int pageSize = 9)
         {
             var sp = new FSanPham();
             var model = sp.GetSanPhams(page, pageSize);
             ViewBag.Action = "ListsAll";
-            return View("Lists",model);
+            return View("Lists", model);
         }
         public ActionResult Lists(string product, int page = 1, int pageSize = 6)
         {
@@ -233,7 +234,7 @@ namespace BTL_ASP.Controllers
         public ActionResult Signup(string email, string name, string contact, string address, string password)
         {
             FKhachHang fKhachHang = new FKhachHang();
-            KhachHang khach = new KhachHang() {Email = email, TenKH = name, SDT = contact, DiaChi = address, Password = password };
+            KhachHang khach = new KhachHang() { Email = email, TenKH = name, SDT = contact, DiaChi = address, Password = password };
             fKhachHang.ThemKhachHang(khach);
             return View("Login");
         }
@@ -245,11 +246,41 @@ namespace BTL_ASP.Controllers
         // GET: CustomerInfo
         public ActionResult CustomerInfo()
         {
-            KhachHang khachHang = (KhachHang) Session["KhachHang"];
+            KhachHang khachHang = (KhachHang)Session["KhachHang"];
             khachHang.NgaySinh = khachHang.NgaySinh;
             ViewBag.KhachHang = khachHang;
             return View();
         }
+
+        public ActionResult History(int page = 1, int pageSize = 10)
+        {
+            FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();
+            var model = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID,page,pageSize);
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public string ChangePassword(string oldpassword, string password)
+        {
+            if(((KhachHang)Session["KhachHang"]).Password == oldpassword)
+            {
+                FKhachHang fKhachHang = new FKhachHang();
+                if(fKhachHang.ThayDoiMatKhau(((KhachHang)Session["KhachHang"]).ID, password))
+                {
+                    return "ok";
+                }
+                else
+                {
+                    return "not";
+                }    
+                
+            }
+            else
+            {
+                return "not";
+            }
+        }
+
 
         // GET: ForgotPassword
         public ActionResult ForgotPassword()

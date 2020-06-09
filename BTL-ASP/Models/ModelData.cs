@@ -9,6 +9,7 @@
     using System.Text.RegularExpressions;
     using PagedList;
     using Microsoft.SqlServer.Server;
+    using System.Diagnostics;
 
     public partial class ModelData : DbContext
     {
@@ -24,6 +25,7 @@
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SanPhamGioHang> SanPhamGioHangs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<LichSuMuaHang> LichSuMuaHangs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -91,6 +93,10 @@
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<SanPhamGioHang>()
+                .Property(e => e.ThanhTien)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<LichSuMuaHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
         }
@@ -163,6 +169,20 @@
             return context.KhachHangs.Find(id);
         }
 
+        public bool ThayDoiMatKhau(int id,string password)
+        {
+            KhachHang khach = context.KhachHangs.Where(x => x.ID == id).FirstOrDefault();
+            if(khach != null)
+            {
+                khach.Password = password;
+                context.SaveChanges();
+                return true;
+            }   
+            else
+            {
+                return false;
+            }    
+        }
     }
 
     public class FAnhSanPham
@@ -279,5 +299,12 @@
             return gioHang;
         }
     }
-
+    public class FLichSuMuaHang
+    {
+        private ModelData context = new ModelData();
+        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
+        {
+            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderBy(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
+        }
+    }
 }

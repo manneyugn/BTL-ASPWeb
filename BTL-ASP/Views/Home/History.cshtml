@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+@model PagedList.IPagedList<BTL_ASP.Models.LichSuMuaHang>
+@using PagedList.Mvc;
+
+<div class="inner">
+    <table>
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Ngày mua</th>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái đơn hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BTL_ASP.Models.LichSuMuaHang a in Model)
+            {
+                <tr>
+                    <td>@a.ID</td>
+                    <td>@a.NgayTao</td>
+                    <td>@a.TenSP</td>
+                    <td>@a.SoLuong</td>
+                    <td>@a.ThanhTien</td>
+                    <td>@a.TinhTrang</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="pagination justify-content-center" style="margin-top: 40px;">
+    @Html.PagedListPager(Model,page => Url.Action("History", "Home", new { page }) , new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link", "inactiveLink" } })
+</div>
+<script>
+    $('.pagination').on('click', '.page-link', function () {
+        try {
+            if (!this.classList.contains('active')) {
+                $.get(this.childNodes[0].href).done(function (data) {
+                    $('.history').html(data);
+                });
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+</script>
