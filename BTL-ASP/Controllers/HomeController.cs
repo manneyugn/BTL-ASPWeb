@@ -358,6 +358,7 @@ namespace BTL_ASP.Controllers
         {
             FGioHang fGioHang = new FGioHang();
             Session["GioHang"] = fGioHang.Update((GioHang)Session["GioHang"], name, phone, mail, address);
+            ViewBag.GioHang = (GioHang)Session["GioHang"];
             return View();
         }
     }
