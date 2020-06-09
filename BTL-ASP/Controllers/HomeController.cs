@@ -333,7 +333,25 @@ namespace BTL_ASP.Controllers
         [HttpGet]
         public ActionResult Payment()
         {
-            return View();
+            if (Session["GioHang"] == null )
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                GioHang gioHang = (GioHang)Session["GioHang"];
+                ViewBag.GioHang = gioHang;
+                return View();
+            }
+        }
+        public ActionResult Checkout()
+        {
+            string IDCart = Request.Cookies["IDCart"].Value;
+            Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(-1);
+            Session["GioHang"] = null;
+            FGioHang fGioHang = new FGioHang();
+            fGioHang.EndGioHang(Convert.ToInt32(IDCart));
+            return RedirectToAction("Home");
         }
         [HttpPost]
         public ActionResult Payment(string name, string phone, string mail, string address)

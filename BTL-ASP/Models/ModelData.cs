@@ -278,6 +278,10 @@
                 return String.Format(@"{{""TongTien"":{0}}}", gioHang.TongTien);
             }    
         }
+        public IEnumerable<SanPhamGioHang> GetSanPhamGioHang(int id)
+        {
+            return context.SanPhamGioHangs.Where(x => x.IDGH == id);
+        }
     }
     public class FGioHang
     {
@@ -315,6 +319,12 @@
             context.SaveChanges();
             return gioHang;
         }
+        public void EndGioHang(int iD)
+        {
+            string s = "Chưa Hoàn Thành";
+            GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
+            gioHang.TinhTrang = "Hoàn Thành";
+            context.SaveChanges();
 
         public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
         {
