@@ -348,13 +348,18 @@ namespace BTL_ASP.Controllers
                 return View();
             }
         }
+        [HttpPost]
         public ActionResult Checkout()
         {
-            string IDCart = Request.Cookies["IDCart"].Value;
-            Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(-1);
+            if (Request.Cookies["IDCart"] != null)
+            {
+                Response.Cookies["IDCart"].Expires = DateTime.Now.AddDays(-1);
+            }
+            GioHang gioHang = (GioHang)Session["GioHang"];
+            int IDCart = gioHang.ID;
             Session["GioHang"] = null;
             FGioHang fGioHang = new FGioHang();
-            fGioHang.EndGioHang(Convert.ToInt32(IDCart));
+            fGioHang.EndGioHang(IDCart);
             return RedirectToAction("Home");
         }
         [HttpPost]

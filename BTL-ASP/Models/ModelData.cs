@@ -326,6 +326,7 @@
             gioHang.TinhTrang = "Hoàn Thành";
             context.SaveChanges();
         }
+
         public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
         {
             gioHang.DiaChi = address;
