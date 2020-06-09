@@ -169,19 +169,19 @@
             return context.KhachHangs.Find(id);
         }
 
-        public bool ThayDoiMatKhau(int id,string password)
+        public bool ThayDoiMatKhau(int id, string password)
         {
             KhachHang khach = context.KhachHangs.Where(x => x.ID == id).FirstOrDefault();
-            if(khach != null)
+            if (khach != null)
             {
                 khach.Password = password;
                 context.SaveChanges();
                 return true;
-            }   
+            }
             else
             {
                 return false;
-            }    
+            }
         }
     }
 
@@ -247,7 +247,7 @@
         }
         public string ChangeItem(int id, int idgh, int soluong)
         {
-            if (soLuong > 0)
+            if (soluong > 0)
             {
                 SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
                 spgh.SoLuong = soluong;
@@ -276,7 +276,11 @@
                 gioHang.TongTien = thanhTien;
                 context.SaveChanges();
                 return String.Format(@"{{""TongTien"":{0}}}", gioHang.TongTien);
-            }    
+            }
+        }
+        public IEnumerable<SanPhamGioHang> GetSanPhamGioHang(int id)
+        {
+            return context.SanPhamGioHangs.Where(x => x.IDGH == id);
         }
     }
     public class FGioHang
@@ -315,13 +319,29 @@
             context.SaveChanges();
             return gioHang;
         }
+        public void EndGioHang(int iD)
+        {
+            string s = "Chưa Hoàn Thành";
+            GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
+            gioHang.TinhTrang = "Hoàn Thành";
+            context.SaveChanges();
+        }
+        public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
+        {
+            gioHang.DiaChi = address;
+            gioHang.TenKH = name;
+            gioHang.SDT = phone;
+            gioHang.Email = mail;
+            context.SaveChanges();
+            return gioHang;
+        }
     }
     public class FLichSuMuaHang
     {
         private ModelData context = new ModelData();
-        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
+        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id, int page, int pageSize)
         {
-            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderBy(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
+            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderByDescending(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);
         }
     }
 }
