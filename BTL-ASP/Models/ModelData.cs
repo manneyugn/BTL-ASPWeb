@@ -169,19 +169,19 @@
             return context.KhachHangs.Find(id);
         }
 
-        public bool ThayDoiMatKhau(int id,string password)
+        public bool ThayDoiMatKhau(int id, string password)
         {
             KhachHang khach = context.KhachHangs.Where(x => x.ID == id).FirstOrDefault();
-            if(khach != null)
+            if (khach != null)
             {
                 khach.Password = password;
                 context.SaveChanges();
                 return true;
-            }   
+            }
             else
             {
                 return false;
-            }    
+            }
         }
     }
 
@@ -276,7 +276,7 @@
                 gioHang.TongTien = thanhTien;
                 context.SaveChanges();
                 return String.Format(@"{{""TongTien"":{0}}}", gioHang.TongTien);
-            }    
+            }
         }
         public IEnumerable<SanPhamGioHang> GetSanPhamGioHang(int id)
         {
@@ -340,9 +340,9 @@
     public class FLichSuMuaHang
     {
         private ModelData context = new ModelData();
-        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id,int page, int pageSize)
+        public IEnumerable<LichSuMuaHang> LichSuKhachHang(int id, int page, int pageSize)
         {
-            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderBy(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);     
+            return context.LichSuMuaHangs.Where(x => x.IDKH == id).OrderByDescending(x => x.NgayTao).ThenBy(x => x.TenSP).AsNoTracking().ToPagedList(page, pageSize);
         }
     }
 }
