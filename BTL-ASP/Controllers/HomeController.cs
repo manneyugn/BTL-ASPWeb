@@ -217,7 +217,11 @@ namespace BTL_ASP.Controllers
         {
             GioHang gioHang = (GioHang)Session["GioHang"];
             FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
-            return fSanPhamGioHang.ChangeItem(idSanPham, gioHang.ID, soLuong);
+            string json = fSanPhamGioHang.ChangeItem(idSanPham, gioHang.ID, soLuong);
+            FGioHang fGioHang = new FGioHang();
+            Session["GioHang"] = db.GioHangs.Where(a => a.ID == gioHang.ID).FirstOrDefault();
+            return json;
+                
         }
 
         // GET: Product
