@@ -325,6 +325,15 @@
             GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
             gioHang.TinhTrang = "Hoàn Thành";
             context.SaveChanges();
+
+        public GioHang Update(GioHang gioHang, string name, string phone, string mail, string address)
+        {
+            gioHang.DiaChi = address;
+            gioHang.TenKH = name;
+            gioHang.SDT = phone;
+            gioHang.Email = mail;
+            context.SaveChanges();
+            return gioHang;
         }
     }
     public class FLichSuMuaHang

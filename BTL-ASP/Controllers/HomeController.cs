@@ -12,7 +12,7 @@ namespace BTL_ASP.Controllers
     public class HomeController : Controller
     {
         ModelData db = new ModelData();
-       
+
         public string GetKhachHang()
         {
             if (Request.Cookies["ID"] != null) {
@@ -34,7 +34,7 @@ namespace BTL_ASP.Controllers
                 htmlStr.Append(@"</li>");
                 return htmlStr.ToString();
             }
-            else if(Session["KhachHang"] != null)
+            else if (Session["KhachHang"] != null)
             {
                 KhachHang kh = (KhachHang)Session["KhachHang"];
                 FGioHang fGioHang = new FGioHang();
@@ -50,7 +50,7 @@ namespace BTL_ASP.Controllers
                 htmlStr.Append(@"</div>");
                 htmlStr.Append(@"</li>");
                 return htmlStr.ToString();
-            }    
+            }
             else
             {
                 return @"<li class=""header-item""><a href =""/Home/Login"">Login</a></li>";
@@ -88,8 +88,8 @@ namespace BTL_ASP.Controllers
             FKhachHang fKhachHang = new FKhachHang();
             KhachHang x = fKhachHang.TimKhachHang(id, password);
             if (x != null)
-            {               
-                if(hold == true)
+            {
+                if (hold == true)
                 {
                     Response.Cookies["ID"].Value = x.ID.ToString();
                     Response.Cookies["ID"].Expires = DateTime.Now.AddDays(1);
@@ -171,7 +171,7 @@ namespace BTL_ASP.Controllers
             FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
             FGioHang fGioHang = new FGioHang();
             var sp = fSanPham.FindSanPham(masp);
-            if(sp.TenSP.Length > 40)
+            if (sp.TenSP.Length > 40)
             {
                 sp.TenSP = sp.TenSP.Substring(0, 35) + "...";
             }
@@ -181,7 +181,7 @@ namespace BTL_ASP.Controllers
             {
                 KhachHang x = (KhachHang)Session["KhachHang"];
                 if (gioHang == null)
-                { 
+                {
                     gioHang = fGioHang.NewGH(x);
                 }
                 sanPhamGioHang = fSanPhamGioHang.AddItem(masp, gioHang.ID, soLuong);
@@ -213,7 +213,7 @@ namespace BTL_ASP.Controllers
         }
 
         [HttpPost]
-        public string UpdateGioHang(int idSanPham,int soLuong)
+        public string UpdateGioHang(int idSanPham, int soLuong)
         {
             GioHang gioHang = (GioHang)Session["GioHang"];
             FSanPhamGioHang fSanPhamGioHang = new FSanPhamGioHang();
@@ -255,25 +255,25 @@ namespace BTL_ASP.Controllers
         public ActionResult History(int page = 1, int pageSize = 4)
         {
             FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();
-            var model = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID,page,pageSize);
+            var model = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID, page, pageSize);
             return PartialView(model);
         }
 
         [HttpPost]
         public string ChangePassword(string oldpassword, string password)
         {
-            if(((KhachHang)Session["KhachHang"]).Password == oldpassword)
+            if (((KhachHang)Session["KhachHang"]).Password == oldpassword)
             {
                 FKhachHang fKhachHang = new FKhachHang();
-                if(fKhachHang.ThayDoiMatKhau(((KhachHang)Session["KhachHang"]).ID, password))
+                if (fKhachHang.ThayDoiMatKhau(((KhachHang)Session["KhachHang"]).ID, password))
                 {
                     return "ok";
                 }
                 else
                 {
                     return "not";
-                }    
-                
+                }
+
             }
             else
             {
@@ -299,9 +299,38 @@ namespace BTL_ASP.Controllers
 
         public ActionResult Shipping()
         {
-            return View();
+            if (Session["GioHang"] != null)
+            {
+                KhachHang khachHang = (KhachHang)Session["KhachHang"];
+                if (khachHang != null)
+                {
+                    GioHang gioHang = (GioHang)Session["GioHang"];
+                    gioHang.DiaChi = khachHang.DiaChi;
+                    gioHang.SDT = khachHang.SDT;
+                    gioHang.TenKH = khachHang.TenKH;
+                    gioHang.Email = khachHang.Email;
+                    db.SaveChanges();
+                    return View(gioHang);
+                }
+                else
+                {
+                    if(((GioHang)Session["GioHang"]).TenKH == null)
+                    {
+                        return View();
+                    }    
+                    else
+                    {
+                        GioHang gioHang = (GioHang)Session["GioHang"];
+                        return View(gioHang);
+                    }    
+                }    
+            }
+            else
+            {
+                return View();
+            }
         }
-
+        [HttpGet]
         public ActionResult Payment()
         {
             if (Session["GioHang"] == null )
@@ -323,6 +352,13 @@ namespace BTL_ASP.Controllers
             FGioHang fGioHang = new FGioHang();
             fGioHang.EndGioHang(Convert.ToInt32(IDCart));
             return RedirectToAction("Home");
+        }
+        [HttpPost]
+        public ActionResult Payment(string name, string phone, string mail, string address)
+        {
+            FGioHang fGioHang = new FGioHang();
+            Session["GioHang"] = fGioHang.Update((GioHang)Session["GioHang"], name, phone, mail, address);
+            return View();
         }
     }
 }
