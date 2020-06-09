@@ -1,8 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using BTL_ASP.Models;
 
 <link rel="stylesheet" href="~/Content/styles/payment.css">
 
@@ -82,35 +83,35 @@
             </div>
             <div class="styles__Right-hcztvk-2 jFEIKb">
                 <div class="ShippingAddress__StyledShippingAddress-sc-12icqkv-0 fxjiAa">
-                    <div class="title"><span>Địa chỉ giao hàng</span><a href="/checkout/shipping">Sửa</a></div>
+                    <div class="title"><span>Địa chỉ giao hàng</span><a href="/Home/Shipping">Sửa</a></div>
                     <div class="address">
-                        <span class="nameaaa">Trần Đức Dũng</span><span class="street">
-                            Số Nhà 54 Ngõ
-                            200 Hoàng Sâm, Phường Nghĩa Đô, Quận Cầu Giấy, Hà Nội Việt Nam
-                        </span><span class="phone">Điện thoại: 0914203450</span>
+                        <span class="nameaaa">@ViewBag.GioHang.TenKH</span><span class="street">
+                            @ViewBag.GioHang.DiaChi
+                        </span><span class="phone">Điện thoại: @ViewBag.GioHang.SDT</span>
                     </div>
                 </div>
                 <div class="OrderSummary__StyledOrderSummary-ue7sy3-0 UHbjr">
                     <div class="title">
-                        <span>Đơn hàng (1 sản phẩm)</span><a href="/checkout/cart?src=checkout_payment">Sửa</a>
+                        <span>Đơn hàng (@ViewBag.GioHang.SanPhamGioHangs.Count sản phẩm)</span><a href="/Home/ShopCart">Sửa</a>
                     </div>
                     <div class="cart">
                         <div class="product">
+                            @foreach (SanPhamGioHang sp in ViewBag.GioHang.SanPhamGioHangs)
+                            {
                             <div class="OrderSummary__StyledItem-ue7sy3-1 iylcMU">
                                 <div class="info">
-                                    <strong class="qty">1 x</strong><a href="/can-suc-khoe-dien-tu-xiaomi-millet-weight-scale-2-p23206913.html?spid=23206914"
-                                                                       target="_blank" class="product-name">
-                                        Cân Sức Khỏe Điện Tử Xiaomi Millet
-                                        Weight Scale 2
-                                    </a>
+                                    <strong class="qty">@sp.SoLuong x</strong>
+                                    <a href="/Home/Product/@sp.IDSP"
+                                       target="_blank" class="product-name">@sp.SanPham.TenSP</a>
                                 </div>
-                                <div class="price">306.000 ₫</div>
+                                <div class="price">$@sp.SanPham.Gia</div>
                             </div>
-                        </div>
+                            }
+                            </div>
                         <div class="price-summary">
                             <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
                                 <div class="nameaaa">Tạm tính</div>
-                                <div class="value">306.000đ</div>
+                                <div class="value">$@ViewBag.GioHang.TongTien</div>
                             </div>
                             <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
                                 <div class="nameaaa">Phí vận chuyển</div>
@@ -118,7 +119,7 @@
                             </div>
                             <div class="total">
                                 <div class="nameaaa">Thành tiền:</div>
-                                <div class="value">306.000 ₫<i>(Đã bao gồm VAT nếu có)</i></div>
+                                <div class="value">$@ViewBag.GioHang.TongTien<i>(Đã bao gồm VAT nếu có)</i></div>
                             </div>
                         </div>
                     </div>
@@ -131,22 +132,3 @@
         </div>
     </main>
 </div>
-<script>
-    function show() {
-        document.querySelector('.info').style.display = 'block';
-    }
-    function changeAddress() {
-        document.querySelector('.info').style.display = 'block';
-        document.getElementsByName('name')[0].value = document.getElementById("name").innerText;
-        document.getElementsByName('phone')[0].value = document.getElementById("phone").innerText.substring(4);
-        document.getElementsByName('mail')[0].value = document.getElementById("mail").innerText.substring(6);
-        document.getElementsByName('address')[0].value = document.getElementById("address").innerText.substring(8);
-    }
-    function select(e) {
-        e.childNodes[1].checked = true;
-        document.getElementsByName('name')[0].value = "";
-        document.getElementsByName('phone')[0].value = "";
-        document.getElementsByName('mail')[0].value = "";
-        document.getElementsByName('address')[0].value = "";
-    }
-</script>

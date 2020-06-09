@@ -247,7 +247,7 @@
         }
         public string ChangeItem(int id, int idgh, int soluong)
         {
-            if (soLuong > 0)
+            if (soluong > 0)
             {
                 SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
                 spgh.SoLuong = soluong;
@@ -277,6 +277,10 @@
                 context.SaveChanges();
                 return String.Format(@"{{""TongTien"":{0}}}", gioHang.TongTien);
             }    
+        }
+        public IEnumerable<SanPhamGioHang> GetSanPhamGioHang(int id)
+        {
+            return context.SanPhamGioHangs.Where(x => x.IDGH == id);
         }
     }
     public class FGioHang
@@ -314,6 +318,13 @@
             context.GioHangs.Add(gioHang);
             context.SaveChanges();
             return gioHang;
+        }
+        public void EndGioHang(int iD)
+        {
+            string s = "Chưa Hoàn Thành";
+            GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
+            gioHang.TinhTrang = "Hoàn Thành";
+            context.SaveChanges();
         }
     }
     public class FLichSuMuaHang
