@@ -97,6 +97,13 @@
 
         function removeRow(e) {
             (e.parentElement).parentElement.style.display = 'none';
+            $.post('@Url.Action("UpdateGioHang", "Home")', {
+                    idSanPham: parent.parentElement.getElementsByTagName('td')[1].innerText, soLuong: 0
+                }, function (data) {
+                        console.log(data);
+                        var x = JSON.parse(data);
+                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
+                });
         }
     </script>
 }

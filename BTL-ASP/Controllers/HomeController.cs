@@ -252,7 +252,7 @@ namespace BTL_ASP.Controllers
             return View();
         }
 
-        public ActionResult History(int page = 1, int pageSize = 10)
+        public ActionResult History(int page = 1, int pageSize = 4)
         {
             FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();
             var model = fLichSuMuaHang.LichSuKhachHang(((KhachHang)Session["KhachHang"]).ID,page,pageSize);

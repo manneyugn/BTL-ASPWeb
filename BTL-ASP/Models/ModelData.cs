@@ -247,19 +247,36 @@
         }
         public string ChangeItem(int id, int idgh, int soluong)
         {
-            SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
-            spgh.SoLuong = soluong;
-            spgh.ThanhTien = soluong * spgh.DonGia;
-            context.SaveChanges();
-            GioHang gioHang = context.GioHangs.Where(a => a.ID == idgh).FirstOrDefault();
-            decimal thanhTien = 0;
-            foreach (SanPhamGioHang sp in gioHang.SanPhamGioHangs)
+            if (soLuong > 0)
             {
-                thanhTien += sp.ThanhTien ?? 0;
+                SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
+                spgh.SoLuong = soluong;
+                spgh.ThanhTien = soluong * spgh.DonGia;
+                context.SaveChanges();
+                GioHang gioHang = context.GioHangs.Where(a => a.ID == idgh).FirstOrDefault();
+                decimal thanhTien = 0;
+                foreach (SanPhamGioHang sp in gioHang.SanPhamGioHangs)
+                {
+                    thanhTien += sp.ThanhTien ?? 0;
+                }
+                gioHang.TongTien = thanhTien;
+                context.SaveChanges();
+                return String.Format(@"{{""TongTien"":{0}, ""ThanhTien"":{1}}}", gioHang.TongTien, spgh.ThanhTien);
             }
-            gioHang.TongTien = thanhTien;
-            context.SaveChanges();
-            return String.Format(@"{{""TongTien"":{0}, ""ThanhTien"":{1}}}",gioHang.TongTien, spgh.ThanhTien);
+            else
+            {
+                SanPhamGioHang spgh = context.SanPhamGioHangs.Where(a => a.IDSP == id && a.IDGH == idgh).FirstOrDefault();
+                context.SanPhamGioHangs.Remove(spgh);
+                GioHang gioHang = context.GioHangs.Where(a => a.ID == idgh).FirstOrDefault();
+                decimal thanhTien = 0;
+                foreach (SanPhamGioHang sp in gioHang.SanPhamGioHangs)
+                {
+                    thanhTien += sp.ThanhTien ?? 0;
+                }
+                gioHang.TongTien = thanhTien;
+                context.SaveChanges();
+                return String.Format(@"{{""TongTien"":{0}}}", gioHang.TongTien);
+            }    
         }
     }
     public class FGioHang
