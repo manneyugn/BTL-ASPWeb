@@ -17,12 +17,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Số thứ tự</th>
-                                        <th>Mã sản phẩm</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Số lượng</th>
-                                        <th>Thành tiền</th>
-                                        <th>Huỷ</th>
+                                        <th>Index</th>
+                                        <th>Product's number</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Cancle</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,8 +59,8 @@
                                 sum = sum + sp.ThanhTien ?? 0;
                             }
                         }
-                        <div class="total">Tổng tiền: $@sum</div>
-                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Shipping", "Home")'">Mua hàng</button>
+                        <div class="total">Total: $@sum</div>
+                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Shipping", "Home")'">Buy</button>
                     </div>
                 </div>
             </div>

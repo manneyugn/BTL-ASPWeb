@@ -13,63 +13,63 @@
         KhachHang khachHang = ViewBag.KhachHang;
 
         <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
-        <div> <span class="T">SĐT</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
-        <div> <span class="T">Họ và tên </span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
+        <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
+        <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
         <div>
             @if (khachHang.GioiTinh == "Nam")
             {
-                <span class="T">Giới tính</span>
+                <span class="T">Sex</span>
                 <span>
-                    Nam <input class="radiobt " type="radio" name="gender" checked>
-                    Nữ  <input class="radiobt" type="radio" name="gender">
+                    Male <input class="radiobt " type="radio" name="gender" checked>
+                    Female  <input class="radiobt" type="radio" name="gender">
                 </span>
             }
             else
             {
-                <span class="T">Giới tính</span> <span>
-                    Nam <input class="radiobt " type="radio" name="gender">
-                    Nữ  <input class="radiobt" type="radio" name="gender" checked>
+                <span class="T">Sex</span> <span>
+                    Male <input class="radiobt " type="radio" name="gender">
+                    Female  <input class="radiobt" type="radio" name="gender" checked>
                 </span>
             }
         </div>
-        <div> <span class="T">Ngày sinh</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
-        <div> <span class="T">Ngày đăng ký</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        <div> <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
     }
     <div class="change-password-div" onClick="theFuntion()">
-        <h5>Thay đổi mật khẩu</h5>
+        <h5>Change password</h5>
     </div>
     <div class="password-changer">
         <div>
-            <label class="T" for="old-password"> Mật khẩu cũ</label>
+            <label class="T" for="old-password"> Old password</label>
             <input class="in" type="password" id="old-password">
         </div>
         <div>
-            <label class="T" for="password"> Nhập mật khẩu</label>
+            <label class="T" for="password"> Password</label>
             <input class="in" type="password" id="password">
         </div>
         <div>
-            <label class="T" for="re-password"> Nhập lại mật khẩu</label>
+            <label class="T" for="re-password"> Re-password</label>
             <input class="in" type="password" id="re-password">
         </div>
         <div class="alert alert-success" id="alert-success" style="display:none">
-            <strong>Thành công!</strong> Mật khẩu của bạn đã được đổi.
+            <strong>Success!</strong> Your password is changed.
         </div>
         <div class="alert alert-danger" id="alert-fail" style="display:none">
-            <strong>Thất bại!</strong> Đổi mật khẩu thất bại.
+            <strong>Fail!</strong> Password is not change.
         </div>
         <div style="text-align: center;">
             <input class="buttonluu" type="button"
-                   value="Lưu lại đổi mật khẩu" onclick="changePassword()">
+                   value="Save password" onclick="changePassword()">
         </div>
     </div>
-    <div style="text-align: center;"> <input class="button" type="button" value="Thay đổi thông tin"> </div>
+    <div style="text-align: center;"> <input class="button" type="button" value="Save info"> </div>
 </div>
 <div class="shopping-history">
     <div class="TTTK">
-        <h1>Lịch sử mua hàng</h1>
+        <h1>Purchase history</h1>
     </div>
     <div class="styles__StyledAccountListOrder-sc-6t66uv-0 glOjBk">
-        <div class="heading">Đơn hàng của tôi</div>
+        <div class="heading">My order</div>
         <div class="history" id="history">
             @Html.Action("History")
         </div>

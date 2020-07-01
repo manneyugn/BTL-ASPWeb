@@ -11,26 +11,26 @@
 @if (Model != null)
 {
     <div class="content-wrapper">
-        <p class="h4 text-header">CHỌN ĐỊA CHỈ MUA HÀNG</p>
+        <p class="h4 text-header">SHIPPING ADDRESS</p>
         <div class="default-info border">
             <p class="user-name" id="name">@(((GioHang)Model).TenKH)</p>
-            <p class="user-info" id="address">Địa chỉ:@(((GioHang)Model).DiaChi)</p>
+            <p class="user-info" id="address">Address:@(((GioHang)Model).DiaChi)</p>
             <p class="user-info" id="mail">Email:@(((GioHang)Model).Email)</p>
-            <p class="user-info" id="phone">SĐT:@(((GioHang)Model).SDT)</p>
+            <p class="user-info" id="phone">Phone's number:@(((GioHang)Model).SDT)</p>
             <div class="action">
                 <input type="button" class="btn btn-primary btn-sm" value="Giao hàng đến địa chỉ này" onclick="location.href='@Url.Action("Payment", "Home")'" />
                 <input type="button" class="btn btn-light btn-sm" value="Sửa" onclick="changeAddress()" />
             </div>
         </div>
-        <p class="default-info">Không phải địa chỉ này ? <a href="javascript:show();">Giao hàng đến địa chỉ khác</a></p>
+        <p class="default-info">Don't want us shipping to this address? <a href="javascript:show();">Giao hàng đến địa chỉ khác</a></p>
         <div class="info">
             <form action="/Home/Payment" method="post">
                 <div class="form">
                     <div class="input">
-                        <label for="name">Họ tên:</label><input type="text" class="form-control" name="name">
-                        <label for="phone">SĐT:</label><input type="number" class="form-control" name="phone">
+                        <label for="name">Name:</label><input type="text" class="form-control" name="name">
+                        <label for="phone">Phone's number:</label><input type="number" class="form-control" name="phone">
                         <label for="mail">Email:</label><input type="text" class="form-control" name="mail">
-                        <label for="address">Địa chỉ:</label><textarea class="form-control" name="address"></textarea>
+                        <label for="address">Address:</label><textarea class="form-control" name="address"></textarea>
                     </div>
                     <div class="text-center">
                         <input type="submit" class="btn btn-primary" value="Xác nhận" style="margin-top:20px;">
@@ -59,15 +59,15 @@
 else
 {
     <div class="content-wrapper">
-        <p class="h4 text-header">CHỌN ĐỊA CHỈ MUA HÀNG</p>
+        <p class="h4 text-header">SHIPPING ADDRESS</p>
         <div class="info" style="display:block">
             <form action="/Home/Payment" method="post">
                 <div class="form">
                     <div class="input">
-                        <label for="name">Họ tên:</label><input type="text" class="form-control" name="name">
-                        <label for="phone">SĐT:</label><input type="number" class="form-control" name="phone">
+                        <label for="name">Name:</label><input type="text" class="form-control" name="name">
+                        <label for="phone">Phone's number:</label><input type="number" class="form-control" name="phone">
                         <label for="mail">Email:</label><input type="text" class="form-control" name="mail">
-                        <label for="address">Địa chỉ:</label><textarea class="form-control" name="address"></textarea>
+                        <label for="address">Address:</label><textarea class="form-control" name="address"></textarea>
                     </div>
                     <div class="text-center">
                         <input type="submit" class="btn btn-primary" value="Xác nhận" style="margin-top:20px;">
