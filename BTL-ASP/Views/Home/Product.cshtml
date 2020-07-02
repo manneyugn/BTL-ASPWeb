@@ -8,45 +8,46 @@
 
 @Styles.Render("~/Content/styles/product.css")
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2 pr-5 pl-0">
-            <div class="imageproduct"><img style="width: 100%;"></div>
-            <div class="row">
-                @foreach (AnhSanPham anh in (ViewBag.SanPham.AnhSanPhams as HashSet<AnhSanPham>))
-                {
-                    <div class="moreimageproduct col-md-2 "><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh" style="width: 100%;"></div>
-                }
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 pr-5 pl-0">
+                <div class="imageproduct"><img style="width: 100%;"></div>
+                <div class="row">
+                    @foreach (AnhSanPham anh in (ViewBag.SanPham.AnhSanPhams as HashSet<AnhSanPham>))
+                    {
+                        <div class="moreimageproduct col-md-2 "><img src="@Url.Content("~/Content/images/images/")@anh.LinkAnh" style="width: 100%;"></div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <form action="/Home/Product" method="post">
+                    <div class="nameproduct">@ViewBag.SanPham.TenSP</div>
+                    <input class="id" id="masp" name="masp" value="@ViewBag.SanPham.ID" style="display:none;">
+                    <div class="price">$@ViewBag.SanPham.Gia USD</div>
+                    <div class="number" style=" font-size: 20px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-bottom: 10px">
+                        Quantity
+                        <input class="number-input" id="soluong" name="soluong" type="number" value="1" min="1" onkeydown="return false" style="text-align: center;max-width: 60px;margin-left: 10px;">
+                    </div>
+                    <button class="buttonbuy" type="submit" onclick="save()">Buy</button>
+                    <div>
+                        <h4>alluring desolation</h4>
+                        <p>
+                            Deserts are multifaceted gems. They are pressure incarnate; oppressive heat and bitter cold cut unprepared travelers like diamond shards. Clear skies and beautiful colors also punctuate their harsh experience. Eventually, as time and necessity encourage exploration, people master that arid beauty.
+
+                            Cultures that develop among the sands rely on will, imagination, and closely held skill to survive. That combination is mysterious and magical, encouraging spectacular tales to form amidst dreamlike drifts. Once those legends escape, they spread to captivate audiences around the world.
+                        </p>
+                        <h4>the oasis</h4>
+                        <p>
+                            Oases define desert existence. They shape trade routes, politics, and folklore in a way that the West will never truly grasp. Most importantly, they provide resources and respite for life — even some agriculture.
+
+                            Hidden oases and constructs are a storytelling staple. Even butchered translations, like those found in Arabian Nights, are devoured by readers around the world. KAT Oasis respectfully adapts that concept to a modern digital interface — your keyboard.
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-md-4 col-md-offset-2">
-            <form action="/Home/Product" method="post">
-                <div class="nameproduct">@ViewBag.SanPham.TenSP</div>
-                <input class="id" id="masp" name="masp" value="@ViewBag.SanPham.ID" style="display:none;">
-                <div class="price">$@ViewBag.SanPham.Gia USD</div>
-                <div class="number" style=" font-size: 20px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-bottom: 10px">
-                    Quantity
-                    <input class="number-input" id="soluong" name="soluong" type="number" value="1" min="1" onkeydown="return false" style="text-align: center;max-width: 60px;margin-left: 10px;">
-                </div>
-                <button class="buttonbuy" type="submit" onclick="save()">Buy</button>
-                <div>
-                    <h4>alluring desolation</h4>
-                    <p>
-                        Deserts are multifaceted gems. They are pressure incarnate; oppressive heat and bitter cold cut unprepared travelers like diamond shards. Clear skies and beautiful colors also punctuate their harsh experience. Eventually, as time and necessity encourage exploration, people master that arid beauty.
-
-                        Cultures that develop among the sands rely on will, imagination, and closely held skill to survive. That combination is mysterious and magical, encouraging spectacular tales to form amidst dreamlike drifts. Once those legends escape, they spread to captivate audiences around the world.
-                    </p>
-                    <h4>the oasis</h4>
-                    <p>
-                        Oases define desert existence. They shape trade routes, politics, and folklore in a way that the West will never truly grasp. Most importantly, they provide resources and respite for life — even some agriculture.
-
-                        Hidden oases and constructs are a storytelling staple. Even butchered translations, like those found in Arabian Nights, are devoured by readers around the world. KAT Oasis respectfully adapts that concept to a modern digital interface — your keyboard.
-                    </p>
-                </div>
-            </form>
-        </div>
+        <a class="chatbubble" href="https://www.messenger.com/t/sonnam99" target="_blank"><img class="bubble-img" src="~/Content/images/items/messenger.png"></a>
     </div>
-</div>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script>
     $('.moreimageproduct').click(function () {
