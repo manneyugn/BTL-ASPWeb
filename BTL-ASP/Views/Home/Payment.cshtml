@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="~/Content/styles/payment.css">
 
 <div class="content-wrapper">
-    <p class="h4 text-header">THANH TOÁN VÀ ĐẶT MUA</p>
+    <p class="h4 text-header">PAYMENT</p>
     <main style="background: rgb(255, 255, 255);">
         <div class="Container-itwfbd-0 jFkAwY" style="display: flex;width: 1200px;flex-wrap: wrap;margin: auto;margin-top: 30px;">
             <div class="styles__Left-hcztvk-1 ggAFge">
                 <div class="styles__Section-hcztvk-0 fwsEni">
-                    <h3 class="title">1. Chọn hình thức giao hàng</h3>
+                    <h3 class="title">1. Shipping method</h3>
                     <div class="ShippingMethods__StyledShippingMethods-sc-10myobp-0 dnmKst">
                         <div class="ShippingMethods__StyledMethod-sc-10myobp-1 jvJKXm">
                             <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
@@ -22,7 +22,7 @@
                                     <div class="label-no-shippments">
 
                                         <div>
-                                            <span class="no-shipping-fee">Miễn phí</span><span class="method-name">Giao tiêu chuẩn</span>
+                                            <span class="no-shipping-fee">Free</span><span class="method-name">Standard shipping</span>
                                         </div>
                                     </div>
                                 </span>
@@ -35,7 +35,7 @@
                                     <div class="label-no-shippments">
 
                                         <div>
-                                            <span class="no-shipping-fee">Miễn phí</span><span class="method-name">Giao hàng nhanh</span>
+                                            <span class="no-shipping-fee">Free</span><span class="method-name">Fast shipping</span>
                                         </div>
                                     </div>
                                 </span>
@@ -44,13 +44,13 @@
                     </div>
                 </div>
                 <div class="styles__Section-hcztvk-0 fwsEni">
-                    <h3 class="title">2. Chọn hình thức thanh toán</h3>
+                    <h3 class="title">2. Payment method</h3>
                     <div class="styles__StyledPaymentMethods-sc-1u5r3pb-0 fJEQQi">
                         <ul class="list">
                             <li class="styles__StyledMethod-sc-1u5r3pb-1 fTvtIP">
                                 <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
                                     <input type="radio"
-                                           readonly="" name="payment-methods" value="cybersource"><span class="radio-fake"></span><span class="label">Thanh toán tiền mặt khi nhận hàng</span>
+                                           readonly="" name="payment-methods" value="cybersource"><span class="radio-fake"></span><span class="label">COD</span>
                                 </label>
                                 <div class="VirtualCredit__StyledCredit-sc-1kid5w3-0 ZLPVe"></div>
                             </li>
@@ -58,8 +58,7 @@
                                 <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
                                     <input type="radio"
                                            readonly="" name="payment-methods" value="cybersource"><span class="radio-fake"></span><span class="label">
-                                        Thanh toán bằng thẻ quốc tế
-                                        Visa, Master, JCB
+                                        Via Visa, Master, JCB
                                     </span>
                                 </label>
                                 <div class="VirtualCredit__StyledCredit-sc-1kid5w3-0 ZLPVe"></div>
@@ -68,8 +67,8 @@
                                 <label class="RadioCheckout__StyledRadio-bkaeis-0 bqACGT">
                                     <input type="radio"
                                            readonly="" name="payment-methods" value="pay123"><span class="radio-fake"></span><span class="label">
-                                        Thẻ ATM nội địa/Internet
-                                        Banking (Miễn phí thanh toán)
+                                        Via ATM's card, Internet
+                                        Banking (Free)
                                     </span>
                                 </label>
                             </li>
@@ -78,23 +77,23 @@
                 </div>
                 <form action="/Home/Checkout" method="post">
                     <div class="order-button">
-                        <button class="">ĐẶT MUA</button>
-                        <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                        <button class="">ORDER</button>
+                        <p>(Please check your order befor order)</p>
                     </div>
                 </form>
             </div>
             <div class="styles__Right-hcztvk-2 jFEIKb">
                 <div class="ShippingAddress__StyledShippingAddress-sc-12icqkv-0 fxjiAa">
-                    <div class="title"><span>Địa chỉ giao hàng</span><a href="/Home/Shipping">Sửa</a></div>
+                    <div class="title"><span>Shipping address</span><a href="/Home/Shipping">Change</a></div>
                     <div class="address">
                         <span class="nameaaa">@ViewBag.GioHang.TenKH</span><span class="street">
                             @ViewBag.GioHang.DiaChi
-                        </span><span class="phone">Điện thoại: @ViewBag.GioHang.SDT</span>
+                        </span><span class="phone">Phone's number: @ViewBag.GioHang.SDT</span>
                     </div>
                 </div>
                 <div class="OrderSummary__StyledOrderSummary-ue7sy3-0 UHbjr">
                     <div class="title">
-                        <span>Đơn hàng (@ViewBag.GioHang.SanPhamGioHangs.Count sản phẩm)</span><a href="/Home/ShopCart">Sửa</a>
+                        <span>Order (@ViewBag.GioHang.SanPhamGioHangs.Count sản phẩm)</span><a href="/Home/ShopCart">Change</a>
                     </div>
                     <div class="cart">
                         <div class="product">
@@ -112,23 +111,23 @@
                         </div>
                         <div class="price-summary">
                             <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
-                                <div class="nameaaa">Tạm tính</div>
+                                <div class="nameaaa">Price</div>
                                 <div class="value">$@ViewBag.GioHang.TongTien</div>
                             </div>
                             <div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
-                                <div class="nameaaa">Phí vận chuyển</div>
+                                <div class="nameaaa">Shipping's price</div>
                                 <div class="value">0đ</div>
                             </div>
                             <div class="total">
-                                <div class="nameaaa">Thành tiền:</div>
-                                <div class="value">$@ViewBag.GioHang.TongTien<i>(Đã bao gồm VAT nếu có)</i></div>
+                                <div class="nameaaa">Total:</div>
+                                <div class="value">$@ViewBag.GioHang.TongTien<i>(Include VAT)</i></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="styles__FreeshipTooltip-hcztvk-4 nxmyE">
                     <div class="arrow"></div>
-                    <div class="content"><span>Đơn hàng bạn sẽ được miễn phí vận chuyển.</span></div>
+                    <div class="content"><span>Your order's shipping's fee is free.</span></div>
                 </div>
             </div>
         </div>
