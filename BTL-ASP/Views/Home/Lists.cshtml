@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +10,7 @@
 
 <div><img src="~/Content/images/items/listitem.jpg"></div>
 <div class="prefixtitle">
-    <span class="title">All Products From</span>
+    <span class="title">All @ViewBag.Name from Us</span>
 </div>
 <div class="row">
     @foreach (SanPham sp in Model)

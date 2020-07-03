@@ -110,6 +110,7 @@ namespace BTL_ASP.Controllers
             var sp = new FSanPham();
             var model = sp.GetSanPhams(page, pageSize);
             ViewBag.Action = "ListsAll";
+            ViewBag.Name = "Products";
             return View("Lists", model);
         }
         public ActionResult Lists(string product, int page = 1, int pageSize = 6)
@@ -119,6 +120,7 @@ namespace BTL_ASP.Controllers
             var sp = new FSanPham();
             var model = sp.GetDanhSachSP(loai.ID, page, pageSize);
             ViewBag.Action = "Lists";
+            ViewBag.Name = product;
             return View(model);
         }
         // GET: Shopcart
