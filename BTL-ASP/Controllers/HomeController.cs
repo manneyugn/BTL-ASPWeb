@@ -327,7 +327,7 @@ namespace BTL_ASP.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Home");
             }
         }
         [HttpGet]
