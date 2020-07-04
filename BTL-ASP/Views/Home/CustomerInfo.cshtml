@@ -36,11 +36,11 @@
             <div>
                 @if (@khachHang.NgaySinh != null)
                 {
-                    <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span>
+                    <span class="T">Birthday</span> <span><input class="in" name="ngaySinh" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span>
                 }
                 else
                 {
-                    <span class="T">Birthday</span> <span><input class="in" type="text" value=""> </span>
+                    <span class="T">Birthday</span> <span><input class="in" name="ngaySinh" type="text" value=""> </span>
                 }
             </div>
             <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>

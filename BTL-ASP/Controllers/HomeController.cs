@@ -268,6 +268,8 @@ namespace BTL_ASP.Controllers
             FKhachHang fKhachHang = new FKhachHang();
             KhachHang khach = fKhachHang.SuaKhachHang(khachHang.ID, tenKH, email, sdt, ngaySinh, gioiTinh);
             ViewBag.KhachHang = khach;
+            KhachHang kh = fKhachHang.GetKH(khachHang.ID);
+            Session["KhachHang"] = kh;
             return View();
             
         }
