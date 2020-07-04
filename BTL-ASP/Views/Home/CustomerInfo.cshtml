@@ -24,15 +24,32 @@
                     Female  <input class="radiobt" type="radio" name="gender">
                 </span>
             }
-            else
+            else if (khachHang.GioiTinh == "Nữ")
             {
                 <span class="T">Sex</span> <span>
                     Male <input class="radiobt " type="radio" name="gender">
                     Female  <input class="radiobt" type="radio" name="gender" checked>
                 </span>
             }
+            else
+            {
+                <span class="T">Sex</span>
+                <span>
+                    Male <input class="radiobt " type="radio" name="gender">
+                    Female  <input class="radiobt" type="radio" name="gender">
+                </span>
+            }
         </div>
-        <div> <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        <div>
+            @if (@khachHang.NgaySinh != null)
+            {
+                <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span>
+            }
+            else
+            {
+                <span class="T">Birthday</span> <span><input class="in" type="text" value=""> </span>
+            }
+        </div>
         <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
     }
     <div class="change-password-div" onClick="theFuntion()">
