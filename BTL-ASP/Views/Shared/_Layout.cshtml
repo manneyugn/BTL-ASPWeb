@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="~/Content/styles/style.css">
     <link rel="stylesheet" href="~/Content/bootstrap-4.4.1-dist/css/bootstrap.css">
     <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Content/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -38,9 +39,9 @@
             </ul>
             <ul class="items-wrapper" style="position: absolute; right: 0;">
                 <form class="form-inline">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="sreachbar">
                 </form>
-                <li><a href="#"> <img src="/Content/images/items/icon search.png" alt="search" class="search" style=" width: 30px;height: 30px;margin-top: 15px;"></a></li>
+                <li><a href="javascript:sreach()"> <img src="/Content/images/items/icon search.png" alt="search" class="search" style=" width: 30px;height: 30px;margin-top: 15px;"></a></li>
                 <li><a href=@Url.Action("Shopcart","Home")> <img src="~/Content/images/items/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
                 @Html.Action("GetKhachHang", "Home")
             </ul>
@@ -68,6 +69,11 @@
         <div>Bài tập công nghệ web 2020</div>
     </div>
 </footer>
+    <script>
+        function sreach() {
+            var sreachItem = document.getElementById('sreachbar').value;
+            window.location.href = "/Home/ListsAll?searchInfo=" + sreachItem;
+        }
+    </script>
 </body>
-<script src="~/Content/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
 </html>

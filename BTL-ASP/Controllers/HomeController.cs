@@ -105,12 +105,22 @@ namespace BTL_ASP.Controllers
             }
         }
 
-        public ActionResult ListsAll(int page = 1, int pageSize = 9)
+        public ActionResult ListsAll(string searchInfo = null,int page = 1, int pageSize = 9)
         {
-            var sp = new FSanPham();
-            var model = sp.GetSanPhams(page, pageSize);
-            ViewBag.Action = "ListsAll";
-            return View("Lists", model);
+            if (searchInfo == null)
+            {
+                var sp = new FSanPham();
+                var model = sp.GetSanPhams(page, pageSize);
+                ViewBag.Action = "ListsAll";
+                return View("Lists", model);
+            }
+            else
+            {
+                var sp = new FSanPham();
+                var model = sp.GetSanPhams(searchInfo,page, pageSize);
+                ViewBag.Action = "ListsAll";
+                return View("Lists", model);
+            }    
         }
         public ActionResult Lists(string product, int page = 1, int pageSize = 6)
         {

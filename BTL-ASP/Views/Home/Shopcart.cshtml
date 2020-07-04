@@ -96,7 +96,8 @@
         }
 
         function removeRow(e) {
-            (e.parentElement).parentElement.style.display = 'none';
+            var parent = e.parentElement;
+            parent.parentElement.style.display = 'none';
             $.post('@Url.Action("UpdateGioHang", "Home")', {
                     idSanPham: parent.parentElement.getElementsByTagName('td')[1].innerText, soLuong: 0
                 }, function (data) {
