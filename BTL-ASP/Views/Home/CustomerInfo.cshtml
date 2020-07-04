@@ -10,63 +10,43 @@
         <h1>Account information</h1>
     </div>
     <form action="/Home/CustomerInfo" method="post">
-    @{
-        KhachHang khachHang = ViewBag.KhachHang;
+        @{
+            KhachHang khachHang = ViewBag.KhachHang;
 
-        <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email" name="email" pattern="[a-z][a-z0-9_\.]{5,32}@("@")[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}{1,100}"> </span> </div>
-        <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT" name="sdt" pattern="[0-9]{1,12}"> </span> </div>
-        <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH" name="tenKH" pattern="{1,100}"> </span> </div>
-        <div>
+            <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email" name="email" pattern="[a-z][a-z0-9_\.]{5,32}@("@")[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}{1,100}"> </span> </div>
+            <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT" name="sdt" pattern="[0-9]{1,12}"> </span> </div>
+            <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH" name="tenKH" pattern="{1,100}"> </span> </div>
+            <div>
                 @if (khachHang.GioiTinh == "Male")
                 {
                     <span class="T">Sex</span>
                     <span>
-                        Male <input class="radiobt" value="Male" type="radio"  checked >
+                        Male <input class="radiobt" value="Male" type="radio" checked>
                         Female  <input class="radiobt" value="Female" type="radio" name="gioiTinh">
                     </span>
                 }
                 else
                 {
                     <span class="T">Sex</span> <span>
-                        Male <input class="radiobt" value="Male" type="radio"  name="gioiTinh">
-                        Female  <input class="radiobt" value="Female" type="radio"  checked name="gioiTinh">
+                        Male <input class="radiobt" value="Male" type="radio" name="gioiTinh">
+                        Female  <input class="radiobt" value="Female" type="radio" checked name="gioiTinh">
                     </span>
                 }
             </div>
-        </div>
-        <div>
-            @if (@khachHang.NgaySinh != null)
-            {
-                <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span>
-            }
-            else
-            {
-                <span class="T">Birthday</span> <span><input class="in" type="text" value=""> </span>
-            }
-        </div>
-        <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
-    }
-    <div class="change-password-div" onClick="theFuntion()">
-        <h5>Change password</h5>
-    </div>
-    <div class="password-changer">
-        <div>
-            <label class="T" for="old-password"> Old password</label>
-            <input class="in" type="password" id="old-password">
-        </div>
-        <div>
-            <label class="T" for="password"> Password</label>
-            <input class="in" type="password" id="password">
-        </div>
-        <div>
-            <label class="T" for="re-password"> Re-password</label>
-            <input class="in" type="password" id="re-password">
-        </div>
-        <div class="alert alert-success" id="alert-success" style="display:none">
-            <strong>Success!</strong> Your password is changed.
-        </div>
-        <div class="alert alert-danger" id="alert-fail" style="display:none">
-            <strong>Fail!</strong> Password is not change.
+            <div>
+                @if (@khachHang.NgaySinh != null)
+                {
+                    <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span>
+                }
+                else
+                {
+                    <span class="T">Birthday</span> <span><input class="in" type="text" value=""> </span>
+                }
+            </div>
+            <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        }
+        <div class="change-password-div" onClick="theFuntion()">
+            <h5>Change password</h5>
         </div>
         <div class="password-changer">
             <div>
@@ -105,7 +85,6 @@
             @Html.Action("History")
         </div>
     </div>
-    <a class="chatbubble" href="https://www.messenger.com/t/sonnam99" target="_blank"><img class="bubble-img" src="~/Content/images/items/messenger.png"></a>
 </div>
 <script>
     function theFuntion() {
