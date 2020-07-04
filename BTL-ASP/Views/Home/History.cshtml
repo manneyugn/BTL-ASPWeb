@@ -32,8 +32,9 @@
     </table>
 </div>
 <div class="pagination justify-content-center" style="margin-top: 40px;">
-    @Html.PagedListPager(Model,page => Url.Action("History", "Home", new { page }) , new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link", "inactiveLink" } })
+    @Html.PagedListPager(Model, page => Url.Action("History", "Home", new { page }), new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-link", "inactiveLink" } })
 </div>
+<a class="chatbubble" href="https://www.messenger.com/t/sonnam99" target="_blank"><img class="bubble-img" src="~/Content/images/items/messenger.png"></a>
 <script>
     $('.pagination').on('click', '.page-link', function () {
         try {
