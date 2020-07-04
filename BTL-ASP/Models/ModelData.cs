@@ -123,6 +123,10 @@
         {
             return context.SanPhams.OrderByDescending(x => x.ID).ToPagedList(page, pageSize);
         }
+        public IEnumerable<SanPham> GetSanPhams(string sreachInfo, int page, int pageSize)
+        {
+            return context.SanPhams.Where(x => x.TenSP.Contains(sreachInfo)).OrderByDescending(x => x.ID).ToPagedList(page, pageSize);
+        }
     }
 
     public class FLoaiSanPham
