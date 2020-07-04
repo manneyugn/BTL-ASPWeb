@@ -37,10 +37,8 @@
                     </div>
                 </li>
             </ul>
-            <ul class="items-wrapper" style="position: absolute; right: 0;">
-                <form class="form-inline">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="sreachbar">
-                </form>
+            <ul class="items-wrapper" style="position: absolute; right: 0;">                
+                <form class="form-inline"><input class="form-control" type="text" placeholder="Search" aria-label="Search" id="sreachbar"  onkeypress="return enterPress(event)"></form>
                 <li><a href="javascript:sreach()"> <img src="/Content/images/items/icon search.png" alt="search" class="search" style=" width: 30px;height: 30px;margin-top: 15px;"></a></li>
                 <li><a href=@Url.Action("Shopcart","Home")> <img src="~/Content/images/items/shop cart.png" alt="shop cart" class="shop-cart"></a></li>
                 @Html.Action("GetKhachHang", "Home")
@@ -70,6 +68,12 @@
     </div>
 </footer>
     <script>
+        function enterPress(e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                sreach();
+            }
+        }
         function sreach() {
             var sreachItem = document.getElementById('sreachbar').value;
             window.location.href = "/Home/ListsAll?searchInfo=" + sreachItem;
