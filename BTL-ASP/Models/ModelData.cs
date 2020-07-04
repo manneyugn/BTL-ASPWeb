@@ -295,12 +295,12 @@
         private ModelData context = new ModelData();
         public GioHang GetGH_MaGH(int id)
         {
-            string s = "Chưa Hoàn Thành";
+            string s = "Unfinished";
             return context.GioHangs.Where(x => x.ID == id && x.TinhTrang == s).FirstOrDefault();
         }
         public GioHang GetGH_MaND(int id)
         {
-            string s = "Chưa Hoàn Thành";
+            string s = "Unfinished";
             return context.GioHangs.Where(x => x.IDKH == id && x.TinhTrang == s).FirstOrDefault();
         }
         public int GetMa()
@@ -311,7 +311,7 @@
         {
             GioHang gioHang = new GioHang();
             gioHang.ID = GetMa();
-            gioHang.TinhTrang = "Chưa Hoàn Thành";
+            gioHang.TinhTrang = "Unfinished";
             gioHang.NgayTao = DateTime.Today;
             gioHang.TongTien = 0;
             if (khachHang != null)
@@ -328,9 +328,9 @@
         }
         public void EndGioHang(int iD)
         {
-            string s = "Chưa Hoàn Thành";
+            string s = "Unfinished";
             GioHang gioHang = context.GioHangs.Where(x => x.ID == iD && x.TinhTrang == s).FirstOrDefault();
-            gioHang.TinhTrang = "Hoàn Thành";
+            gioHang.TinhTrang = "Finished";
             context.SaveChanges();
         }
 

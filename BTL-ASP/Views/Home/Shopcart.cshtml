@@ -76,7 +76,7 @@
                 }, function (data) {
                         console.log(data);
                         var x = JSON.parse(data);
-                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
+                    document.getElementsByClassName('total')[0].innerText = 'Total: $' + x.TongTien;
                         parent.parentElement.getElementsByTagName('td')[4].innerText = x.ThanhTien;
                 });
             }
@@ -89,21 +89,27 @@
                 }, function (data) {
                         console.log(data);
                         var x = JSON.parse(data);
-                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
+                    document.getElementsByClassName('total')[0].innerText = 'Total: $' + x.TongTien;
                         parent.parentElement.getElementsByTagName('td')[4].innerText = x.ThanhTien;
                 });
             }
         }
 
         function removeRow(e) {
-            (e.parentElement).parentElement.style.display = 'none';
+            var parent = e.parentElement;
+            parent.parentElement.style.display = 'none';
             $.post('@Url.Action("UpdateGioHang", "Home")', {
                     idSanPham: parent.parentElement.getElementsByTagName('td')[1].innerText, soLuong: 0
                 }, function (data) {
                         console.log(data);
-                        var x = JSON.parse(data);
-                        document.getElementsByClassName('total')[0].innerText = 'Tổng tiền: $' + x.TongTien;
-                });
+                    var x = JSON.parse(data);
+                    if (x.TongTien == 0) {
+                        document.location.href = "/Home/Shopcart"
+                    }
+                    document.getElementsByClassName('total')[0].innerText = 'Total: $' + x.TongTien;
+                    
+                });         
+
         }
     </script>
 }
