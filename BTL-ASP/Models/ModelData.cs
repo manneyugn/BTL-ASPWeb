@@ -10,6 +10,7 @@
     using PagedList;
     using Microsoft.SqlServer.Server;
     using System.Diagnostics;
+    using System.Globalization;
 
     public partial class ModelData : DbContext
     {
@@ -174,7 +175,7 @@
             khach.TenKH = tenKH;
             khach.Email = email;
             khach.SDT = sdt;
-            khach.NgaySinh = DateTime.Parse(ngaySinh);
+            khach.NgaySinh = DateTime.ParseExact(ngaySinh, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             khach.GioiTinh = gioiTinh;
             context.SaveChanges();
             return khach;
