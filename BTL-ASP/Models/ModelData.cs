@@ -168,6 +168,17 @@
             context.KhachHangs.Add(khach);
             context.SaveChanges();
         }
+        public KhachHang SuaKhachHang(int id,string tenKH, string email, string sdt, string ngaySinh, string gioiTinh)
+        {
+            KhachHang khach = context.KhachHangs.FirstOrDefault(x => x.ID == id);
+            khach.TenKH = tenKH;
+            khach.Email = email;
+            khach.SDT = sdt;
+            khach.NgaySinh = DateTime.Parse(ngaySinh);
+            khach.GioiTinh = gioiTinh;
+            context.SaveChanges();
+            return khach;
+        }
         public KhachHang GetKH(int id)
         {
             return context.KhachHangs.Find(id);

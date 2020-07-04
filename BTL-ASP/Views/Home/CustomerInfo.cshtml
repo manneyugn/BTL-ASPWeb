@@ -9,36 +9,30 @@
     <div class="TTTK">
         <h1>Account information</h1>
     </div>
+    <form action="/Home/CustomerInfo" method="post">
     @{
         KhachHang khachHang = ViewBag.KhachHang;
 
-        <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
-        <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
-        <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
+        <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email" name="email" pattern="[a-z][a-z0-9_\.]{5,32}@("@")[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}{1,100}"> </span> </div>
+        <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT" name="sdt" pattern="[0-9]{1,12}"> </span> </div>
+        <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH" name="tenKH" pattern="{1,100}"> </span> </div>
         <div>
-            @if (khachHang.GioiTinh == "Nam")
-            {
-                <span class="T">Sex</span>
-                <span>
-                    Male <input class="radiobt " type="radio" name="gender" checked>
-                    Female  <input class="radiobt" type="radio" name="gender">
-                </span>
-            }
-            else if (khachHang.GioiTinh == "Nữ")
-            {
-                <span class="T">Sex</span> <span>
-                    Male <input class="radiobt " type="radio" name="gender">
-                    Female  <input class="radiobt" type="radio" name="gender" checked>
-                </span>
-            }
-            else
-            {
-                <span class="T">Sex</span>
-                <span>
-                    Male <input class="radiobt " type="radio" name="gender">
-                    Female  <input class="radiobt" type="radio" name="gender">
-                </span>
-            }
+                @if (khachHang.GioiTinh == "Male")
+                {
+                    <span class="T">Sex</span>
+                    <span>
+                        Male <input class="radiobt" value="Male" type="radio"  checked >
+                        Female  <input class="radiobt" value="Female" type="radio" name="gioiTinh">
+                    </span>
+                }
+                else
+                {
+                    <span class="T">Sex</span> <span>
+                        Male <input class="radiobt" value="Male" type="radio"  name="gioiTinh">
+                        Female  <input class="radiobt" value="Female" type="radio"  checked name="gioiTinh">
+                    </span>
+                }
+            </div>
         </div>
         <div>
             @if (@khachHang.NgaySinh != null)
@@ -74,12 +68,32 @@
         <div class="alert alert-danger" id="alert-fail" style="display:none">
             <strong>Fail!</strong> Password is not change.
         </div>
-        <div style="text-align: center;">
-            <input class="buttonluu" type="button"
-                   value="Save password" onclick="changePassword()">
+        <div class="password-changer">
+            <div>
+                <label class="T" for="old-password"> Old password</label>
+                <input class="in" type="password" id="old-password">
+            </div>
+            <div>
+                <label class="T" for="password"> Password</label>
+                <input class="in" type="password" id="password">
+            </div>
+            <div>
+                <label class="T" for="re-password"> Re-password</label>
+                <input class="in" type="password" id="re-password">
+            </div>
+            <div class="alert alert-success" id="alert-success" style="display:none">
+                <strong>Success!</strong> Your password is changed.
+            </div>
+            <div class="alert alert-danger" id="alert-fail" style="display:none">
+                <strong>Fail!</strong> Password is not change.
+            </div>
+            <div style="text-align: center;">
+                <input class="buttonluu" type="button"
+                       value="Save password" onclick="changePassword()">
+            </div>
         </div>
-    </div>
-    <div style="text-align: center;"> <input class="button" type="button" value="Save info"> </div>
+        <div style="text-align: center;"> <input class="button" type="submit" value="Save info"> </div>
+    </form>
 </div>
 <div class="shopping-history">
     <div class="TTTK">
