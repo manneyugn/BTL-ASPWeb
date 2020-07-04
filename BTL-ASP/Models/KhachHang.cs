@@ -33,7 +33,7 @@ namespace BTL_ASP.Models
         [StringLength(100)]
         public string DiaChi { get; set; }
 
-        [StringLength(4)]
+        [StringLength(10)]
         public string GioiTinh { get; set; }
 
         [StringLength(12)]

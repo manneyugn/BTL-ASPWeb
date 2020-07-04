@@ -9,60 +9,61 @@
     <div class="TTTK">
         <h1>Account information</h1>
     </div>
-    @{
-        KhachHang khachHang = ViewBag.KhachHang;
-
-        <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email"> </span> </div>
-        <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT"> </span> </div>
-        <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH"> </span> </div>
-        <div>
-            @if (khachHang.GioiTinh == "Nam")
-            {
-                <span class="T">Sex</span>
-                <span>
-                    Male <input class="radiobt " type="radio" name="gender" checked>
-                    Female  <input class="radiobt" type="radio" name="gender">
-                </span>
-            }
-            else
-            {
-                <span class="T">Sex</span> <span>
-                    Male <input class="radiobt " type="radio" name="gender">
-                    Female  <input class="radiobt" type="radio" name="gender" checked>
-                </span>
-            }
+    <form action="/Home/CustomerInfo" method="post">
+        @{
+            KhachHang khachHang = ViewBag.KhachHang;
+            <div> <span class="T">Email</span> <span><input class="in" type="text" value="@khachHang.Email" name="email" pattern="[a-z][a-z0-9_\.]{5,32}@("@")[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}{1,100}"> </span> </div>
+            <div> <span class="T">Phone's number</span> <span><input class="in" type="text" value="@khachHang.SDT" name="sdt" pattern="[0-9]{1,12}"> </span> </div>
+            <div> <span class="T">Name</span> <span><input class="in" type="text" value="@khachHang.TenKH" name="tenKH" pattern="{1,100}"> </span> </div>
+            <div>
+                @if (khachHang.GioiTinh == "Male")
+                {
+                    <span class="T">Sex</span>
+                    <span>
+                        Male <input class="radiobt" value="Male" type="radio"  checked name="gioiTinh">
+                        Female  <input class="radiobt" value="Female" type="radio" name="gioiTinh">
+                    </span>
+                }
+                else
+                {
+                    <span class="T">Sex</span> <span>
+                        Male <input class="radiobt" value="Male" type="radio"  name="gioiTinh">
+                        Female  <input class="radiobt" value="Female" type="radio"  checked name="gioiTinh">
+                    </span>
+                }
+            </div>
+            <div> <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")" name="ngaySinh" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"> </span> </div>
+            <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
+        }
+        <div class="change-password-div" onClick="theFuntion()">
+            <h5>Change password</h5>
         </div>
-        <div> <span class="T">Birthday</span> <span><input class="in" type="text" value=" @khachHang.NgaySinh.Value.ToString("dd/MM/yyyy")"> </span> </div>
-        <div> <span class="T">Sign up day</span> <span><input class="in" readonly type="text" value="@khachHang.DangKyNgay.Value.ToString("dd/MM/yyyy")"> </span> </div>
-    }
-    <div class="change-password-div" onClick="theFuntion()">
-        <h5>Change password</h5>
-    </div>
-    <div class="password-changer">
-        <div>
-            <label class="T" for="old-password"> Old password</label>
-            <input class="in" type="password" id="old-password">
+        <div class="password-changer">
+            <div>
+                <label class="T" for="old-password"> Old password</label>
+                <input class="in" type="password" id="old-password">
+            </div>
+            <div>
+                <label class="T" for="password"> Password</label>
+                <input class="in" type="password" id="password">
+            </div>
+            <div>
+                <label class="T" for="re-password"> Re-password</label>
+                <input class="in" type="password" id="re-password">
+            </div>
+            <div class="alert alert-success" id="alert-success" style="display:none">
+                <strong>Success!</strong> Your password is changed.
+            </div>
+            <div class="alert alert-danger" id="alert-fail" style="display:none">
+                <strong>Fail!</strong> Password is not change.
+            </div>
+            <div style="text-align: center;">
+                <input class="buttonluu" type="button"
+                       value="Save password" onclick="changePassword()">
+            </div>
         </div>
-        <div>
-            <label class="T" for="password"> Password</label>
-            <input class="in" type="password" id="password">
-        </div>
-        <div>
-            <label class="T" for="re-password"> Re-password</label>
-            <input class="in" type="password" id="re-password">
-        </div>
-        <div class="alert alert-success" id="alert-success" style="display:none">
-            <strong>Success!</strong> Your password is changed.
-        </div>
-        <div class="alert alert-danger" id="alert-fail" style="display:none">
-            <strong>Fail!</strong> Password is not change.
-        </div>
-        <div style="text-align: center;">
-            <input class="buttonluu" type="button"
-                   value="Save password" onclick="changePassword()">
-        </div>
-    </div>
-    <div style="text-align: center;"> <input class="button" type="button" value="Save info"> </div>
+        <div style="text-align: center;"> <input class="button" type="submit" value="Save info"> </div>
+    </form>
 </div>
 <div class="shopping-history">
     <div class="TTTK">

@@ -249,11 +249,19 @@ namespace BTL_ASP.Controllers
         public ActionResult CustomerInfo()
         {
             KhachHang khachHang = (KhachHang)Session["KhachHang"];
-            khachHang.NgaySinh = khachHang.NgaySinh;
             ViewBag.KhachHang = khachHang;
             return View();
         }
-
+        [HttpPost]
+        public ActionResult CustomerInfo(string tenKH, string email, string sdt, string ngaySinh, string gioiTinh)
+        {
+            KhachHang khachHang = (KhachHang)Session["KhachHang"];
+            FKhachHang fKhachHang = new FKhachHang();
+            KhachHang khach = fKhachHang.SuaKhachHang(khachHang.ID, tenKH, email, sdt, ngaySinh, gioiTinh);
+            ViewBag.KhachHang = khach;
+            return View();
+            
+        }
         public ActionResult History(int page = 1, int pageSize = 4)
         {
             FLichSuMuaHang fLichSuMuaHang = new FLichSuMuaHang();
